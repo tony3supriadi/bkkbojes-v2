@@ -44,6 +44,28 @@
     </script>
 
     @stack('scripts')
+
+    @if(Session::has('success'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            PNotify.success({
+                title: "Berhasil!",
+                text: "{{ Session::get('success') }}"
+            });
+        });
+    </script>
+    @endif
+
+    @if(Session::has('error'))
+    <script type="text/javascript">
+        $(document).ready(function() {
+            PNotify.error({
+                title: "Berhasil!",
+                text: "{{ Session::get('success') }}"
+            });
+        });
+    </script>
+    @endif
 </body>
 
 </html>

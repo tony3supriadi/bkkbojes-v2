@@ -18,7 +18,12 @@
                 <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
                 <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Ubah Password</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <i class="fa fa-lock"></i> Logout
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </a>
             </div>
         </li>
     </ul>
