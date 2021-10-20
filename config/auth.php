@@ -40,6 +40,24 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'admin' => [
+            'redirectTo' => 'admin.index',
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'personal' => [
+            'redirectTo' => 'akun.profile.personal',
+            'driver' => 'session',
+            'provider' => 'personals',
+        ],
+
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ]
     ],
 
     /*
@@ -64,6 +82,16 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class
+        ],
+
+        'personals' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Personal::class
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
