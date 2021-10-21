@@ -20,12 +20,24 @@
     <!-- Main styles for this application-->
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/vendors/pace-progress/css/pace.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/vendors/sweetalert/sweetalert2.min.css') }}" rel="stylesheet">
 
     @stack('styles')
 </head>
 
 <body class="app {{ $page == 'blank' ? 'flex-row align-items-center' : 'aside-menu-fixed sidebar-lg-show' }}">
     @yield('main-content')
+
+    <form id="destroy-action" action="" method="post" class="d-none">
+        @csrf
+        @method('delete')
+    </form>
+
+    <form id="bulk-destroy" action="" method="post" class="d-none">
+        @csrf
+        @method('delete')
+        <input type="text" name="ids">
+    </form>
 
     <!-- CoreUI and necessary plugins-->
     <script src="{{ asset('admin/vendors/jquery/js/jquery.min.js') }}"></script>
@@ -39,8 +51,59 @@
     <script src="{{ asset('admin/vendors/pnotify/js/PnotifyConfirm.js') }}"></script>
     <script src="{{ asset('admin/vendors/pnotify/js/PnotifyMobile.js') }}"></script>
     <script src="{{ asset('admin/vendors/pnotify/js/PnotifyNonBlock.js') }}"></script>
+    <script src="{{ asset('admin/vendors/sweetalert/sweetalert2.all.min.js') }}"></script>
     <script>
         PNotify.defaults.styling = 'bootstrap4';
+
+        $('.btn-edit').on('click', () => {
+            $('.btn-edit').addClass('d-none');
+            $('.btn-cancel').removeClass('d-none');
+            $('.btn-save').removeAttr('disabled');
+
+            $('input').removeAttr('disabled');
+        });
+
+        $('.btn-cancel').on('click', () => {
+            $('.btn-edit').removeClass('d-none');
+            $('.btn-cancel').addClass('d-none');
+            $('.btn-save').attr('disabled', 'disabled');
+
+            $('input').attr('disabled', '');
+        });
+
+        function action_destroy(url) {
+            Swal.fire({
+                title: 'Apakah Anda Yakin?',
+                text: "Menghapus data tidak akan bisa dikembalikan?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonClass: 'btn btn-danger',
+                cancelButtonClass: 'btn btn-secondary',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#destroy-action').attr('action', url);
+                    $('#destroy-action').submit();
+                }
+            })
+        };
+
+        $('.btn-bulk-destroy').on('click', () => {
+            Swal.fire({
+                title: 'Apakah Anda Yakin?',
+                text: "Menghapus data tidak akan bisa dikembalikan?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonClass: 'btn btn-danger',
+                cancelButtonClass: 'btn btn-secondary',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                $('#bulk-destroy input[name="ids"]').val(JSON.stringify(selected));
+                $('#bulk-destroy').submit();
+            });
+        });
     </script>
 
     @stack('scripts')

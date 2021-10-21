@@ -84,12 +84,12 @@
                 </a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ route('admin.users.index') }}">
                             <i class="nav-icon la la-user"></i> <span>Users</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ route('admin.hak-akses.index') }}">
                             <i class="nav-icon la la-tag"></i> <span>Hak Akses</span>
                         </a>
                     </li>

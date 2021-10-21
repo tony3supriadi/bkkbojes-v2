@@ -14,6 +14,17 @@ class PengaturanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('permission:pengaturan-read|pengaturan-update', ['only' => ['index', 'store']]);
+        $this->middleware('permission:pengaturan-update', ['only' => ['edit', 'update']]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $index = 0;
