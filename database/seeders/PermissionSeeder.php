@@ -32,6 +32,11 @@ class PermissionSeeder extends Seeder
             ["name" => "faq-create", "fullname" => "Tambah", "guard_name" => "web", "parent_id" => 11],
             ["name" => "faq-update", "fullname" => "Ubah", "guard_name" => "web", "parent_id" => 11],
             ["name" => "faq-delete", "fullname" => "Hapus", "guard_name" => "web", "parent_id" => 11],
+
+            ["name" => "ketentuan-pengguna-read", "fullname" => "Ketentuan Pengguna", "guard_name" => "web", "parent_id" => null],
+            ["name" => "ketentuan-pengguna-create", "fullname" => "Tambah", "guard_name" => "web", "parent_id" => 15],
+            ["name" => "ketentuan-pengguna-update", "fullname" => "Ubah", "guard_name" => "web", "parent_id" => 15],
+            ["name" => "ketentuan-pengguna-delete", "fullname" => "Hapus", "guard_name" => "web", "parent_id" => 15],
         ];
 
         foreach ($permissions as $permission) {

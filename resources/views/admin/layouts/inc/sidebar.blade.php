@@ -60,7 +60,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ route('admin.ketentuan-pengguna.index') }}">
                             <i class="nav-icon la la-user"></i> <span>Ketentuan Pengguna</span>
                         </a>
                     </li>

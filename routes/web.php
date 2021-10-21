@@ -46,6 +46,15 @@ Route::group([
         Route::delete("/faq/{id}", [App\Http\Controllers\Admin\FaqController::class, 'destroy'])->name('faq.destroy');
         Route::delete("/faq", [App\Http\Controllers\Admin\FaqController::class, 'bulk_destroy'])->name('faq.bulk_destroy');
 
+        // FAQ
+        Route::get("/ketentuan-pengguna", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'index'])->name('ketentuan-pengguna.index');
+        Route::get("/ketentuan-pengguna/tambah", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'create'])->name('ketentuan-pengguna.create');
+        Route::post("/ketentuan-pengguna", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'store'])->name('ketentuan-pengguna.store');
+        Route::get("/ketentuan-pengguna/{id}/ubah", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'edit'])->name('ketentuan-pengguna.edit');
+        Route::put("/ketentuan-pengguna/{id}", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'update'])->name('ketentuan-pengguna.update');
+        Route::delete("/ketentuan-pengguna/{id}", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'destroy'])->name('ketentuan-pengguna.destroy');
+        Route::delete("/ketentuan-pengguna", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'bulk_destroy'])->name('ketentuan-pengguna.bulk_destroy');
+
         // User
         Route::get("/users", [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
         Route::get("/users/tambah", [App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');
