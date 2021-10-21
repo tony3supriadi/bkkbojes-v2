@@ -42,6 +42,11 @@ class PermissionSeeder extends Seeder
             ["name" => "kebijakan-privasi-create", "fullname" => "Tambah", "guard_name" => "web", "parent_id" => 19],
             ["name" => "kebijakan-privasi-update", "fullname" => "Ubah", "guard_name" => "web", "parent_id" => 19],
             ["name" => "kebijakan-privasi-delete", "fullname" => "Hapus", "guard_name" => "web", "parent_id" => 19],
+
+            ["name" => "tentang-kami-read", "fullname" => "Tentang Kami", "guard_name" => "web", "parent_id" => null],
+            ["name" => "tentang-kami-create", "fullname" => "Tambah", "guard_name" => "web", "parent_id" => 23],
+            ["name" => "tentang-kami-update", "fullname" => "Ubah", "guard_name" => "web", "parent_id" => 23],
+            ["name" => "tentang-kami-delete", "fullname" => "Hapus", "guard_name" => "web", "parent_id" => 23],
         ];
 
         foreach ($permissions as $permission) {

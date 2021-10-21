@@ -70,7 +70,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ route('admin.tentang-kami.index') }}">
                             <i class="nav-icon la la-building"></i> <span>Tentang Kami</span>
                         </a>
                     </li>

@@ -64,6 +64,15 @@ Route::group([
         Route::delete("/kebijakan-privasi/{id}", [App\Http\Controllers\Admin\KebijakanprivasiController::class, 'destroy'])->name('kebijakan-privasi.destroy');
         Route::delete("/kebijakan-privasi", [App\Http\Controllers\Admin\KebijakanprivasiController::class, 'bulk_destroy'])->name('kebijakan-privasi.bulk_destroy');
 
+        // tentang-kami
+        Route::get("/tentang-kami", [App\Http\Controllers\Admin\TentangkamiController::class, 'index'])->name('tentang-kami.index');
+        Route::get("/tentang-kami/tambah", [App\Http\Controllers\Admin\TentangkamiController::class, 'create'])->name('tentang-kami.create');
+        Route::post("/tentang-kami", [App\Http\Controllers\Admin\TentangkamiController::class, 'store'])->name('tentang-kami.store');
+        Route::get("/tentang-kami/{id}/ubah", [App\Http\Controllers\Admin\TentangkamiController::class, 'edit'])->name('tentang-kami.edit');
+        Route::put("/tentang-kami/{id}", [App\Http\Controllers\Admin\TentangkamiController::class, 'update'])->name('tentang-kami.update');
+        Route::delete("/tentang-kami/{id}", [App\Http\Controllers\Admin\TentangkamiController::class, 'destroy'])->name('tentang-kami.destroy');
+        Route::delete("/tentang-kami", [App\Http\Controllers\Admin\TentangkamiController::class, 'bulk_destroy'])->name('tentang-kami.bulk_destroy');
+
         // User
         Route::get("/users", [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
         Route::get("/users/tambah", [App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');
