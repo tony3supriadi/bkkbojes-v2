@@ -35,7 +35,7 @@
                 @enderror
             </div>
 
-            <table class="table table-striped">
+            <table class="table table-striped" width="100%">
                 <thead>
                     <tr>
                         <th>Daftar Modul</th>

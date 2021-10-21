@@ -41,7 +41,7 @@
                     <a href="{{ route('admin.hak-akses.index') }}" class="btn btn-secondary">
                         <i class="la la-arrow-left"></i>
                     </a>
-                    <button type="submit" class="btn btn-primary btn-save" disabled>
+                    <button type="submit" class="btn btn-primary btn-save">
                         <i class="la la-save"></i> Simpan
                     </button>
                 </div>
@@ -51,7 +51,7 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="name">Name :</label>
-                <input type="text" name="name" id="name" value="{{ old('name') ? old('name') : $role->name }}" class="form-control @error('name') is-invalid @enderror" disabled />
+                <input type="text" name="name" id="name" value="{{ old('name') ? old('name') : $role->name }}" class="form-control @error('name') is-invalid @enderror" />
                 @error('name')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -59,7 +59,7 @@
                 @enderror
             </div>
 
-            <table class="table table-striped">
+            <table class="table table-striped" width="100%">
                 <thead>
                     <tr>
                         <th>Daftar Modul</th>
@@ -74,21 +74,21 @@
                     <tr>
                         <td>{{ $permission->fullname }}</td>
                         <td class="text-center">
-                            <input type="checkbox" name="permission[]" @if(in_array($permission->id, $rolePermissions)) checked @endif value="{{ $permission->id }}" disabled>
+                            <input type="checkbox" name="permission[]" @if(in_array($permission->id, $rolePermissions)) checked @endif value="{{ $permission->id }}" >
                         </td>
                         <td class="text-center">
                             @if($permission->create != null)
-                            <input type="checkbox" name="permission[]" @if(in_array($permission->create->id, $rolePermissions)) checked @endif value="{{ $permission->create->id }}" disabled>
+                            <input type="checkbox" name="permission[]" @if(in_array($permission->create->id, $rolePermissions)) checked @endif value="{{ $permission->create->id }}" >
                             @endif
                         </td>
                         <td class="text-center">
                             @if($permission->update != null)
-                            <input type="checkbox" name="permission[]" @if(in_array($permission->update->id, $rolePermissions)) checked @endif value="{{ $permission->update->id }}" disabled>
+                            <input type="checkbox" name="permission[]" @if(in_array($permission->update->id, $rolePermissions)) checked @endif value="{{ $permission->update->id }}" >
                             @endif
                         </td>
                         <td class="text-center">
                             @if($permission->delete != null)
-                            <input type="checkbox" name="permission[]" @if(in_array($permission->delete->id, $rolePermissions)) checked @endif value="{{ $permission->delete->id }}" disabled>
+                            <input type="checkbox" name="permission[]" @if(in_array($permission->delete->id, $rolePermissions)) checked @endif value="{{ $permission->delete->id }}" >
                             @endif
                         </td>
                     </tr>
@@ -103,7 +103,7 @@
                     <a href="{{ route('admin.hak-akses.index') }}" class="btn btn-secondary">
                         <i class="la la-arrow-left"></i>
                     </a>
-                    <button type="submit" class="btn btn-primary btn-save" disabled>
+                    <button type="submit" class="btn btn-primary btn-save">
                         <i class="la la-save"></i> Simpan
                     </button>
                 </div>

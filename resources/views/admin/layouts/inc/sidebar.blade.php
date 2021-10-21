@@ -55,7 +55,7 @@
                 </a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ route('admin.faq.index') }}">
                             <i class="nav-icon la la-question-circle"></i> <span>FAQ</span>
                         </a>
                     </li>

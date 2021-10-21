@@ -37,6 +37,15 @@ Route::group([
         Route::get("/", [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('index');
         Route::get("/dashboard", [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
+        // FAQ
+        Route::get("/faq", [App\Http\Controllers\Admin\FaqController::class, 'index'])->name('faq.index');
+        Route::get("/faq/tambah", [App\Http\Controllers\Admin\FaqController::class, 'create'])->name('faq.create');
+        Route::post("/faq", [App\Http\Controllers\Admin\FaqController::class, 'store'])->name('faq.store');
+        Route::get("/faq/{id}/ubah", [App\Http\Controllers\Admin\FaqController::class, 'edit'])->name('faq.edit');
+        Route::put("/faq/{id}", [App\Http\Controllers\Admin\FaqController::class, 'update'])->name('faq.update');
+        Route::delete("/faq/{id}", [App\Http\Controllers\Admin\FaqController::class, 'destroy'])->name('faq.destroy');
+        Route::delete("/faq", [App\Http\Controllers\Admin\FaqController::class, 'bulk_destroy'])->name('faq.bulk_destroy');
+
         // User
         Route::get("/users", [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
         Route::get("/users/tambah", [App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');

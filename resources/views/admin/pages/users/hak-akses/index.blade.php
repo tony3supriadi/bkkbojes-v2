@@ -25,7 +25,7 @@
 </div>
 
 <div class="card card-body">
-    <table class="table table-hover table-striped datatable"></table>
+    <table class="table table-hover table-striped datatable" width="100%"></table>
 </div>
 @endsection
 
