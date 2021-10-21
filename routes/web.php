@@ -46,7 +46,7 @@ Route::group([
         Route::delete("/faq/{id}", [App\Http\Controllers\Admin\FaqController::class, 'destroy'])->name('faq.destroy');
         Route::delete("/faq", [App\Http\Controllers\Admin\FaqController::class, 'bulk_destroy'])->name('faq.bulk_destroy');
 
-        // FAQ
+        // Ketentuan Pengguna
         Route::get("/ketentuan-pengguna", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'index'])->name('ketentuan-pengguna.index');
         Route::get("/ketentuan-pengguna/tambah", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'create'])->name('ketentuan-pengguna.create');
         Route::post("/ketentuan-pengguna", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'store'])->name('ketentuan-pengguna.store');
@@ -54,6 +54,15 @@ Route::group([
         Route::put("/ketentuan-pengguna/{id}", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'update'])->name('ketentuan-pengguna.update');
         Route::delete("/ketentuan-pengguna/{id}", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'destroy'])->name('ketentuan-pengguna.destroy');
         Route::delete("/ketentuan-pengguna", [App\Http\Controllers\Admin\KetentuanpenggunaController::class, 'bulk_destroy'])->name('ketentuan-pengguna.bulk_destroy');
+
+        // kebijakan-privasi
+        Route::get("/kebijakan-privasi", [App\Http\Controllers\Admin\KebijakanprivasiController::class, 'index'])->name('kebijakan-privasi.index');
+        Route::get("/kebijakan-privasi/tambah", [App\Http\Controllers\Admin\KebijakanprivasiController::class, 'create'])->name('kebijakan-privasi.create');
+        Route::post("/kebijakan-privasi", [App\Http\Controllers\Admin\KebijakanprivasiController::class, 'store'])->name('kebijakan-privasi.store');
+        Route::get("/kebijakan-privasi/{id}/ubah", [App\Http\Controllers\Admin\KebijakanprivasiController::class, 'edit'])->name('kebijakan-privasi.edit');
+        Route::put("/kebijakan-privasi/{id}", [App\Http\Controllers\Admin\KebijakanprivasiController::class, 'update'])->name('kebijakan-privasi.update');
+        Route::delete("/kebijakan-privasi/{id}", [App\Http\Controllers\Admin\KebijakanprivasiController::class, 'destroy'])->name('kebijakan-privasi.destroy');
+        Route::delete("/kebijakan-privasi", [App\Http\Controllers\Admin\KebijakanprivasiController::class, 'bulk_destroy'])->name('kebijakan-privasi.bulk_destroy');
 
         // User
         Route::get("/users", [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');

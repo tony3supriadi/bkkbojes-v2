@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ route('admin.kebijakan-privasi.index') }}">
                             <i class="nav-icon la la-exclamation-circle"></i> <span>Kebijakan Privasi</span>
                         </a>
                     </li>

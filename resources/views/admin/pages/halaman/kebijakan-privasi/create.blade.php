@@ -1,52 +1,37 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Ketentuan Pengguna')
+@section('title', 'Kebijakan Privasi')
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>
-        <span class="la la-question-circle"></span>
-        <span class="text-capitalize">Ketentuan Pengguna</span>
+        <span class="la la-exclamation-circle"></span>
+        <span class="text-capitalize">Kebijakan Privasi</span>
     </h3>
-
-    <div>
-        @can('ketentuan-pengguna-delete')
-        <button type="button" onclick="action_destroy(`{{ route('admin.ketentuan-pengguna.destroy', encrypt($ketentuan_pengguna->id)) }}`)" class="btn btn-destroy btn-danger">
-            <i class="la la-trash"></i> Hapus
-        </button>
-        @endcan
-
-        @can('ketentuan-pengguna-create')
-        <a href="{{ route('admin.ketentuan-pengguna.create') }}" role="button" class="btn btn-primary">
-            <i class="la la-plus-circle"></i> Tambah
-        </a>
-        @endcan
-    </div>
 </div>
 
 <div class="card">
-    <form action="{{ route('admin.ketentuan-pengguna.update', encrypt($ketentuan_pengguna->id)) }}" method="post">
+    <form action="{{ route('admin.kebijakan-privasi.store') }}" method="post">
         @csrf
-        @method('put')
+        <input type="hidden" name="name" value="kebijakan-privasi">
 
         <div class="card-header">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ route('admin.ketentuan-pengguna.index') }}" class="btn btn-secondary">
+                    <a href="{{ route('admin.kebijakan-privasi.index') }}" class="btn btn-secondary">
                         <i class="la la-arrow-left"></i>
                     </a>
-                    <button type="submit" class="btn btn-save btn-primary">
+                    <button type="submit" class="btn btn-primary">
                         <i class="la la-save"></i> Simpan
                     </button>
                 </div>
             </div>
         </div>
-
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-4 col-md-2">
                     <label for="ordering">Nomor Urut</label>
-                    <input type="number" name="ordering" id="ordering" placeholder="0" value="{{ old('ordering') ? old('ordering') : $ketentuan_pengguna->ordering }}" class="form-control @error('ordering') is-invalid @enderror" />
+                    <input type="number" name="ordering" id="ordering" placeholder="0" value="{{ old('ordering') }}" class="form-control @error('ordering') is-invalid @enderror" />
                     @error('ordering')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -56,8 +41,8 @@
             </div>
 
             <div class="form-group">
-                <label for="point">Ketentuan Pengguna</label>
-                <input type="text" name="point" id="point" value="{{ old('point') ? old('point') : $ketentuan_pengguna->point }}" class="form-control @error('point') is-invalid @enderror" />
+                <label for="point">Kebijakan Privasi</label>
+                <input type="text" name="point" id="point" value="{{ old('point') }}" class="form-control @error('point') is-invalid @enderror" />
                 @error('point')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -67,7 +52,7 @@
 
             <div class="form-group">
                 <label for="content">Keterangan</label>
-                <textarea name="content" id="content" class="form-control tinymce @error('content') is-invalid @enderror">{{ old('content') ? old('content') : $ketentuan_pengguna->content }}</textarea>
+                <textarea name="content" id="content" class="form-control tinymce @error('content') is-invalid @enderror">{{ old('content') }}</textarea>
                 @error('content')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -75,14 +60,13 @@
                 @enderror
             </div>
         </div>
-
         <div class="card-footer">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ route('admin.ketentuan-pengguna.index') }}" class="btn btn-secondary">
+                    <a href="{{ route('admin.kebijakan-privasi.index') }}" class="btn btn-secondary">
                         <i class="la la-arrow-left"></i>
                     </a>
-                    <button type="submit" class="btn btn-save btn-primary">
+                    <button type="submit" class="btn btn-primary">
                         <i class="la la-save"></i> Simpan
                     </button>
                 </div>
