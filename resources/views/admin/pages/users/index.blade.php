@@ -1,23 +1,23 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Hak Akses')
+@section('title', 'User')
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>
-        <span class="la la-tag"></span>
-        <span class="text-capitalize">Hak Akses</span>
+        <span class="la la-user"></span>
+        <span class="text-capitalize">Users</span>
     </h3>
 
     <div>
-        @can('hak-akses-delete')
+        @can('users-delete')
         <button type="button" class="btn btn-danger text-white btn-bulk-destroy" disabled>
             <i class="la la-trash"></i> Hapus Masal
         </button>
         @endcan
 
-        @can('hak-akses-create')
-        <a href="{{ route('admin.hak-akses.create') }}" role="button" class="btn btn-primary text-white">
+        @can('users-create')
+        <a href="{{ route('admin.users.create') }}" class="btn btn-primary text-white">
             <i class="la la-plus-circle"></i> Tambah
         </a>
         @endcan
@@ -49,7 +49,7 @@
                 selector: 'td:first-child .select-checkbox'
             },
             ajax: {
-                url: '/app/v1/bkk-admin/hak-akses?type=json',
+                url: '/app/v1/bkk-admin/users?type=json',
                 dataSrc: (data) => {
                     return data;
                 }
@@ -59,11 +59,28 @@
                 defaultContent: '',
                 title: '',
                 orderable: false,
-                className: 'select-checkbox pr-1 pl-2 py-2',
+                className: 'select-checkbox pr-1 pl-2',
                 width: '10px'
             }, {
                 data: 'name',
-                title: 'Hak Akses'
+                title: 'Nama',
+                orderable: true,
+            }, {
+                data: 'username',
+                title: 'Username',
+                orderable: false
+            }, {
+                data: 'email',
+                title: 'E-Mail',
+                orderable: false,
+            }, {
+                defaultContent: '',
+                title: 'Roles',
+                orderable: false,
+                width: '10%',
+                render: (data, type, row) => {
+                    return row.roles.length > 0 ? `<span class="badge badge-secondary">` + row.roles[0].name + `</span>` : '-';
+                }
             }, {
                 defaultContent: '',
                 title: 'Aksi',
@@ -72,14 +89,14 @@
                 render: (data, type, row, meta) => {
                     if (row.id != 1) {
                         return `
-                            @can('hak-akses-update')
-                            <a href="/app/v1/bkk-admin/hak-akses/${row.encryptid}/ubah" class="mx-1 text-primary text-decoration-none">
+                            @can('users-update')
+                            <a href="/app/v1/bkk-admin/users/${row.encryptid}/ubah" class="mx-1 text-primary text-decoration-none">
                                 <i class="fa fa-edit"></i> Ubah
                             </a>
                             @endcan
 
-                            @can('hak-akses-delete')
-                            <a href="javascript:void(0)" onclick="action_destroy('/app/v1/bkk-admin/hak-akses/${row.encryptid}')" class="mx-1 text-danger text-decoration-none btn-destroy">
+                            @can('users-delete')
+                            <a href="javascript:void(0)" onclick="action_destroy('/app/v1/bkk-admin/users/${row.encryptid}')" class="mx-1 text-danger text-decoration-none btn-destroy">
                                 <i class="fa fa-trash"></i> Hapus
                             </a>
                             @endcan

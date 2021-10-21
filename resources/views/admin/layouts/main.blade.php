@@ -61,6 +61,8 @@
             $('.btn-save').removeAttr('disabled');
 
             $('input').removeAttr('disabled');
+            $('.select2-values').addClass('d-none');
+            $('.select2-selection').removeClass('d-none');
         });
 
         $('.btn-cancel').on('click', () => {
@@ -69,6 +71,8 @@
             $('.btn-save').attr('disabled', 'disabled');
 
             $('input').attr('disabled', '');
+            $('.select2-value').removeClass('d-none');
+            $('.select2-selection').addClass('d-none');
         });
 
         function action_destroy(url) {
