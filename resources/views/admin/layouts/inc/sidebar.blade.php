@@ -26,7 +26,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('admin.mitra.index') }}">
                     <i class="nav-icon la la-industry"></i>
                     <span>Daftar Mitra</span>
                 </a>

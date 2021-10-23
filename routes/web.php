@@ -38,6 +38,15 @@ Route::group([
         Route::get("/dashboard", [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
         // FAQ
+        Route::get("/daftar-mitra", [App\Http\Controllers\Admin\MitraController::class, 'index'])->name('mitra.index');
+        Route::get("/daftar-mitra/tambah", [App\Http\Controllers\Admin\MitraController::class, 'create'])->name('mitra.create');
+        Route::post("/daftar-mitra", [App\Http\Controllers\Admin\MitraController::class, 'store'])->name('mitra.store');
+        Route::get("/daftar-mitra/{id}/ubah", [App\Http\Controllers\Admin\MitraController::class, 'edit'])->name('mitra.edit');
+        Route::put("/daftar-mitra/{id}", [App\Http\Controllers\Admin\MitraController::class, 'update'])->name('mitra.update');
+        Route::delete("/daftar-mitra/{id}", [App\Http\Controllers\Admin\MitraController::class, 'destroy'])->name('mitra.destroy');
+        Route::delete("/daftar-mitra", [App\Http\Controllers\Admin\MitraController::class, 'bulk_destroy'])->name('mitra.bulk_destroy');
+
+        // FAQ
         Route::get("/faq", [App\Http\Controllers\Admin\FaqController::class, 'index'])->name('faq.index');
         Route::get("/faq/tambah", [App\Http\Controllers\Admin\FaqController::class, 'create'])->name('faq.create');
         Route::post("/faq", [App\Http\Controllers\Admin\FaqController::class, 'store'])->name('faq.store');

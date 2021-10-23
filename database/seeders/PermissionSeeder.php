@@ -47,6 +47,11 @@ class PermissionSeeder extends Seeder
             ["name" => "tentang-kami-create", "fullname" => "Tambah", "guard_name" => "web", "parent_id" => 23],
             ["name" => "tentang-kami-update", "fullname" => "Ubah", "guard_name" => "web", "parent_id" => 23],
             ["name" => "tentang-kami-delete", "fullname" => "Hapus", "guard_name" => "web", "parent_id" => 23],
+
+            ["name" => "mitra-read", "fullname" => "Daftar Mitra", "guard_name" => "web", "parent_id" => null],
+            ["name" => "mitra-create", "fullname" => "Tambah", "guard_name" => "web", "parent_id" => 27],
+            ["name" => "mitra-update", "fullname" => "Ubah", "guard_name" => "web", "parent_id" => 27],
+            ["name" => "mitra-delete", "fullname" => "Hapus", "guard_name" => "web", "parent_id" => 27],
         ];
 
         foreach ($permissions as $permission) {
