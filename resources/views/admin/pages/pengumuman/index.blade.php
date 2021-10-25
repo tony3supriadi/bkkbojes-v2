@@ -1,34 +1,26 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Daftar Mitra')
+@section('title', 'Pengumuman')
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center">
+<div class="d-flex justify-content-between align-items-center mb-3">
     <h3>
-        <span class="la la-industry"></span>
-        <span class="text-capitalize">Daftar Mitra</span>
+        <span class="la la-question-circle"></span>
+        <span class="text-capitalize">Pengumuman</span>
     </h3>
 
     <div>
-        @can('mitra-delete')
+        @can('pengumuman-delete')
         <button type="button" class="btn btn-danger text-white btn-bulk-destroy" disabled>
             <i class="la la-trash"></i> Hapus Masal
         </button>
         @endcan
 
-        @can('mitra-create')
-        <a href="{{ route('admin.mitra.create') }}" class="btn btn-primary text-white">
+        @can('pengumuman-create')
+        <a href="{{ route('admin.pengumuman.create') }}" class="btn btn-primary text-white">
             <i class="la la-plus-circle"></i> Tambah
         </a>
         @endcan
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12 py-2">
-        <a href="{{ route('admin.mitra.index') }}">Semua</a>
-        <span class="text-muted mx-2">|</span>
-        <a href="{{ route('admin.mitra.index') }}?mitra=unggulan">Mitra Unggulan</a>
     </div>
 </div>
 
@@ -57,7 +49,7 @@
                 selector: 'td:first-child .select-checkbox'
             },
             ajax: {
-                url: "/app/v1/bkk-admin/daftar-mitra?type=json" + "{{ request()->get('mitra') && request()->get('mitra') == 'unggulan' ? '&mitra=unggulan' : '' }}",
+                url: '/app/v1/bkk-admin/pengumuman?type=json',
                 dataSrc: (data) => {
                     return data;
                 }
@@ -66,28 +58,24 @@
             columns: [{
                 defaultContent: '',
                 title: '',
-                orderable: false,
                 className: 'select-checkbox pr-1 pl-2',
                 width: '10px'
             }, {
-                data: 'nama',
-                title: 'Mitra / Perusahaan',
+                data: 'judul',
+                title: 'Judul',
             }, {
-                data: 'telephone',
-                title: 'Telephone',
-            }, {
-                data: 'email',
-                title: 'E-Mail',
-            }, {
-                data: 'badan_usaha',
-                title: 'Bidang Usaha',
+                data: 'publish',
+                title: '',
+                width: '8%',
                 render: (data, type, row, meta) => {
-                    return `
-                        <span className="badge badge-pill badge-primary">
-                            ${data}
-                        </span>
-                    `;
+                    return data ?
+                        `<span class="badge badge-success badge-pill">Publish</span>` :
+                        `<span class="badge badge-secondary badge-pill">Draf</span>`;
                 }
+            }, {
+                data: 'createdAt',
+                title: '',
+                width: '18%'
             }, {
                 defaultContent: '',
                 title: 'Aksi',
@@ -95,14 +83,14 @@
                 className: 'text-right',
                 render: (data, type, row, meta) => {
                     return `
-                        @can('mitra-update')
-                        <a href="/app/v1/bkk-admin/daftar-mitra/${row.encryptid}/ubah" class="mx-1 text-primary text-decoration-none">
+                        @can('pengumuman-update')
+                        <a href="/app/v1/bkk-admin/pengumuman/${row.encryptid}/ubah" class="mx-1 text-primary text-decoration-none">
                             <i class="fa fa-edit"></i> Ubah
                         </a>
                         @endcan
 
-                        @can('mitra-delete')
-                        <a href="javascript:void(0)" onclick="action_destroy('/app/v1/bkk-admin/daftar-mitra/${row.encryptid}')" class="mx-1 text-danger text-decoration-none btn-destroy">
+                        @can('pengumuman-delete')
+                        <a href="javascript:void(0)" onclick="action_destroy('/app/v1/bkk-admin/pengumuman/${row.encryptid}')" class="mx-1 text-danger text-decoration-none btn-destroy">
                             <i class="fa fa-trash"></i> Hapus
                         </a>
                         @endcan

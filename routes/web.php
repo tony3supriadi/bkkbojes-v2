@@ -37,7 +37,16 @@ Route::group([
         Route::get("/", [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('index');
         Route::get("/dashboard", [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
-        // FAQ
+        // Pengumuman
+        Route::get("/pengumuman", [App\Http\Controllers\Admin\PengumumanController::class, 'index'])->name('pengumuman.index');
+        Route::get("/pengumuman/tambah", [App\Http\Controllers\Admin\PengumumanController::class, 'create'])->name('pengumuman.create');
+        Route::post("/pengumuman", [App\Http\Controllers\Admin\PengumumanController::class, 'store'])->name('pengumuman.store');
+        Route::get("/pengumuman/{id}/ubah", [App\Http\Controllers\Admin\PengumumanController::class, 'edit'])->name('pengumuman.edit');
+        Route::put("/pengumuman/{id}", [App\Http\Controllers\Admin\PengumumanController::class, 'update'])->name('pengumuman.update');
+        Route::delete("/pengumuman/{id}", [App\Http\Controllers\Admin\PengumumanController::class, 'destroy'])->name('pengumuman.destroy');
+        Route::delete("/pengumuman", [App\Http\Controllers\Admin\PengumumanController::class, 'bulk_destroy'])->name('pengumuman.bulk_destroy');
+
+        // Daftar Mitra
         Route::get("/daftar-mitra", [App\Http\Controllers\Admin\MitraController::class, 'index'])->name('mitra.index');
         Route::get("/daftar-mitra/tambah", [App\Http\Controllers\Admin\MitraController::class, 'create'])->name('mitra.create');
         Route::post("/daftar-mitra", [App\Http\Controllers\Admin\MitraController::class, 'store'])->name('mitra.store');

@@ -19,7 +19,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('admin.pengumuman.index') }}">
                     <i class="nav-icon la la-lg la-bullhorn"></i>
                     Pengumuman
                 </a>

@@ -52,6 +52,11 @@ class PermissionSeeder extends Seeder
             ["name" => "mitra-create", "fullname" => "Tambah", "guard_name" => "web", "parent_id" => 27],
             ["name" => "mitra-update", "fullname" => "Ubah", "guard_name" => "web", "parent_id" => 27],
             ["name" => "mitra-delete", "fullname" => "Hapus", "guard_name" => "web", "parent_id" => 27],
+
+            ["name" => "pengumuman-read", "fullname" => "Pengumuman", "guard_name" => "web", "parent_id" => null],
+            ["name" => "pengumuman-create", "fullname" => "Tambah", "guard_name" => "web", "parent_id" => 31],
+            ["name" => "pengumuman-update", "fullname" => "Ubah", "guard_name" => "web", "parent_id" => 31],
+            ["name" => "pengumuman-delete", "fullname" => "Hapus", "guard_name" => "web", "parent_id" => 31],
         ];
 
         foreach ($permissions as $permission) {
