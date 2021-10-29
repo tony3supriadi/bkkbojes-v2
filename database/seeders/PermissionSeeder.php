@@ -62,6 +62,21 @@ class PermissionSeeder extends Seeder
             ["name" => "lowongan-create", "fullname" => "Tambah", "guard_name" => "web", "parent_id" => 35],
             ["name" => "lowongan-update", "fullname" => "Ubah", "guard_name" => "web", "parent_id" => 35],
             ["name" => "lowongan-delete", "fullname" => "Hapus", "guard_name" => "web", "parent_id" => 35],
+
+            ["name" => "artikel-read", "fullname" => "Artikel", "guard_name" => "web", "parent_id" => null],
+            ["name" => "artikel-create", "fullname" => "Tambah", "guard_name" => "web", "parent_id" => 39],
+            ["name" => "artikel-update", "fullname" => "Ubah", "guard_name" => "web", "parent_id" => 39],
+            ["name" => "artikel-delete", "fullname" => "Hapus", "guard_name" => "web", "parent_id" => 39],
+
+            ["name" => "pengguna-read", "fullname" => "Pengguna", "guard_name" => "web", "parent_id" => null],
+            ["name" => "pengguna-create", "fullname" => "Tambah", "guard_name" => "web", "parent_id" => 43],
+            ["name" => "pengguna-update", "fullname" => "Ubah", "guard_name" => "web", "parent_id" => 43],
+            ["name" => "pengguna-delete", "fullname" => "Hapus", "guard_name" => "web", "parent_id" => 43],
+
+            ["name" => "testimonial-read", "fullname" => "Testimonial", "guard_name" => "web", "parent_id" => null],
+            ["name" => "testimonial-create", "fullname" => "Tambah", "guard_name" => "web", "parent_id" => 47],
+            ["name" => "testimonial-update", "fullname" => "Ubah", "guard_name" => "web", "parent_id" => 47],
+            ["name" => "testimonial-delete", "fullname" => "Hapus", "guard_name" => "web", "parent_id" => 47],
         ];
 
         foreach ($permissions as $permission) {

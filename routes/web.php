@@ -37,6 +37,15 @@ Route::group([
         Route::get("/", [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('index');
         Route::get("/dashboard", [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
+        // Artikel
+        Route::get("/artikel", [App\Http\Controllers\Admin\ArtikelController::class, 'index'])->name('artikel.index');
+        Route::get("/artikel/tambah", [App\Http\Controllers\Admin\ArtikelController::class, 'create'])->name('artikel.create');
+        Route::post("/artikel", [App\Http\Controllers\Admin\ArtikelController::class, 'store'])->name('artikel.store');
+        Route::get("/artikel/{id}/ubah", [App\Http\Controllers\Admin\ArtikelController::class, 'edit'])->name('artikel.edit');
+        Route::put("/artikel/{id}", [App\Http\Controllers\Admin\ArtikelController::class, 'update'])->name('artikel.update');
+        Route::delete("/artikel/{id}", [App\Http\Controllers\Admin\ArtikelController::class, 'destroy'])->name('artikel.destroy');
+        Route::delete("/artikel", [App\Http\Controllers\Admin\ArtikelController::class, 'bulk_destroy'])->name('artikel.bulk_destroy');
+
         // Lowongan
         Route::get("/lowongan", [App\Http\Controllers\Admin\LowonganController::class, 'index'])->name('lowongan.index');
         Route::get("/lowongan/tambah", [App\Http\Controllers\Admin\LowonganController::class, 'create'])->name('lowongan.create');
