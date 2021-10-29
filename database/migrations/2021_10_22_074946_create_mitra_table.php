@@ -18,7 +18,8 @@ class CreateMitraTable extends Migration
             $table->string('nama');
             $table->string('logo')->nullable();
             $table->string('slug')->unique();
-            $table->string('lokasi')->nullable();
+            $table->string('provinsi')->nullable();
+            $table->string('kabupaten')->nullable();
             $table->string('bidang_usaha')->nullable();
             $table->string('badan_usaha')->nullable(); // BUMN, Swasta, Asing
             $table->string('bentuk_usaha')->nullable(); // PT, CV, UD

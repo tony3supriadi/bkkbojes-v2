@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Halaman extends Model
 {
     use HasFactory;
-
     protected $table = 'halaman';
     protected $fillable = [
         'name', 'point', 'content', 'ordering'

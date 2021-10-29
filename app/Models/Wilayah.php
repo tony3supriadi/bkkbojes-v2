@@ -8,12 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Wilayah extends Model
 {
     use HasFactory;
-
     protected $table = "wilayah";
-
-    protected $fillable = [
-        "nama", "kode"
-    ];
+    protected $fillable = ["nama", "kode"];
 
     public function provinsi()
     {

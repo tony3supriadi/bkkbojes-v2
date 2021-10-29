@@ -12,7 +12,7 @@
             <li class="nav-title">Main Navigation</li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('admin.lowongan.index') }}">
                     <i class="nav-icon la la-lg la-file"></i>
                     Lowongan
                 </a>

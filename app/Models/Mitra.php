@@ -11,7 +11,7 @@ class Mitra extends Model
 
     protected $table = "mitra";
     protected $fillable = [
-        'logo', 'nama', 'slug', 'lokasi', 'bidang_usaha',
+        'logo', 'nama', 'slug', 'provinsi', 'kabupaten', 'bidang_usaha',
         'badan_usaha', 'bentuk_usaha', 'jumlah_karyawan',
         'waktu_kerja', 'busana_kerja', 'kontak', 'telephone',
         'email', 'faxmail', 'website', 'profile_perusahaan',

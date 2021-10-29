@@ -65,9 +65,16 @@ class MitraController extends Controller
     public function create()
     {
         $wilayah = new Wilayah();
-        $cities = $wilayah->kabupaten();
+        $provinces = $wilayah->provinsi();
+
+        if (request()->get('get') == 'cities') {
+            $kode = request()->get('kode');
+            $cities = $wilayah->kabupaten($kode);
+            return response()->json($cities);
+        }
+
         $bidangusaha = Bidangusaha::all();
-        return view('admin.pages.mitra.create', compact('cities', 'bidangusaha'));
+        return view('admin.pages.mitra.create', compact('provinces', 'bidangusaha'));
     }
 
     /**
@@ -81,7 +88,8 @@ class MitraController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'logo' => 'required|file|max:2000',
-            'lokasi' => 'required',
+            'provinsi' => 'required',
+            'kabupaten' => 'required',
             'bentuk_usaha' => 'required',
             'bidang_usaha' => 'required',
             'badan_usaha' => 'required',
@@ -106,7 +114,8 @@ class MitraController extends Controller
             'nama' => $request->nama,
             'logo' => basename($storage_path),
             'slug' => $slug_string,
-            'lokasi' => $request->lokasi,
+            'provinsi' => $request->provinsi,
+            'kabupaten' => $request->kabupaten,
             'bidang_usaha' => $request->bidang_usaha,
             'badan_usaha' => $request->badan_usaha,
             'bentuk_usaha' => $request->bentuk_usaha,
@@ -135,10 +144,19 @@ class MitraController extends Controller
     public function edit($id)
     {
         $wilayah = new Wilayah();
-        $cities = $wilayah->kabupaten();
+        $provinces = $wilayah->provinsi();
+
+        if (request()->get('get') == 'cities') {
+            $kode = request()->get('kode');
+            $cities = $wilayah->kabupaten($kode);
+            return response()->json($cities);
+        }
+
         $bidangusaha = Bidangusaha::all();
         $mitra = Mitra::find(decrypt($id));
-        return view('admin.pages.mitra.edit', compact('cities', 'bidangusaha', 'mitra'));
+        $cities = $wilayah->kabupaten($mitra->provinsi);
+
+        return view('admin.pages.mitra.edit', compact('provinces', 'cities', 'bidangusaha', 'mitra'));
     }
 
     /**
@@ -152,7 +170,8 @@ class MitraController extends Controller
     {
         $this->validate($request, [
             'nama' => 'required',
-            'lokasi' => 'required',
+            'provinsi' => 'required',
+            'kabupaten' => 'required',
             'bentuk_usaha' => 'required',
             'bidang_usaha' => 'required',
             'badan_usaha' => 'required',
@@ -181,7 +200,8 @@ class MitraController extends Controller
         $mitra->nama = $request->nama;
         $mitra->logo = basename($storage_path);
         $mitra->slug = $slug_string;
-        $mitra->lokasi = $request->lokasi;
+        $mitra->provinsi = $request->provinsi;
+        $mitra->kabupaten = $request->kabupaten;
         $mitra->bidang_usaha = $request->bidang_usaha;
         $mitra->badan_usaha = $request->badan_usaha;
         $mitra->bentuk_usaha = $request->bentuk_usaha;

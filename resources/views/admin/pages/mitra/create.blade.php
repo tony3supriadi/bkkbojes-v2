@@ -47,14 +47,26 @@
             </div>
 
             <div class="form-group">
-                <label for="lokasi">Lokasi</label>
-                <select name="lokasi" data-placeholder="" id="lokasi" class="form-control select2 @error('lokasi') is-invalid @enderror">
+                <label for="provinsi">Provinsi</label>
+                <select name="provinsi" data-placeholder="" id="provinsi" class="form-control select2 @error('provinsi') is-invalid @enderror">
                     <option value=""></option>
-                    @foreach($cities as $item)
-                    <option value="{{ $item['nama'] }}" {{ old('lokasi') == $item['nama'] ? 'selected' : '' }}>{{ $item['nama'] }}</option>
+                    @foreach($provinces as $item)
+                    <option value="{{ $item['kode'] }}" {{ old('provinsi') == $item['kode'] ? 'selected' : '' }}>{{ $item['nama'] }}</option>
                     @endforeach
                 </select>
-                @error('lokasi')
+                @error('provinsi')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="kabupaten">Kota / Kabupaten <span class="fa fa-spin fa-spinner d-none"></span></label>
+                <select name="kabupaten" data-placeholder="" id="kabupaten" class="form-control select2 @error('kabupaten') is-invalid @enderror">
+                    <option value=""></option>
+                </select>
+                @error('kabupaten')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -239,10 +251,39 @@
 <script src="{{ asset('admin/vendors/tinymce/tinymce.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $(".select2").select2({
+        $('.select2').select2({
+            theme: 'bootstrap',
+            dropdownAutoWidth: true,
+            width: '100%',
+        });
+
+        $('select[name="provinsi"]').select2({
             theme: 'bootstrap',
             dropdownAutoWidth: true,
             width: '100%'
+        }).on('change', function() {
+            $('.fa-spin').removeClass('d-none');
+            $.get('/app/v1/bkk-admin/daftar-mitra/tambah?get=cities&kode=' + $(this).val(),
+                function(cities) {
+                    let html = "<option></option>"
+                    cities.forEach((item) => {
+                        html += '<option value="' + item.kode + '">' + item.nama + '</option>';
+                    })
+
+                    $('select[name="kabupaten"]').html(html);
+                    $('.fa-spin').addClass('d-none');
+                });
+        });
+
+        $('select[name="kabupaten"]').select2({
+            theme: 'bootstrap',
+            dropdownAutoWidth: true,
+            width: '100%',
+            language: {
+                noResults: function() {
+                    return "Kabupaten tidak ditemukan. Pilih provinsi dahulu!";
+                }
+            }
         });
 
         tinymce.init({

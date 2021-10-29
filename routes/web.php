@@ -37,6 +37,16 @@ Route::group([
         Route::get("/", [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('index');
         Route::get("/dashboard", [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
+        // Lowongan
+        Route::get("/lowongan", [App\Http\Controllers\Admin\LowonganController::class, 'index'])->name('lowongan.index');
+        Route::get("/lowongan/tambah", [App\Http\Controllers\Admin\LowonganController::class, 'create'])->name('lowongan.create');
+        Route::post("/lowongan", [App\Http\Controllers\Admin\LowonganController::class, 'store'])->name('lowongan.store');
+        Route::get("/lowongan/{id}", [App\Http\Controllers\Admin\LowonganController::class, 'show'])->name('lowongan.show');
+        Route::get("/lowongan/{id}/ubah", [App\Http\Controllers\Admin\LowonganController::class, 'edit'])->name('lowongan.edit');
+        Route::put("/lowongan/{id}", [App\Http\Controllers\Admin\LowonganController::class, 'update'])->name('lowongan.update');
+        Route::delete("/lowongan/{id}", [App\Http\Controllers\Admin\LowonganController::class, 'destroy'])->name('lowongan.destroy');
+        Route::delete("/lowongan", [App\Http\Controllers\Admin\LowonganController::class, 'bulk_destroy'])->name('lowongan.bulk_destroy');
+
         // Pengumuman
         Route::get("/pengumuman", [App\Http\Controllers\Admin\PengumumanController::class, 'index'])->name('pengumuman.index');
         Route::get("/pengumuman/tambah", [App\Http\Controllers\Admin\PengumumanController::class, 'create'])->name('pengumuman.create');
