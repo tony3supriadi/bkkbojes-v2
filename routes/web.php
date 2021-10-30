@@ -74,6 +74,15 @@ Route::group([
         Route::delete("/daftar-mitra/{id}", [App\Http\Controllers\Admin\MitraController::class, 'destroy'])->name('mitra.destroy');
         Route::delete("/daftar-mitra", [App\Http\Controllers\Admin\MitraController::class, 'bulk_destroy'])->name('mitra.bulk_destroy');
 
+        // Testimonial
+        Route::get("/testimonial", [App\Http\Controllers\Admin\TestimonialController::class, 'index'])->name('testimonial.index');
+        Route::get("/testimonial/tambah", [App\Http\Controllers\Admin\TestimonialController::class, 'create'])->name('testimonial.create');
+        Route::post("/testimonial", [App\Http\Controllers\Admin\TestimonialController::class, 'store'])->name('testimonial.store');
+        Route::get("/testimonial/{id}/ubah", [App\Http\Controllers\Admin\TestimonialController::class, 'edit'])->name('testimonial.edit');
+        Route::put("/testimonial/{id}", [App\Http\Controllers\Admin\TestimonialController::class, 'update'])->name('testimonial.update');
+        Route::delete("/testimonial/{id}", [App\Http\Controllers\Admin\TestimonialController::class, 'destroy'])->name('testimonial.destroy');
+        Route::delete("/testimonial", [App\Http\Controllers\Admin\TestimonialController::class, 'bulk_destroy'])->name('testimonial.bulk_destroy');
+
         // Daftar Mitra
         Route::get("/pengguna/{id}/pengalaman", [App\Http\Controllers\Admin\PenggunaController::class, 'pengalaman'])->name('pengguna.pengalaman');
         Route::get("/pengguna/{id}/pendidikan", [App\Http\Controllers\Admin\PenggunaController::class, 'pendidikan'])->name('pengguna.pendidikan');

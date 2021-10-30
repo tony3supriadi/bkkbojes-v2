@@ -40,7 +40,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('admin.testimonial.index') }}">
                     <i class="nav-icon la la-comment"></i>
                     <span>Testimonial</span>
                 </a>
