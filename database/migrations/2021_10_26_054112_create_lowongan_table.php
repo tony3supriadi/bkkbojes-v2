@@ -28,6 +28,7 @@ class CreateLowonganTable extends Migration
             $table->longText('catatan')->nullable();
             $table->date('tanggal_berakhir')->nullable();
             $table->integer('counter')->default(0);
+            $table->integer('applicant')->default(0);
             $table->boolean('publish')->default(false);
             $table->timestamps();
         });
