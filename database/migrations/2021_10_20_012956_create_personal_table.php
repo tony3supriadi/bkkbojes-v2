@@ -19,7 +19,7 @@ class CreatePersonalTable extends Migration
             $table->longText('photo')->nullable();
             $table->string('nama_depan', 64);
             $table->string('nama_belakang', 64)->nullable();
-            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
+            $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
             $table->string('tempat_lahir', 64)->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->string('alamat', 64)->nullable();

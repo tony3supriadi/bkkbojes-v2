@@ -47,7 +47,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('admin.pengguna.index') }}">
                     <i class="nav-icon la la-user"></i>
                     <span>Pengguna</span>
                 </a>

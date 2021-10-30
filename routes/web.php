@@ -27,7 +27,7 @@ Route::group([
     "as" => "admin."
 ], function () {
 
-    Route::get("/login", [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('auth.login');
+    Route::get("/login", [App\Http\Controllers\Admin\LoginController::class, 'showLoginForm'])->name('auth.login');
     Route::post("/login", [App\Http\Controllers\Admin\LoginController::class, 'login']);
 
     Route::group([
@@ -73,6 +73,22 @@ Route::group([
         Route::put("/daftar-mitra/{id}", [App\Http\Controllers\Admin\MitraController::class, 'update'])->name('mitra.update');
         Route::delete("/daftar-mitra/{id}", [App\Http\Controllers\Admin\MitraController::class, 'destroy'])->name('mitra.destroy');
         Route::delete("/daftar-mitra", [App\Http\Controllers\Admin\MitraController::class, 'bulk_destroy'])->name('mitra.bulk_destroy');
+
+        // Daftar Mitra
+        Route::get("/pengguna/{id}/pengalaman", [App\Http\Controllers\Admin\PenggunaController::class, 'pengalaman'])->name('pengguna.pengalaman');
+        Route::get("/pengguna/{id}/pendidikan", [App\Http\Controllers\Admin\PenggunaController::class, 'pendidikan'])->name('pengguna.pendidikan');
+        Route::get("/pengguna/{id}/keterampilan", [App\Http\Controllers\Admin\PenggunaController::class, 'keterampilan'])->name('pengguna.keterampilan');
+        Route::get("/pengguna/{id}/organisasi", [App\Http\Controllers\Admin\PenggunaController::class, 'organisasi'])->name('pengguna.organisasi');
+
+        // Daftar Mitra
+        Route::get("/pengguna", [App\Http\Controllers\Admin\PenggunaController::class, 'index'])->name('pengguna.index');
+        Route::get("/pengguna/tambah", [App\Http\Controllers\Admin\PenggunaController::class, 'create'])->name('pengguna.create');
+        Route::post("/pengguna", [App\Http\Controllers\Admin\PenggunaController::class, 'store'])->name('pengguna.store');
+        Route::get("/pengguna/{id}", [App\Http\Controllers\Admin\PenggunaController::class, 'show'])->name('pengguna.show');
+        Route::get("/pengguna/{id}/ubah", [App\Http\Controllers\Admin\PenggunaController::class, 'edit'])->name('pengguna.edit');
+        Route::put("/pengguna/{id}", [App\Http\Controllers\Admin\PenggunaController::class, 'update'])->name('pengguna.update');
+        Route::delete("/pengguna/{id}", [App\Http\Controllers\Admin\PenggunaController::class, 'destroy'])->name('pengguna.destroy');
+        Route::delete("/pengguna", [App\Http\Controllers\Admin\PenggunaController::class, 'bulk_destroy'])->name('pengguna.bulk_destroy');
 
         // FAQ
         Route::get("/faq", [App\Http\Controllers\Admin\FaqController::class, 'index'])->name('faq.index');
