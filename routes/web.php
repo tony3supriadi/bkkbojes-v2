@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('lowongan', [LowonganController::class, 'index'])->name('lowongan');
+Route::get('lowongan', [App\Http\Controllers\LowonganController::class, 'index'])->name('lowongan');
 Route::get('lowongan-detail', [LowonganController::class, 'lowongan_detail'])->name('lowongan-detail');
 Route::get('pengumuman', [PengumumanController::class, 'index'])->name('pengumuman');
 Route::get('pengumuman/{link}', [PengumumanController::class, 'pengumuman-detail'])->name('pengumuman-detail');
@@ -237,5 +237,7 @@ Route::group([
         Route::get("/pengaturan", [App\Http\Controllers\Admin\PengaturanController::class, 'index'])->name('pengaturan.index');
         Route::get("/pengaturan/{id}/ubah", [App\Http\Controllers\Admin\PengaturanController::class, 'edit'])->name('pengaturan.edit');
         Route::put("/pengaturan/{id}", [App\Http\Controllers\Admin\PengaturanController::class, 'update'])->name('pengaturan.update');
+
+        Route::post("/logout", [App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
     });
 });
