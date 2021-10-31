@@ -10,28 +10,28 @@ Route::get('pengumuman', [App\Http\Controllers\PengumumanController::class, 'ind
 Route::get('pengumuman/{slug}', [App\Http\Controllers\PengumumanController::class, 'pengumuman-detail'])->name('pengumuman.show');
 Route::get('daftar-mitra', [App\Http\Controllers\DaftarmitraController::class, 'index'])->name('daftar-mitra');
 Route::get('daftar-mitra/{slug}', [App\Http\Controllers\DaftarmitraController::class, 'show'])->name('daftar-mitra.show');
-Route::get('testimonial', [TestimonialController::class, 'index'])->name('testimonial');
-Route::get('faq', [FaqController::class, 'index'])->name('faq');
-Route::get('tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
-Route::get('ketentuan-penggunaan', [KetentuanPenggunaanController::class, 'index'])->name('ketentuan-penggunaan');
-Route::get('kebijakan-privasi', [KebijakanPrivasiController::class, 'index'])->name('kebijakan-privasi');
+Route::get('testimonial', [App\Http\Controllers\TestimonialController::class, 'index'])->name('testimonial');
+Route::get('faq', [App\Http\Controllers\FaqController::class, 'index'])->name('faq');
+Route::get('tentang-kami', [App\Http\Controllers\TentangKamiController::class, 'index'])->name('tentang-kami');
+Route::get('ketentuan-penggunaan', [App\Http\Controllers\KetentuanPenggunaanController::class, 'index'])->name('ketentuan-penggunaan');
+Route::get('kebijakan-privasi', [App\Http\Controllers\KebijakanPrivasiController::class, 'index'])->name('kebijakan-privasi');
 
-Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::post('login', [LoginController::class, 'login']);
+Route::get('login', [App\Http\Controllers\LoginController::class, 'index'])->name('login');
+Route::post('login', [App\Http\Controllers\LoginController::class, 'login']);
 
 //Daftar Akun
-Route::get('daftar', [DaftarController::class, 'index'])->name('daftar');
-Route::post('daftar', [DaftarController::class, 'register']);
-Route::get('/daftar/konfirmasi', [DaftarController::class, 'confirm_page'])->name('verification.notice');
-Route::post('/daftar/konfirmasi/resend', [DaftarController::class, 'confirm_resend'])
+Route::get('daftar', [App\Http\Controllers\DaftarController::class, 'index'])->name('daftar');
+Route::post('daftar', [App\Http\Controllers\DaftarController::class, 'register']);
+Route::get('/daftar/konfirmasi', [App\Http\Controllers\DaftarController::class, 'confirm_page'])->name('verification.notice');
+Route::post('/daftar/konfirmasi/resend', [App\Http\Controllers\DaftarController::class, 'confirm_resend'])
     ->name('verification.resend')->middleware(['auth:personal', 'throttle:6,1']);
-Route::get('/daftar/konfirmasi/{id}/{hash}', [DaftarController::class, 'confirm_verify'])
+Route::get('/daftar/konfirmasi/{id}/{hash}', [App\Http\Controllers\DaftarController::class, 'confirm_verify'])
     ->name('verification.verify')->middleware(['auth:personal', 'signed', 'throttle:6,1']);
-Route::get('/daftar/berhasil', [DaftarController::class, 'success_page'])->name('daftar.berhasil');
+Route::get('/daftar/berhasil', [App\Http\Controllers\DaftarController::class, 'success_page'])->name('daftar.berhasil');
 
-Route::get('/lupa-sandi', [LupaSandiController::class, 'index'])->name('lupa-sandi');
+Route::get('/lupa-sandi', [App\Http\Controllers\LupaSandiController::class, 'index'])->name('lupa-sandi');
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('akun.logout');
+Route::post('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('akun.logout');
 
 /** Routes Akun - Login */
 Route::group([
