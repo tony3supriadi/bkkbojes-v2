@@ -1,4 +1,4 @@
-<div class="mb-3 mb-md-0">
+<div class="mb-2 mb-md-0">
     <select id="order" name="order" class="form-control select2">
         <i class="la la-angle-down"></i>
         <option value="#">Paling Baru</option>
@@ -7,8 +7,8 @@
     </select>
 </div>
 
-<div class="card card-header bg-white mt-3 mb-3 overflow">
-    <div class="card card-body mb-3 p-2">
+<div class="card card-body bg-white my-2 p-2 overflow border-0 shadow-sm">
+    <div class="card card-body mb-2 py-2">
         <div class="box-sidebar">
             <div class="row">
                 <div class="col-2 me-5 col-md-1 sidebar-logo">

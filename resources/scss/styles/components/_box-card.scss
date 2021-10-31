@@ -237,16 +237,33 @@
 .box-tabs{
     font-size: 0.57rem;
 
+    .nav-tabs {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .nav-tabs .nav-link.active{
         font-weight: bold;
         color: $primary;
         background-color: $gray-100;
+        border: 0;
+        border-radius: 0;
     }
 
-    .nav-tabs .nav-link{
+    .nav-tabs .nav-link {
         font-weight: bold;
         color: $secondary;
         background-color: $white;
+        border: 0;
+        border-radius: 0;
+
+        &:hover {
+            border-radius: 0;
+        }
+    }
+
+    .tab-content {
+        background-color: $gray-100;
     }
 }
 

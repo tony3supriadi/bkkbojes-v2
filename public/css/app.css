@@ -12675,15 +12675,29 @@ textarea.form-control-lg {
 .box-tabs {
   font-size: 0.57rem;
 }
+.box-tabs .nav-tabs {
+  display: flex;
+  justify-content: space-between;
+}
 .box-tabs .nav-tabs .nav-link.active {
   font-weight: bold;
   color: #FF6C28;
   background-color: #f8f9fa;
+  border: 0;
+  border-radius: 0;
 }
 .box-tabs .nav-tabs .nav-link {
   font-weight: bold;
   color: #142B63;
   background-color: #fff;
+  border: 0;
+  border-radius: 0;
+}
+.box-tabs .nav-tabs .nav-link:hover {
+  border-radius: 0;
+}
+.box-tabs .tab-content {
+  background-color: #f8f9fa;
 }
 
 .flex {

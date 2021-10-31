@@ -7,9 +7,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('lowongan', [App\Http\Controllers\LowonganController::class, 'index'])->name('lowongan');
 Route::get('lowongan/{slug}', [App\Http\Controllers\LowonganController::class, 'show'])->name('lowongan.show');
 Route::get('pengumuman', [App\Http\Controllers\PengumumanController::class, 'index'])->name('pengumuman');
-Route::get('pengumuman/{slug}', [App\Http\Controllers\PengumumanController::class, 'pengumuman-detail'])->name('pengumuman-detail');
-Route::get('daftar-mitra', [DaftarMitraController::class, 'index'])->name('daftar-mitra');
-Route::get('daftar-mitra/{uuid}', [DaftarMitraController::class, 'show'])->name('daftar-mitra-details');
+Route::get('pengumuman/{slug}', [App\Http\Controllers\PengumumanController::class, 'pengumuman-detail'])->name('pengumuman.show');
+Route::get('daftar-mitra', [App\Http\Controllers\DaftarmitraController::class, 'index'])->name('daftar-mitra');
+Route::get('daftar-mitra/{slug}', [App\Http\Controllers\DaftarmitraController::class, 'show'])->name('daftar-mitra.show');
 Route::get('testimonial', [TestimonialController::class, 'index'])->name('testimonial');
 Route::get('faq', [FaqController::class, 'index'])->name('faq');
 Route::get('tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
