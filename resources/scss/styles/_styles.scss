@@ -1,0 +1,21 @@
+.accordion-button,
+.accordion-button:focus,
+.accordion-button:not(.collapsed) {
+    box-shadow: none;
+}
+
+.accordion-body {
+    color: #4D5465;
+}
+
+.select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+    background-color: $primary !important;
+}
+.select2-container--bootstrap.select2-container--focus .select2-selection, 
+.select2-container--bootstrap.select2-container--open .select2-selection {
+    box-shadow: none !important;
+    border-color: $primary !important;
+}
+.select2-container--bootstrap .select2-dropdown {
+    border-color: $primary !important;
+}

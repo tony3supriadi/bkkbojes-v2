@@ -12682,7 +12682,7 @@ textarea.form-control-lg {
 .box-tabs .nav-tabs .nav-link.active {
   font-weight: bold;
   color: #FF6C28;
-  background-color: #f8f9fa;
+  background-color: #F4F4F6;
   border: 0;
   border-radius: 0;
 }
@@ -12697,7 +12697,7 @@ textarea.form-control-lg {
   border-radius: 0;
 }
 .box-tabs .tab-content {
-  background-color: #f8f9fa;
+  background-color: #F4F4F6;
 }
 
 .flex {
@@ -13630,16 +13630,44 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #tentang-kami .field-content {
   padding-top: 50px;
 }
-#tentang-kami h5, #tentang-kami .h5 {
+#tentang-kami .section-title {
   border-top: 2px solid #adb5bd;
   font-weight: 800;
   margin-bottom: 1.5rem;
   color: #142B63;
 }
-#tentang-kami h5 span, #tentang-kami .h5 span {
+#tentang-kami .section-title span {
   font-size: 20px;
   margin-top: -16px;
   position: absolute;
   background-color: #EDFAFD;
   padding-right: 1rem;
+}
+#tentang-kami h3, #tentang-kami .h3, #tentang-kami h4, #tentang-kami .h4, #tentang-kami h5, #tentang-kami .h5, #tentang-kami h6, #tentang-kami .h6 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.accordion-button,
+.accordion-button:focus,
+.accordion-button:not(.collapsed) {
+  box-shadow: none;
+}
+
+.accordion-body {
+  color: #4D5465;
+}
+
+.select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+  background-color: #FF6C28 !important;
+}
+
+.select2-container--bootstrap.select2-container--focus .select2-selection,
+.select2-container--bootstrap.select2-container--open .select2-selection {
+  box-shadow: none !important;
+  border-color: #FF6C28 !important;
+}
+
+.select2-container--bootstrap .select2-dropdown {
+  border-color: #FF6C28 !important;
 }

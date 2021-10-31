@@ -7,7 +7,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('lowongan', [App\Http\Controllers\LowonganController::class, 'index'])->name('lowongan');
 Route::get('lowongan/{slug}', [App\Http\Controllers\LowonganController::class, 'show'])->name('lowongan.show');
 Route::get('pengumuman', [App\Http\Controllers\PengumumanController::class, 'index'])->name('pengumuman');
-Route::get('pengumuman/{slug}', [App\Http\Controllers\PengumumanController::class, 'pengumuman-detail'])->name('pengumuman.show');
+Route::get('pengumuman/{slug}', [App\Http\Controllers\PengumumanController::class, 'show'])->name('pengumuman.show');
 Route::get('daftar-mitra', [App\Http\Controllers\DaftarmitraController::class, 'index'])->name('daftar-mitra');
 Route::get('daftar-mitra/{slug}', [App\Http\Controllers\DaftarmitraController::class, 'show'])->name('daftar-mitra.show');
 Route::get('testimonial', [App\Http\Controllers\TestimonialController::class, 'index'])->name('testimonial');

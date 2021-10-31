@@ -19,6 +19,7 @@ class CreatePengumumanTable extends Migration
             $table->string('slug')->unique();
             $table->longText('konten')->nullable();
             $table->bigInteger('counter')->default(0);
+            $table->string('lampiran')->nullable();
             $table->bigInteger('mitra_id')->nullable();
             $table->boolean('publish')->default(false);
             $table->timestamps();

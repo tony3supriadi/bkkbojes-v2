@@ -1,7 +1,3 @@
-@php
-use App\Models\Mitra;
-@endphp
-
 @extends('layouts.app')
 
 @section('breadcrumbs')
@@ -9,7 +5,8 @@ use App\Models\Mitra;
     <div class="container d-flex justify-content-between">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
-            <li class="breadcrumb-item active">Daftar Mitra</li>
+            <li class="breadcrumb-item"><a href="{{ route('daftar-mitra') }}">Daftar Mitra</a></li>
+            <li class="breadcrumb-item active">{{ $mitra->nama }}</li>
         </ol>
     </div>
 </nav>
@@ -23,11 +20,11 @@ use App\Models\Mitra;
                 <!-- Box Mitra -->
                 @include('pages.mitra.partials.mitra-box')
             </div>
-            <div class="col-md-9 p-5 text-center">
-                <img src="{{ asset('images/hero-01.png') }}" alt="no-mitra" width="250px" class="mb-4" />
-                <h5 class="text-secondary"><strong>Ada {{ number_format(Mitra::where('publish', '=', 1)->count(), 0, ',', '.') }} mitra kerja sama yang terdaftar.</strong></h5>
-                <p class="text-muted">Mitra merupakan perusahaan atau intansi pemberi lapangan kerja.</p>
+            <div class="col-md-9">
+                <!-- Content Mitra -->
+                @include('pages.mitra.partials.mitra-content')
             </div>
+
         </div>
     </div>
 </section>

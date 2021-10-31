@@ -13,8 +13,8 @@ $Daftarmitra = Mitra::orderBy('id', 'DESC')->limit(1)->get();
             <div class="col-12">
                 @if (count($Daftarmitra))
                 @foreach($Daftarmitra as $mitra)
-                <a href="{{ route('daftar-mitra-detail', $mitra->uuid) }}" class="text-decoration-none">
-                    <img src="{{ asset('images/mitra/'.$mitra->logo) }}" />
+                <a href="{{ route('daftar-mitra.show', $mitra->slug) }}" class="text-decoration-none">
+                    <img src="{{ Storage::url('public/uploads/mitra/'.$mitra->logo) }}" alt="{{ $mitra->nama }}" class="w-100" />
                 </a>
                 @endforeach
                 @else

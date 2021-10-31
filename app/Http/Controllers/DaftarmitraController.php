@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mitra;
 use Illuminate\Http\Request;
 
 use function Ramsey\Uuid\v1;
@@ -13,8 +14,9 @@ class DaftarmitraController extends Controller
         return view('pages.mitra.index');
     }
 
-    public function show()
+    public function show($slug)
     {
-        return view('pages.mitra.show');
+        $mitra = Mitra::where('slug', '=', $slug)->first();
+        return view('pages.mitra.show', compact('mitra'));
     }
 }

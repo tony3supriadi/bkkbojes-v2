@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>
-        <span class="la la-question-circle"></span>
+        <span class="la la-industry"></span>
         <span class="text-capitalize">Daftar Mitra</span>
     </h3>
 </div>

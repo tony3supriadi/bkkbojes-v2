@@ -9,11 +9,11 @@ $daftarPengumuman = Pengumuman::where('publish', '=', true)->limit(5)->get();
         Pengumuman
     </div>
 
-    <ul class="list-group list-group-flush">
+    <ul class="">
         @if (count($daftarPengumuman))
         @foreach($daftarPengumuman as $item)
-        <li class="list-group-item border-0 py-1 px-0">
-            <a href="{{ route('pengumuman-detail', $item->link) }}">{{ $item->judul }}</a>
+        <li class="border-0 py-1 px-0">
+            <a href="{{ route('pengumuman.show', $item->slug) }}" class="text-decoration-none">{{ $item->judul }}</a>
         </li>
         @endforeach
         @else

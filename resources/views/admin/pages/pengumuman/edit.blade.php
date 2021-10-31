@@ -56,6 +56,16 @@
                 <textarea name="konten" id="konten" class="form-control tinymce">{{ old('konten') ? old('konten') : $pengumuman->konten }}</textarea>
             </div>
 
+            <div class="form-group">
+                <label for="migtra_id">Pilih mitra <small class="text-muted">(Catatan: Anda tidak perlu memilih mitra jika pengumuman tidak berhubungan dengan mitra.)</small></label>
+                <select name="mitra_id" id="mitra_id" data-placeholder="" class="form-control select2">
+                    <option value=""></option>
+                    @foreach($mitras as $mitra)
+                    <option value="{{ $mitra->id }}" {{ old('mitra_id') == $mitra->id ? 'selected' : ($pengumuman->mitra_id == $mitra->id ? 'selected' : '') }}>{{ $mitra->nama }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="form group">
                 <input type="checkbox" name="publish" value="1" id="publish" {{ old('publish') ? 'checked' : ($pengumuman->publish == 1 ? 'checked' : '') }} />
                 <label for="publish">Ceklis untuk publikasikan pengumuman.</label>
@@ -87,7 +97,7 @@
     $(document).ready(function() {
         tinymce.init({
             selector: '.tinymce',
-            height: '300px',
+            height: '420px',
             menubar: false,
             plugins: 'lists',
             statusbar: false,

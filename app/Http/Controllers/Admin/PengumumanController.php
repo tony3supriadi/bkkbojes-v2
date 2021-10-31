@@ -55,7 +55,8 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.pengumuman.create');
+        $mitras = Mitra::where('publish', '=', true)->get();
+        return view('admin.pages.pengumuman.create', compact('mitras'));
     }
 
     /**
@@ -87,7 +88,8 @@ class PengumumanController extends Controller
     public function edit($id)
     {
         $pengumuman = Pengumuman::find(decrypt($id));
-        return view('admin.pages.pengumuman.edit', compact('pengumuman'));
+        $mitras = Mitra::where('publish', '=', true)->get();
+        return view('admin.pages.pengumuman.edit', compact('pengumuman', 'mitras'));
     }
 
     /**

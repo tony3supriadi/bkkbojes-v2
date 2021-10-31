@@ -1,30 +1,38 @@
+@php
+use App\Models\Wilayah;
+$wilayah = new Wilayah();
+@endphp
+
 <div class="card card-body box-card mb-3">
     <div class="box-content">
-        <div class="row">
-            <div class="col-3 me-4 col-md-1 box-content-logo">
-                <img src="{{ asset('images/mitra/logo-pringsewu.png') }}" class="me-3" width="80px" height="80px"/>
+        <div class="row ">
+            <div class="col-3 col-md-1 px-0 box-content-logo">
+                <img src="{{ Storage::url('public/uploads/mitra/'.$mitra->logo) }}" class="border rounded me-3" width="100%" />
             </div>
-            <div class="col-8 col-md-9 box-content-title">
-                <h4> Pringsewu Group</h4>
-                <div class="row mt-3">
+            <div class="col-6 col-md-9 box-content-title">
+                <h4 class="fw-bold mb-0">{{ $mitra->nama }}</h4>
+                <div class="row mt-2">
                     <div class="col-md-5">
                         <div class="input-group d-flex align-items-center">
-                            <h6><i class="la la-industry"></i>
-                                <small>Makanan / Rumah Makan</small>
+                            <h6 class="mb-0">
+                                <span class="la la-industry"></span>
+                                <small>{{ strlen($mitra->bidang_usaha) > 28 ? substr($mitra->bidang_usaha, 0, 27) . '..' : $mitra->bidang_usaha }}</small>
                             </h6>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="input-group d-flex align-items-center">
-                            <h6><i class="la la-map-marker"></i>
-                                <small>Daerah Istimewa Yogyakarta</small>
+                            <h6 class="mb-0"><i class="la la-map-marker"></i>
+                                <small>{{ $wilayah->getName($mitra->kabupaten) }}, {{ $wilayah->getName($mitra->provinsi) }}</small>
                             </h6>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-3 col-md-1" style="float: right">
-                <a href="" class="btn btn-outline-info btn-round">Swasta</a>
+            <div class="col-3 col-md-2 text-end">
+                <span class="rounded-pill ms-2 py-1 px-2" style="border:1px solid #1BC3F7;color:#1BC3F7;font-size:12px">
+                    {{ $mitra->badan_usaha }}
+                </span>
             </div>
         </div>
     </div>
@@ -34,38 +42,38 @@
             <div class="col-md-6 mb-4">
                 <div class="row">
                     <div class="col-1 me-2 col-md-1">
-                        <img src="{{ asset('images/icons/briefcase-solid.png') }}"/>
+                        <img src="{{ asset('images/icons/briefcase-solid.png') }}" />
                     </div>
                     <div class="col-10 col-md-10">
                         <strong>Bentuk Usaha</strong><br>
-                        <p>Persekutuan Komanditer (CV)</p>
+                        <p>{{ $mitra->bentuk_usaha }}</p>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-1 me-2 col-md-1">
-                        <img src="{{ asset('images/icons/users-solid.png') }}"/>
+                        <img src="{{ asset('images/icons/users-solid.png') }}" />
                     </div>
                     <div class="col-10 col-md-10">
                         <strong>Jumlah Karyawan</strong><br>
-                        <p>Lebih dari 10.000</p>
+                        <p>{{ $mitra->jumlah_karyawan }}</p>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-1 me-2 col-md-1">
-                        <img src="{{ asset('images/icons/tshirt-solid.png') }}"/>
+                        <img src="{{ asset('images/icons/tshirt-solid.png') }}" />
                     </div>
                     <div class="col-10 col-md-10">
                         <strong>Busana Kerja</strong><br>
-                        <p>Seragam</p>
+                        <p>{{ $mitra->busana_kerja }}</p>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-1 me-2 col-md-1">
-                        <img src="{{ asset('images/icons/clock.png') }}"/>
+                        <img src="{{ asset('images/icons/clock.png') }}" />
                     </div>
                     <div class="col-10 col-md-10">
                         <strong>Waktu Kerja</strong><br>
-                        <p> Senin-Jumat : 09.00 - 17.00 WIB </p>
+                        <p>{{ $mitra->waktu_kerja }}</p>
                     </div>
                 </div>
             </div>
@@ -73,16 +81,15 @@
                 <div class="row">
                     <div class="mb-2">
                         <strong>Kontak</strong><br>
-                        <small>Jl. WR. Supratman No 28 Ngempak Simongan</small><br>
-                        <small>Kec. Semarang Barat, Semarang, Jawa Tengah</small>
+                        {{ $mitra->kontak }}
                     </div>
                     <div class="mb-2">
                         <strong>Telepon</strong><br>
-                        <small>(0281) 12345678</small>
+                        <small>{{ $mitra->telephone }}</small>
                     </div>
                     <div class="mb-2">
                         <strong>Website</strong><br>
-                        <small>www.pringsewu.com</small>
+                        <small>{{ $mitra->website }}</small>
                     </div>
                 </div>
             </div>
@@ -93,13 +100,7 @@
                 <strong>Profil Perusahaan</strong><br>
             </div>
             <div class="content-profil">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus nisi, modi quia sapiente natus necessitatibus odit fuga hic magnam! Ut eum dolorem repudiandae numquam ea qui ab porro obcaecati officia!
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, repudiandae et eveniet ex nisi minima doloribus libero facilis molestias tempora fugit optio expedita similique alias, ut iusto, corrupti ipsa? Eos!
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit explicabo dolores, excepturi, incidunt aut libero veniam culpa nobis esse commodi quo totam quibusdam doloremque? Eos quod quo quas facere dignissimos?
-                </p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde animi aliquid enim quis magni corporis maiores veniam hic, voluptatibus, esse aspernatur architecto in minus dolore saepe iure sequi est.
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore voluptatibus dignissimos aut sint iure! Deleniti animi, ullam necessitatibus saepe, numquam deserunt, veritatis enim temporibus corrupti nisi nemo aliquam qui nulla.
-                </p>
+                {!! $mitra->profile_perusahaan !!}
             </div>
         </div>
     </div>

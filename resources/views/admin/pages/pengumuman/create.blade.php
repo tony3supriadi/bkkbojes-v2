@@ -40,6 +40,16 @@
                 <textarea name="konten" id="konten" class="form-control tinymce">{{ old('konten') }}</textarea>
             </div>
 
+            <div class="form-group">
+                <label for="migtra_id">Pilih mitra <small class="text-muted">(Catatan: Anda tidak perlu memilih mitra jika pengumuman tidak berhubungan dengan mitra.)</small></label>
+                <select name="mitra_id" id="mitra_id" data-placeholder="" class="form-control select2">
+                    <option value=""></option>
+                    @foreach($mitras as $mitra)
+                    <option value="{{ $mitra->id }}" {{ old('mitra_id') == $mitra->id ? 'selected' : '' }}>{{ $mitra->nama }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="form group">
                 <input type="checkbox" name="publish" value="1" id="publish" {{ old('publish') ? 'checked' : '' }} />
                 <label for="publish">Ceklis untuk publikasikan pengumuman.</label>
@@ -62,12 +72,21 @@
 @endsection
 
 @push('styles')
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/select2/css/select2.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/select2/css/select2-bootstrap.min.css') }}">
 @endpush
 
 @push('scripts')
+<script src="{{ asset('admin/vendors/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('admin/vendors/tinymce/tinymce.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        $('.select2').select2({
+            theme: 'bootstrap',
+            dropdownAutoWidth: true,
+            width: '100%',
+        });
+
         tinymce.init({
             selector: '.tinymce',
             height: '420px',

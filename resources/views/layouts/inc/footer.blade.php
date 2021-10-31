@@ -18,14 +18,14 @@
                             <li><a href="{{ route('faq') }}">Sering Ditanya (FAQ)</a></li>
                             <li><a href="{{ route('ketentuan-penggunaan') }}">Ketentuan Penggunaan</a></li>
                             <li><a href="{{ route('kebijakan-privasi') }}">Kebijakan Privasi</a></li>
-                            <li><a href="">SMK Negeri 1 Bojongsari</a></li>
+                            <li><a href="http://www.smkn1bjs.sch.id/" target="_blank">SMK Negeri 1 Bojongsari</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-12 mb-5">
                         <h4 class="title">PERUSAHAAN</h4>
                         <ul>
-                            <li><a href="{{ route('daftar-mitra') }}">Daftar Perusahaan Mitra</a></li>
-                            <li><a href="">Kirim Lowongan Pekerjaan</a></li>
+                            <li><a href="{{ route('daftar-mitra') }}">Daftar Mitra</a></li>
+                            <!-- <li><a href="">Kirim Lowongan Pekerjaan</a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -52,12 +52,12 @@
                     Copyright © 2021, All rights reserved | Icon set from icons8
                 </p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 text-end">
                 <ul>
-                    <li><a href=""><i class="lab la-facebook-f"></i></a></li>
-                    <li><a href=""><i class="lab la-instagram"></i></a></li>
-                    <li><a href=""><i class="lab la-linkedin-in"></i></a></li>
-                    <li><a href=""><i class="lab la-youtube"></i></a></li>
+                    <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="lab la-instagram"></i></a></li>
+                    <li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
+                    <li><a href="#"><i class="lab la-youtube"></i></a></li>
                 </ul>
             </div>
         </div>

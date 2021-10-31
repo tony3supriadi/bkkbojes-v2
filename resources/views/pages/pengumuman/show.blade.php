@@ -1,7 +1,3 @@
-@php
-use App\Models\Pengumuman;
-@endphp
-
 @extends('layouts.app')
 
 @section('breadcrumbs')
@@ -9,7 +5,8 @@ use App\Models\Pengumuman;
     <div class="container d-flex justify-content-between">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
-            <li class="breadcrumb-item active">Pengumuman</li>
+            <li class="breadcrumb-item"><a href="{{ route('pengumuman') }}">Pengumuman</a></li>
+            <li class="breadcrumb-item active">{{ $pengumuman_detail->judul }}</li>
         </ol>
     </div>
 </nav>
@@ -23,11 +20,11 @@ use App\Models\Pengumuman;
                 <!-- Box Pengumuman -->
                 @include('pages.pengumuman.partials.pengumuman-box')
             </div>
-            <div class="col-md-9 p-5 text-center">
-                <img src="{{ asset('images/hero-01.png') }}" alt="pengumuman" width="250px" class="mb-4" />
-                <h5 class="text-secondary"><strong>Ada {{ number_format(Pengumuman::where('publish', '=', 1)->count(), 0, ',', '.') }} pengumuman terpublikasi.</strong></h5>
-                <p class="text-muted">Pengumuman yang merupakan informasi mengenai lowongan pekerjaan.</p>
+            <div class="col-md-9">
+                <!-- Content Pengumuman -->
+                @include('pages.pengumuman.partials.pengumuman-content')
             </div>
+
         </div>
     </div>
 </section>
