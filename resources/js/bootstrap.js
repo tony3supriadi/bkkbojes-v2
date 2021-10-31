@@ -11,6 +11,11 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+    require('jquery-migrate');
+    require('slick-carousel');
+    require('jquery-slimscroll');
+    require('select2');
+    require('jquery-toast-plugin');
 } catch (e) {}
 
 /**

@@ -1,0 +1,25 @@
+#tentang-kami{
+    padding-top:45px;
+    font-size: 0.9rem;
+    columns: $secondary;
+    color: $secondary;
+
+    .field-content{
+        padding-top: 50px;
+    }
+
+    h5{
+        border-top: 2px solid $gray-500;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        color: $secondary;
+
+        span {
+            font-size: 20px;
+            margin-top: -16px;
+            position: absolute;
+            background-color: #EDFAFD;
+            padding-right: 1rem;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+#login-page {
+    padding-top: 30px;
+    padding-bottom: 80px;
+
+    h3 {
+        font-weight: bold;
+    }
+
+    a.forgot-password {
+        text-decoration: none;
+        color: $gray-500;
+        font-size: 14px;
+    }
+
+    a.forgot-password:hover {
+        color: $orange-400;
+    }
+
+    .text-register {
+        font-size: 14px;
+        color: $secondary;
+
+        a {
+            color: $secondary;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: $orange-400;
+        }
+    }
+}

@@ -1,0 +1,484 @@
+#hero-banner {
+    background: linear-gradient($bg-color, $white);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin-top: -90px;
+    padding-top: 90px;
+
+    .hero-01,
+    .hero-02 {
+        padding-top: 75px !important;
+        padding-bottom: 75px !important;
+        margin-bottom: 48px;
+    }
+
+    .hero-01 {
+
+        .title {
+            color: $secondary;
+            font-weight: bold;
+            font-size: 38px;
+            line-height: 54px;
+            margin-bottom: 50px;
+        }
+
+        .subtitle {
+            color: $primary;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .btn-register {
+            margin-bottom: 20px;
+        }
+
+        .login-text {
+            font-size: 90%;
+            color: $secondary;
+
+            a {
+                text-decoration: none;
+            }
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .hero-02 {
+
+        img {
+            width: 100%;
+        }
+
+        .title {
+            color: $primary;
+            font-weight: bold;
+            font-size: 38px;
+            line-height: 54px;
+            padding-left: 50px;
+            padding-right: 50px;
+            margin-top: 82px;
+        }
+
+        .subtitle {
+            color: $secondary;
+            font-size: 18px;
+            line-height: 32px;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+    }
+}
+
+#how-to {
+    min-height: 250px;
+    background-color: $bg-color;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-top: 132px;
+
+    .counting {
+        margin-top: -100px - 60px;
+
+        .card {
+            text-align: center;
+            max-height: 120px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px $gray-300;
+
+            h3 {
+                color: $primary;
+                font-weight: bold;
+                font-size: 40px;
+            }
+
+            p {
+                color: $secondary;
+            }
+        }
+    }
+
+    .steps {
+        padding-top: 110px;
+        padding-bottom: 48px;
+        text-align: center;
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            color: $primary;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: $secondary;
+        }
+
+        .step-item {
+            padding-left: 54px;
+            padding-right: 54px;
+
+            img {
+                height: 148px;
+                margin-bottom: 25px;
+            }
+
+            .title {
+                color: $primary;
+                font-weight: bold;
+                font-size: 32px;
+                line-height: 38px;
+                margin-bottom: 18px;
+            }
+
+            .description {
+                color: $secondary;
+                font-size: 18px;
+                line-height: 24px
+            }
+        }
+    }
+
+    .steps-m {
+        display: none;
+    }
+
+    .step-arrow {
+        margin-top: 36px;
+        margin-bottom: -86px;
+
+        img {
+            width: 100%;
+        }
+
+        .arrow-01 {
+            margin-top: 0;
+        }
+
+        .arrow-02 {
+            margin-top: 40px;
+            margin-bottom: -40px;
+        }
+    }
+
+    .step-arrow-m {
+        display: none;
+    }
+
+}
+
+#mitra {
+    background-color: $white;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    min-height: 50px;
+
+    .title {
+        text-align: center;
+        font-size: 32px;
+        line-height: 38px;
+        font-weight: bold;
+        color: $primary;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 16px;
+        line-height: 20px;
+        color: $secondary;
+    }
+}
+
+#testimonial {
+    background: linear-gradient($bg-color, $white);
+    padding-top: 100px;
+    padding-bottom: 100px;
+    min-height: 50px;
+
+    .title {
+        text-align: center;
+        font-size: 32px;
+        line-height: 38px;
+        font-weight: bold;
+        color: $primary;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 16px;
+        line-height: 20px;
+        color: $secondary;
+        margin-bottom: 80px;
+    }
+
+    .testimoni-item {
+        text-align: center;
+        margin-left: 25px;
+        margin-right: 25px;
+
+        .testimoni-item-image {
+            width: 120px;
+            height: 120px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin-bottom: 25px;
+            margin-left: auto;
+            margin-right: auto;
+
+            img {
+                width: 100%;
+                border-radius: 60px;
+            }
+        }
+
+        .testimoni-item-content {
+            text-align: center;
+
+            .title {
+                font-size: 24px;
+                margin-bottom: 12px;
+                text-align: center;
+                color: $primary;
+                font-weight: bold;
+            }
+
+            .description {
+                text-align: center;
+                font-size: 16px;
+                line-height: 22px;
+                color: $secondary;
+            }
+        }
+    }
+
+    .testimoni-lists-m {
+        display: none;
+    }
+
+    .slick-prev:before, .slick-next:before,
+    .slick-dots li.slick-active button:before {
+        color: $primary;
+        opacity: 1;
+    }
+
+    .slick-dots li button:before {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero-banner {
+        .hero-01,
+        .hero-02 {
+            padding-top: 30px !important;
+            padding-bottom: 0px !important;
+            text-align: center;
+        }
+
+        .hero-01 {
+
+            .title {
+                font-size: 24px;
+                line-height: 28px;
+                margin-bottom: 32px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+
+            img {
+                width: 100%;
+                margin-bottom: 48px;
+            }
+        }
+
+        .hero-02 {
+
+            img {
+                width: 100%;
+            }
+
+            .title {
+                font-size: 24px;
+                line-height: 28px;
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-top: 20px;
+            }
+
+            .subtitle {
+                color: $secondary;
+                font-size: 15px;
+                line-height: 20px;
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+
+    #how-to {
+        min-height: 250px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        margin-top: 50px;
+
+        .counting {
+            margin-top: -50px - 41px !important;
+
+            .card {
+                max-height: 82px;
+
+                h3 {
+                    font-size: 24px;
+                }
+
+                p {
+                    font-size: 10px;
+                }
+            }
+        }
+
+        .steps {
+            display: none;
+        }
+
+        .steps-m {
+            display: block;
+            padding-top: 30px;
+
+            .step-item {
+                padding-top: 8px;
+                padding-bottom: 8px;
+
+                img {
+                    width: 100%;
+                }
+
+                .title {
+                    color: $primary;
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 22px;
+                    margin-bottom: 5px;
+                    margin-top: 8px;
+                }
+
+                .description {
+                    color: $secondary;
+                    font-size: 14px;
+                    line-height: 16px
+                }
+            }
+        }
+
+        .step-arrow {
+            display: none;
+        }
+
+        .step-arrow-m {
+            display: block;
+            position: absolute;
+            height: 50px;
+            width: 25px !important;
+            margin-top: -25px;
+            margin-bottom: -25px;
+            margin-left: 15px;
+        }
+
+    }
+
+    #mitra {
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        .title {
+            font-size: 24px;
+            line-height: 28px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    #testimonial {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        min-height: 50px;
+
+        .title {
+            font-size: 24px;
+            line-height: 28px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            line-height: 18px;
+            margin-bottom: 50px;
+        }
+
+        .testimoni-lists {
+            display: none;
+        }
+
+        .testimoni-lists-m {
+            display: block;
+
+            .testimoni-item {
+                text-align: center;
+                margin-left: 25px;
+                margin-right: 25px;
+
+                .testimoni-item-image {
+                    width: 120px;
+                    height: 120px;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    margin-bottom: 25px;
+                    margin-left: auto;
+                    margin-right: auto;
+
+                    img {
+                        width: 100%;
+                        border-radius: 60px;
+                    }
+                }
+
+                .testimoni-item-content {
+                    text-align: center;
+
+                    .title {
+                        font-size: 24px;
+                        margin-bottom: 12px;
+                        text-align: center;
+                        color: $primary;
+                        font-weight: bold;
+                    }
+
+                    .description {
+                        text-align: center;
+                        font-size: 16px;
+                        line-height: 22px;
+                        color: $secondary;
+                    }
+                }
+            }
+        }
+
+        .slick-arrow {
+            display: none !important;
+        }
+    }
+}
+

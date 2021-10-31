@@ -1,0 +1,65 @@
+#sidenav {
+    border: 0;
+    box-shadow: 0 0 .25rem 0 $gray-300;
+
+    .title {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 25px;
+        color: $secondary;
+    }
+
+    .progress-label {
+        margin: 0;
+        padding: 0;
+    }
+
+    .progress {
+        border-radius: 0;
+    }
+
+    .description {
+        font-size: 14px;
+        color: $gray-400;
+        padding-top: 12px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .navigation {
+        margin-bottom: 32px;
+
+        .list-group-item {
+            border: 0;
+            padding: 0;
+
+            .list-group-link {
+                text-decoration: none;
+                color: $secondary;
+                font-size: 14px;
+                padding: $list-group-item-padding-y $list-group-item-padding-x;
+                width: 100%;
+                display: block;
+
+                i {
+                    margin-right: .75rem;
+                }
+
+                &:hover {
+                    background-color: $gray-200;
+                }
+            }
+
+            &.active {
+
+                .list-group-link {
+                    color: $white;
+
+                    &:hover {
+                        background-color: $primary;
+                    }
+                }
+            }
+        }
+    }
+}

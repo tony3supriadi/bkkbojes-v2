@@ -1,0 +1,56 @@
+.logo {
+    height: 48px;
+}
+
+.navbar {
+    padding-top: 0;
+
+    .user-profile {
+
+        .photo {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: $white;
+            font-size: 20px;
+            font-weight: 300;
+            text-align: center;
+            align-items: center;
+
+            img {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+.navigation-mobile {
+    position: absolute;
+    right: 10px;
+    top: 70px;
+    min-width: 17rem;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        height: 45px;
+    }
+    .navbar-toggler {
+        position: absolute;
+        right: 10px;
+    }
+    .dropdown-menu {
+
+        .dropdown-item {
+            padding: .75rem 1rem;
+        }
+    }
+}
+@media (max-width: 576px) {
+    .logo {
+        height: 42px;
+    }
+}
