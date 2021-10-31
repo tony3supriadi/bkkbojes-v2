@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('lowongan', [App\Http\Controllers\LowonganController::class, 'index'])->name('lowongan');
-Route::get('lowongan-detail', [LowonganController::class, 'lowongan_detail'])->name('lowongan-detail');
-Route::get('pengumuman', [PengumumanController::class, 'index'])->name('pengumuman');
-Route::get('pengumuman/{link}', [PengumumanController::class, 'pengumuman-detail'])->name('pengumuman-detail');
+Route::get('lowongan/{slug}', [App\Http\Controllers\LowonganController::class, 'show'])->name('lowongan.show');
+Route::get('pengumuman', [App\Http\Controllers\PengumumanController::class, 'index'])->name('pengumuman');
+Route::get('pengumuman/{slug}', [App\Http\Controllers\PengumumanController::class, 'pengumuman-detail'])->name('pengumuman-detail');
 Route::get('daftar-mitra', [DaftarMitraController::class, 'index'])->name('daftar-mitra');
 Route::get('daftar-mitra/{uuid}', [DaftarMitraController::class, 'show'])->name('daftar-mitra-details');
 Route::get('testimonial', [TestimonialController::class, 'index'])->name('testimonial');

@@ -2,7 +2,7 @@
     <div class="box-title">
         <div class="row">
             <div class="col-md-5">
-                <a href="{{ route('lowongan-detail') }}" class="" style="text-decoration:none">
+                <a href="{{ route('lowongan', 'slug') }}" class="" style="text-decoration:none">
                     <h5>Waiters, Dishwasher, Cook Helper</h5>
                 </a>
                 <h6>Aston Imperium Hotel</h6>
