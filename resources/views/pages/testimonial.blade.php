@@ -16,20 +16,20 @@
     <div class="container flex justify-content-between align-items-center">
         <div class="icons-group text-secondary d-flex align-items-center">
             <img src="{{ asset('images/icons/orange/comments-solid.png') }}" class="me-3" />
-            <h2>Testimonial</h2>
+            <h3 class="fw-bold mb-0">Testimonial</h3>
         </div>
 
         <div class="col-md-2 mb-md-0 d-flex justify-content-end">
             <div class="dropdown text-right">
                 <button class="btn btn-sm dropdown-toggle text-secondary" type="button" id="sort" data-bs-toggle="dropdown" aria-expanded="false">
-                    Semua
+                    {{ request()->get('sort') ? ucwords(request()->get('sort')) : 'Semua' }}
                     <i class="la la-angle-down ms-1"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="sort">
-                    <li><a class="dropdown-item" href="#">Semua</a></li>
-                    <li><a class="dropdown-item" href="#">Alumni</a></li>
-                    <li><a class="dropdown-item" href="#">Siswa</a></li>
-                    <li><a class="dropdown-item" href="#">Umum</a></li>
+                    <li><a class="dropdown-item" href="?sort=semua">Semua</a></li>
+                    <li><a class="dropdown-item" href="?sort=alumni">Alumni</a></li>
+                    <li><a class="dropdown-item" href="?sort=siswa">Siswa</a></li>
+                    <li><a class="dropdown-item" href="?sort=umum">Umum</a></li>
                 </ul>
             </div>
         </div>
@@ -38,141 +38,41 @@
 <section class="pengumuman">
     <div class="container">
         <div class="row flex">
+            @foreach($data->items() as $testimoni)
             <div class="column">
                 <div class="row align-items-center mb-3">
                     <div class="col-3 col-md-2">
                         <div class="avatar-image avatar-md">
-                            <img src="{{ asset('images/avatar.jpg') }}" alt="avatar" />
+                            @if ($testimoni->personal_photo)
+                            <img src="{{ Storage::url('public/uploads/personal/'.$testimoni->personal_photo) }}" alt="{{ $testimoni->personal_nama }}" />
+                            @else
+                            <div class="user-photo bg-primary text-white mb-2 rounded-circle d-flex align-items-center justify-content-center fw-semibold fs-1" style="width:70px;height:70px">
+                                {{ strtoupper(substr($testimoni->personal_nama_depan, 0, 1)) }}
+                            </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-9 col-md-10">
-                        <h5 class="text-primary fw-bold mb-2">Slamet Carson</h5>
+                        <h5 class="text-primary fw-bold mb-2">{{ $testimoni->personal_nama_depan }} {{ $testimoni->personal_nama_belakang }}</h5>
                         <div class="row d-flex justify-items-between">
                             <div class="col-md-4">
                                 <div class="icons-group d-flex align-items-center mb-2">
                                     <img src="{{ asset('images/icons/user.png') }}" width="20" height="20" class="me-2" />
-                                    <span class="text-secondary">Alumni 2016</span>
+                                    <span class="text-secondary">{{ $testimoni->jenis_akun }} {{ $testimoni->tahun_lulus }}</span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <div class="icons-group d-flex align-items-center mb-2">
                                     <img src="{{ asset('images/icons/briefcase-solid.png') }}" width="20" height="20" class="me-2" />
-                                    <span class="text-secondary">Bekerja di PT. Denso</span>
+                                    <span class="text-secondary">Bekerja di {{ $testimoni->bekerja_di }}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius quae eveniet minima aliquid non similique voluptas sed optio, tempore odit reprehenderit. Ab alias, vero nihil aliquid voluptatem explicabo rem eum!</p>
+                {!! $testimoni->testimonial !!}
             </div>
-            <div class="column">
-                <div class="row align-items-center mb-3">
-                    <div class="col-3 col-md-2">
-                        <div class="avatar-image avatar-md">
-                            <img src="{{ asset('images/avatar.jpg') }}" alt="avatar" />
-                        </div>
-                    </div>
-                    <div class="col-9 col-md-10">
-                        <h5 class="text-primary fw-bold mb-2">Slamet Carson</h5>
-                        <div class="row d-flex justify-items-between">
-                            <div class="col-md-4">
-                                <div class="icons-group d-flex align-items-center mb-2">
-                                    <img src="{{ asset('images/icons/user.png') }}" width="20" height="20" class="me-2" />
-                                    <span class="text-secondary">Alumni 2016</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="icons-group d-flex align-items-center mb-2">
-                                    <img src="{{ asset('images/icons/briefcase-solid.png') }}" width="20" height="20" class="me-2" />
-                                    <span class="text-secondary">Bekerja di PT. Denso</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius quae eveniet minima aliquid non similique voluptas sed optio, tempore odit reprehenderit. Ab alias, vero nihil aliquid voluptatem explicabo rem eum!</p>
-            </div>
-            <div class="column">
-                <div class="row align-items-center mb-3">
-                    <div class="col-3 col-md-2">
-                        <div class="avatar-image avatar-md">
-                            <img src="{{ asset('images/avatar.jpg') }}" alt="avatar" />
-                        </div>
-                    </div>
-                    <div class="col-9 col-md-10">
-                        <h5 class="text-primary fw-bold mb-2">Slamet Carson</h5>
-                        <div class="row d-flex justify-items-between">
-                            <div class="col-md-4">
-                                <div class="icons-group d-flex align-items-center mb-2">
-                                    <img src="{{ asset('images/icons/user.png') }}" width="20" height="20" class="me-2" />
-                                    <span class="text-secondary">Alumni 2016</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="icons-group d-flex align-items-center mb-2">
-                                    <img src="{{ asset('images/icons/briefcase-solid.png') }}" width="20" height="20" class="me-2" />
-                                    <span class="text-secondary">Bekerja di PT. Denso</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius quae eveniet minima aliquid non similique voluptas sed optio, tempore odit reprehenderit. Ab alias, vero nihil aliquid voluptatem explicabo rem eum!</p>
-            </div>
-            <div class="column">
-                <div class="row align-items-center mb-3">
-                    <div class="col-3 col-md-2">
-                        <div class="avatar-image avatar-md">
-                            <img src="{{ asset('images/avatar.jpg') }}" alt="avatar" />
-                        </div>
-                    </div>
-                    <div class="col-9 col-md-10">
-                        <h5 class="text-primary fw-bold mb-2">Slamet Carson</h5>
-                        <div class="row d-flex justify-items-between">
-                            <div class="col-md-4">
-                                <div class="icons-group d-flex align-items-center mb-2">
-                                    <img src="{{ asset('images/icons/user.png') }}" width="20" height="20" class="me-2" />
-                                    <span class="text-secondary">Alumni 2016</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="icons-group d-flex align-items-center mb-2">
-                                    <img src="{{ asset('images/icons/briefcase-solid.png') }}" width="20" height="20" class="me-2" />
-                                    <span class="text-secondary">Bekerja di PT. Denso</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius quae eveniet minima aliquid non similique voluptas sed optio, tempore odit reprehenderit. Ab alias, vero nihil aliquid voluptatem explicabo rem eum!</p>
-            </div>
-            <div class="column">
-                <div class="row align-items-center mb-3">
-                    <div class="col-3 col-md-2">
-                        <div class="avatar-image avatar-md">
-                            <img src="{{ asset('images/avatar.jpg') }}" alt="avatar" />
-                        </div>
-                    </div>
-                    <div class="col-9 col-md-10">
-                        <h5 class="text-primary fw-bold mb-2">Slamet Carson</h5>
-                        <div class="row d-flex justify-items-between">
-                            <div class="col-md-4">
-                                <div class="icons-group d-flex align-items-center mb-2">
-                                    <img src="{{ asset('images/icons/user.png') }}" width="20" height="20" class="me-2" />
-                                    <span class="text-secondary">Alumni 2016</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="icons-group d-flex align-items-center mb-2">
-                                    <img src="{{ asset('images/icons/briefcase-solid.png') }}" width="20" height="20" class="me-2" />
-                                    <span class="text-secondary">Bekerja di PT. Denso</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius quae eveniet minima aliquid non similique voluptas sed optio, tempore odit reprehenderit. Ab alias, vero nihil aliquid voluptatem explicabo rem eum!</p>
-            </div>
+            @endforeach
         </div>
         @include('pages.lowongan.partials.pagination')
     </div>

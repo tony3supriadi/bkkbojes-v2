@@ -9,8 +9,8 @@ class LowonganController extends Controller
 {
     public function index()
     {
-        $daftarLowongan = Lowongan::orderBy('create_by', 'DESC')->paginate(15);
-        return view('pages.lowongan.index', compact('daftarLowongan'));
+        $data = Lowongan::orderBy('create_by', 'DESC')->paginate(15);
+        return view('pages.lowongan.index', compact('data'));
     }
 
     public function lowongan_detail()

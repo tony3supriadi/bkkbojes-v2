@@ -6,16 +6,17 @@ use App\Models\Programstudi;
     <form action="" method="get">
         <div class="box py-2">
             <div class="input-group mb-3">
-                <input type="text" name="search" class="form-control" placeholder="Ketik kata kunci, nama perusahaan, posisi, dll...">
+                <input type="text" name="q" class="form-control" placeholder="Ketik kata kunci, nama perusahaan, posisi, dll...">
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button">
+                    <button class="btn btn-primary" type="submit">
                         <i class="la la-search" style="color: white"></i>
                     </button>
                 </span>
             </div>
+
             <div class="row m-0">
                 <div class="col-md-2 ps-md-0 pe-md-1 pe-0 mb-2 mb-md-0">
-                    <select name="order" id="urutkan" data-placeholder="Urutkan" class="form-control">
+                    <select name="sort" id="sort" data-placeholder="Urutkan" class="form-control">
                         <i class="la la-angle-down"></i>
                         <option value=""></option>
                         <option value="terfavorit">Terfavorit</option>
@@ -68,16 +69,18 @@ use App\Models\Programstudi;
 
 
 @push('styles')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.1.1/dist/select2-bootstrap-5-theme.min.css" />
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/select2/css/select2.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/select2/css/select2-bootstrap.min.css') }}">
 @endpush
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
+<script src="{{ asset('admin/vendors/select2/js/select2.full.min.js') }}"></script>
 <script>
     $('select').select2({
-        theme: "bootstrap-5",
-        dropdownCssClass: "select2--small",
+        theme: 'bootstrap',
+        dropdownAutoWidth: true,
+        width: '100%',
+        minimumResultsForSearch: -1
     });
 </script>
 @endpush

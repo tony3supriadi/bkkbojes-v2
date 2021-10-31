@@ -1,21 +1,37 @@
 <div class="mt-3">
     <div class="row">
         <div class="col-md-6 mb-2">
-            <span class="la la-angle-left text-primary fw-bold"></span>
-            <small class="mx-3">1</small>
-            <small class="mx-3">2</small>
-            <small class="mx-3">3</small>
-            <small class="mx-3">4</small>
-            <small class="mx-3">...</small>
-            <span class="la la-angle-right text-primary fw-bold"></span>
+            <a href="{{ $data->onFirstPage() ? '#' : $data->url(1)  }}" class="text-decoration-none">
+                <span class="la la-angle-left {{ $data->onFirstPage() ? 'text-muted' : 'text-secondary' }} fw-bold"></span>
+            </a>
+
+            <!-- @if (!$data->onFirstPage())
+            <a href="#" class="text-decoration-none">
+                <small class="text-secondary mx-3">...</small>
+            </a>
+            @endif -->
+
+            @for($i = 0; $i < $data->lastPage(); $i++)
+                <a href="{{ $data->url($i + 1) }}" class="text-decoration-none">
+                    <small class="{{ $data->currentPage() == ($i + 1) ? 'text-primary' : 'text-secondary' }} mx-3">{{ $i + 1 }}</small>
+                </a>
+                @endfor
+
+                <!-- <a href="#" class="text-decoration-none">
+                <small class="text-secondary mx-3">...</small>
+            </a> -->
+
+                <a href="{{ $data->lastPage() == $data->currentPage() ? '#' : $data->url($data->lastPage())  }}" class="text-decoration-none">
+                    <span class="la la-angle-right {{ $data->lastPage() == $data->currentPage() ? 'text-muted' : 'text-secondary' }} fw-bold"></span>
+                </a>
         </div>
 
         <div class="col-md-6 mb-5">
             <div class="row">
                 <div class="col-md-12">
                     <small style="float: right">
-                        Menampilkan <strong>1</strong> dari <strong>13</strong> halaman |
-                        Total <strong>327</strong> Lowongan
+                        Menampilkan <strong>{{ $data->currentPage() }}</strong> dari <strong>{{ $data->lastPage() }}</strong> halaman |
+                        Total <strong>{{ $data->total() }}</strong> Lowongan
                     </small>
                 </div>
             </div>
