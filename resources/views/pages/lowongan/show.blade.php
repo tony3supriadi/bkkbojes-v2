@@ -6,20 +6,14 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
             <li class="breadcrumb-item"><a href="{{ route('lowongan') }}">Lowongan</a></li>
-            <li class="breadcrumb-item active">Lowongan Kasir</li>
+            <li class="breadcrumb-item active">{{ $lowongan->judul }}</li>
         </ol>
-
-        <div class="back m-0">
-            <a href="{{ route('lowongan') }}" class="text-secondary" style="text-decoration:none">
-                <img src="{{ asset('images/icons/arrow-circle-left-solid.png') }}"/>
-                Kembali
-            </a>
-        </div>
     </div>
 </nav>
 @endsection
 
 @section('content')
+@if(Auth::guard('personal')->check())
 <section class="daftar-lowongan">
     <div class="container pt-4 pb-5">
         <div class="row">
@@ -34,4 +28,7 @@
         </div>
     </div>
 </section>
+@else
+@include('components.errors.halaman_forbiden')
+@endif
 @endsection

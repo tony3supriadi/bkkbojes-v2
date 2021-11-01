@@ -12599,23 +12599,23 @@ textarea.form-control-lg {
   padding: 0px 10px;
 }
 .box-content-body p {
-  font-size: 0.8rem;
+  font-size: 14px;
 }
 .box-content-body h4, .box-content-body .h4 {
-  font-size: 0.76rem;
+  font-size: 14px;
   color: #142B63;
 }
 .box-content-body h5, .box-content-body .h5 {
-  font-size: 0.72rem;
+  font-size: 14px;
 }
 .box-content-body h6, .box-content-body .h6 {
-  font-size: 0.65rem;
+  font-size: 14px;
 }
 .box-content-body .content-body-paragraph {
-  font-size: 0.7rem;
+  font-size: 14px;
 }
 .box-content-body .content-body-paragraph p {
-  font-size: 0.7rem;
+  font-size: 14px;
 }
 
 .box-content-footer {

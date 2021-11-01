@@ -55,12 +55,12 @@ $personal = new Personal();
                 <span>Resume</span>
             </a>
         </li>
-        <li class="list-group-item {{ strpos($route, 'pemberitahuan') ? 'active' : '' }}">
+        <!-- <li class="list-group-item {{ strpos($route, 'pemberitahuan') ? 'active' : '' }}">
             <a href="{{ route('akun.pemberitahuan') }}" class="list-group-link">
                 <i class="la la-bell"></i>
                 <span>Pemberitahuan</span>
             </a>
-        </li>
+        </li> -->
         <li class="list-group-item {{ strpos($route, 'lowongan-tersimpan') ? 'active' : '' }}">
             <a href="{{ route('akun.lowongan-tersimpan') }}" class="list-group-link">
                 <i class="la la-bookmark"></i>
@@ -73,12 +73,12 @@ $personal = new Personal();
                 <span>Lamaran Terkirim</span>
             </a>
         </li>
-        <li class="list-group-item {{ strpos($route, 'latihan-tes') ? 'active' : '' }}">
+        <!-- <li class="list-group-item {{ strpos($route, 'latihan-tes') ? 'active' : '' }}">
             <a href="{{ route('akun.latihan-tes') }}" class="list-group-link">
                 <i class="la la-puzzle-piece"></i>
                 <span>Latihan Tes</span>
             </a>
-        </li>
+        </li> -->
     </ul>
 
     <ul class="navigation list-group list-group-flush mb-0">

@@ -13,7 +13,7 @@ class Lowongan extends Model
         'judul', 'slug', 'mitra_id', 'tipe_pekerjaan',
         'program_studi', 'kisaran_gaji', 'tampilkan_gaji',
         'deskripsi', 'kualifikasi', 'benefit', 'catatan',
-        'lainnya', 'tanggal_berakhir', 'counter', 'publish',
+        'tanggal_berakhir', 'counter', 'publish',
         'applicant'
     ];
 }

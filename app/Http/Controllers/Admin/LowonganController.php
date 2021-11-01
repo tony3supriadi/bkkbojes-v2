@@ -90,7 +90,7 @@ class LowonganController extends Controller
             'tanggal_berakhir' => 'required',
         ]);
 
-        $slug = str_replace([" ", ".", ","], ["-", "", ""], $request->judul);
+        $slug = str_replace([" ", ".", ","], ["-", "", ""], strtolower($request->judul)) . "-" . time();
         $lowongan = Lowongan::create([
             'judul' => $request->judul,
             'slug' => $slug,
@@ -142,7 +142,10 @@ class LowonganController extends Controller
         ]);
 
         $lowongan = Lowongan::find(decrypt($id));
-        $slug = str_replace([" ", ".", ","], ["-", "", ""], $request->judul);
+        $slug = $lowongan->slug;
+        if ($lowongan->judul != $request->judul) {
+            $slug = str_replace([" ", ".", ","], ["-", "", ""], strtolower($request->judul)) . "-" . time();
+        }
         $lowongan->update([
             'judul' => $request->judul,
             'slug' => $slug,

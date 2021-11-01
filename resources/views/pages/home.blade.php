@@ -136,10 +136,10 @@
         </div>
 
         @if (count($daftarMitra))
-        <div class="row py-1 pt-md-4">
+        <div class="row py-1 pt-md-4 mb-3 justify-content-center">
             @foreach($daftarMitra as $mitra)
             <div class="col-md-3 col-6">
-                <a href="{{ route('daftar-mitra-detail', $mitra->slug) }}" class="text-decoration-none">
+                <a href="{{ route('daftar-mitra.show', $mitra->slug) }}" class="text-decoration-none d-flex justify-content-center">
                     <img src="{{ Storage::url('public/uploads/mitra/'.$mitra->logo) }}" height="80px" alt="{{ $mitra->logo }}" class="my-1">
                 </a>
             </div>

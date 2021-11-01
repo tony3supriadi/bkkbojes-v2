@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Akun;
 
 use App\Http\Controllers\Controller;
-use App\Models\Keterampilan;
-use App\Models\Organisasi;
-use App\Models\Pendidikan;
-use App\Models\Pengalaman;
 use App\Models\Personal;
-use Barryvdh\DomPDF\Facade as PDF;
-use Illuminate\Http\Request;
+use App\Models\Personalketerampilan;
+use App\Models\Personalorganisasi;
+use App\Models\Personalpendidikan;
+use App\Models\Personalpengalaman;
 use Illuminate\Support\Facades\Auth;
+
+use PDF;
 
 class AkunController extends Controller
 {
@@ -23,13 +23,13 @@ class AkunController extends Controller
     {
         $id = Auth::guard('personal')->user()->id;
         $personal = Personal::find($id);
-        $pengalaman = Pengalaman::where('personal_id', '=', $id)->get();
-        $pendidikan = Pendidikan::where('personal_id', '=', $id)->get();
-        $keterampilan = Keterampilan::where('personal_id', '=', $id)->get();
-        $mahir = Keterampilan::where('personal_id', '=', $id)->where('level', '=', 100)->count();
-        $menengah = Keterampilan::where('personal_id', '=', $id)->where('level', '=', 75)->count();
-        $pemula = Keterampilan::where('personal_id', '=', $id)->where('level', '=', 60)->count();
-        $organisasi = Organisasi::where('personal_id', '=', $id)->get();
+        $pengalaman = Personalpengalaman::where('personal_id', '=', $id)->get();
+        $pendidikan = Personalpendidikan::where('personal_id', '=', $id)->get();
+        $keterampilan = Personalketerampilan::where('personal_id', '=', $id)->get();
+        $mahir = Personalketerampilan::where('personal_id', '=', $id)->where('level', '=', 100)->count();
+        $menengah = Personalketerampilan::where('personal_id', '=', $id)->where('level', '=', 75)->count();
+        $pemula = Personalketerampilan::where('personal_id', '=', $id)->where('level', '=', 60)->count();
+        $organisasi = Personalorganisasi::where('personal_id', '=', $id)->get();
         return view(
             'pages.akun.resume.index',
             compact(
@@ -50,13 +50,13 @@ class AkunController extends Controller
         $id = Auth::guard('personal')->user()->id;
         $data = [
             "personal" => Personal::find($id),
-            "pengalaman" => Pengalaman::where('personal_id', '=', $id)->get(),
-            "pendidikan" => Pendidikan::where('personal_id', '=', $id)->get(),
-            "keterampilan" => Keterampilan::where('personal_id', '=', $id)->get(),
-            "mahir" => Keterampilan::where('personal_id', '=', $id)->where('level', '=', 100)->count(),
-            "menengah" => Keterampilan::where('personal_id', '=', $id)->where('level', '=', 75)->count(),
-            "pemula" => Keterampilan::where('personal_id', '=', $id)->where('level', '=', 60)->count(),
-            "organisasi" => Organisasi::where('personal_id', '=', $id)->get()
+            "pengalaman" => Personalpengalaman::where('personal_id', '=', $id)->get(),
+            "pendidikan" => Personalpendidikan::where('personal_id', '=', $id)->get(),
+            "keterampilan" => Personalketerampilan::where('personal_id', '=', $id)->get(),
+            "mahir" => Personalketerampilan::where('personal_id', '=', $id)->where('level', '=', 100)->count(),
+            "menengah" => Personalketerampilan::where('personal_id', '=', $id)->where('level', '=', 75)->count(),
+            "pemula" => Personalketerampilan::where('personal_id', '=', $id)->where('level', '=', 60)->count(),
+            "organisasi" => Personalorganisasi::where('personal_id', '=', $id)->get()
         ];
 
         // return view('pages.akun.resume.pdf', $data);
@@ -70,13 +70,13 @@ class AkunController extends Controller
         $id = Auth::guard('personal')->user()->id;
         $data = [
             "personal" => Personal::find($id),
-            "pengalaman" => Pengalaman::where('personal_id', '=', $id)->get(),
-            "pendidikan" => Pendidikan::where('personal_id', '=', $id)->get(),
-            "keterampilan" => Keterampilan::where('personal_id', '=', $id)->get(),
-            "mahir" => Keterampilan::where('personal_id', '=', $id)->where('level', '=', 100)->count(),
-            "menengah" => Keterampilan::where('personal_id', '=', $id)->where('level', '=', 75)->count(),
-            "pemula" => Keterampilan::where('personal_id', '=', $id)->where('level', '=', 60)->count(),
-            "organisasi" => Organisasi::where('personal_id', '=', $id)->get()
+            "pengalaman" => Personalpengalaman::where('personal_id', '=', $id)->get(),
+            "pendidikan" => Personalpendidikan::where('personal_id', '=', $id)->get(),
+            "keterampilan" => Personalketerampilan::where('personal_id', '=', $id)->get(),
+            "mahir" => Personalketerampilan::where('personal_id', '=', $id)->where('level', '=', 100)->count(),
+            "menengah" => Personalketerampilan::where('personal_id', '=', $id)->where('level', '=', 75)->count(),
+            "pemula" => Personalketerampilan::where('personal_id', '=', $id)->where('level', '=', 60)->count(),
+            "organisasi" => Personalorganisasi::where('personal_id', '=', $id)->get()
         ];
 
         $pdf = PDF::loadView('pages.akun.resume.pdf', $data);

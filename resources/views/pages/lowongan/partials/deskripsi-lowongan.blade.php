@@ -1,26 +1,44 @@
-<div class="card mb-3">
+<div class="card mb-3 border-0 shadow-sm">
     <div class="card-header bg-white border-white">
-        <div class="box-title-detail" >
-            <div class="row d-flex justify-content-between">
-                <div class="col-md-8">
-                    <h4 class="text-primary fw-bold">Lowongan Kerja Kasir</h4>
-                    <h6>PT. Indomarco Prismatama (Indomaret Group)</h6>
+        <div class="box-title-detail">
+            <div class="row">
+                <div class="col-9">
+                    <h4 class="text-primary fw-bold">{{ $lowongan->judul }}</h4>
+                    <h6>{{ $lowongan->mitra_nama }}</h6>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-3">
                     <div class="row">
-                        <div class="col md-6">
-                            <h6><small class="d-flex align-items-center">
-                                <i class="la la-bookmark-o me-2"></i>
-                                Tersimpan
-                            </small></h6>
+                        <div class="col-12 text-end">
+                            @if ($tersimpan)
+                            <button type="button" class="btn btn-link btn-sm text-decoration-none">
+                                <small class="text-primary d-flex align-items-center">
+                                    <i class="fas fa-bookmark me-2" style="font-size:16px"></i>
+                                    <span class="d-none d-md-inline-block" style="font-size:14px;">Tersimpan</span>
+                                </small>
+                            </button>
+                            @else
+                            <form action="{{ route('lowongan.save') }}" method="post" id="lowongan_save">
+                                @csrf
+                                <input type="hidden" name="personal_id" value="{{ Auth::guard('personal')->user()->id }}">
+                                <input type="hidden" name="lowongan_id" value="{{ $lowongan->id }}">
+                                <button type="submit" class="btn btn-link btn-sm text-decoration-none">
+                                    <small class="d-flex align-items-center">
+                                        <i class="far fa-bookmark me-2" style="font-size:16px"></i>
+                                        <span class="d-none d-md-inline-block text-secondary" style="font-size:14px;">Simpan</span>
+                                    </small>
+                                </button>
+                            </form>
+                            @endif
                         </div>
-                        <div class="col md-6">
-                            <h6><small class="d-flex align-items-center">
-                                <img src="{{ asset('images/icons/share-solid.png') }}" class="me-2">
-                                Bagikan
-                            </small></h6>
-                        </div>
+                        <!-- <div class="col-6">
+                            <button type="button" class="btn btn-link btn-sm text-decoration-none">
+                                <small class="d-flex align-items-center">
+                                    <img src="{{ asset('images/icons/share-solid.png') }}" class="me-2">
+                                    <span class="d-none d-md-inline-block text-secondary" style="font-size:14px;">Bagikan</span>
+                                </small>
+                            </button>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -32,16 +50,21 @@
                     <div class="col-md-12">
                         <div class="input-group d-flex align-items-center" style="color: gray">
                             <h6><small>
-                                <img src="{{ asset('images/icons/map-marker-alt-solid.png') }}" class="me-2"/>
-                                Purwokerto, Banyumas, Jawa Tengah
-                            </small></h6>
+                                    <img src="{{ asset('images/icons/map-marker-alt-solid.png') }}" class="me-2" />
+                                    {{ $wilayah->getName($lowongan->kabupaten) }}, {{ $wilayah->getName($lowongan->provinsi) }}
+                                </small></h6>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="input-group d-flex align-items-center" style="color: gray">
                             <h6><small>
-                                <img src="{{ asset('images/icons/user-tag-solid.png') }}" class="me-2"/>
-                                Jasa Boga
+                                    <img src="{{ asset('images/icons/user-tag-solid.png') }}" class="me-2" />
+                                    @php use App\Models\Programstudi; @endphp
+                                    @php $program_studi = [] @endphp
+                                    @foreach(json_decode($lowongan->program_studi) as $item)
+                                    @php $program_studi[] = Programstudi::find($item)->nama @endphp
+                                    @endforeach
+                                    {{ implode(", ", $program_studi) }}
                             </h6></small>
                         </div>
                     </div>
@@ -51,16 +74,16 @@
                     <div class="col-md-12">
                         <div class="input-group d-flex align-items-center" style="color: gray">
                             <h6><small>
-                                <img src="{{ asset('images/icons/business-time-solid.png') }}" class="me-2"/>
-                                Full Time
+                                    <img src="{{ asset('images/icons/business-time-solid.png') }}" class="me-2" />
+                                    {{ $lowongan->tipe_pekerjaan }}
                             </h6></small>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="input-group d-flex align-items-center" style="color: gray">
                             <h6><small>
-                                <img src="{{ asset('images/icons/hand-holding-usd-solid.png') }}" class="me-2"/>
-                                Rp. 3 - 5 Juta
+                                    <img src="{{ asset('images/icons/hand-holding-usd-solid.png') }}" class="me-2" />
+                                    <span>Rp{{ $lowongan->tampilkan_gaji ? number_format($lowongan->kisaran_gaji, 0, ",", ".") : 'Disembunyikan' }}</span>
                             </h6></small>
                         </div>
                     </div>
@@ -79,19 +102,7 @@
             </div>
             <div class="card-body">
                 <div class="list-content">
-                    <ul class="">
-                        <li>Melayani Pelanggan</li>
-                        <li>Melakukan transaksi penjualan</li>
-                        <li>Menjaga kebersihan dan kerapian toko</li>
-                        <li>Menata barang di rak toko</li>
-                        <li>Stock opname barang</li>
-                        <li>Menawarkan promosi yang sedang berlangsung</li>
-                        <li>menjaga kebersihan area kasir</li>
-                        <li>Ramah terhadap pembeli</li>
-                        <li>Transaksi pembayaran pelanggan</li>
-                        <li>Cetak label harga</li>
-                        <li>Listing dan display barang ke rak toko</li>
-                    </ul>
+                    {!! $lowongan->deskripsi !!}
                 </div>
             </div>
         </li>
@@ -104,16 +115,7 @@
             </div>
             <div class="card-body">
                 <div class="list-content">
-                    <ul class="">
-                        <li>Pria/Wanita</li>
-                        <li>Belum Menikah</li>
-                        <li>Usia maks 23 tahun</li>
-                        <li>Berpenampilan menarik</li>
-                        <li>Pendidikan min. SMA/SMK</li>
-                        <li>Nilai matematika lebih dari 6</li>
-                        <li>Tinggi badan min. 165 cm (pria), min. 155 cm (wanita)</li>
-                        <li>Tidak beratato</li>
-                    </ul>
+                    {!! $lowongan->kualifikasi !!}
                 </div>
             </div>
         </li>
@@ -126,12 +128,7 @@
             </div>
             <div class="card-body">
                 <div class="list-content">
-                    <ul class="">
-                        <li>Gaji Pokok</li>
-                        <li>BPJS Ketenagakerjaan</li>
-                        <li>Bonus Bulanan</li>
-                        <li>Tunjangan Hari Raya (THR)</li>
-                    </ul>
+                    {!! $lowongan->benefit !!}
                 </div>
             </div>
         </li>
@@ -144,68 +141,39 @@
             </div>
             <div class="card-body">
                 <div class="list-content">
-                    <h6 class="ms-3"> Yang harus dibawa saat mengikuti seleksi :</h6>
-                    <ul class="">
-                        <li>Daftar riwayat hidup</li>
-                        <li>Fotocopy (Syarat wajib) KTP, SKCK, IJAZAH, & KK (Legalisir asli)</li>
-                        <li>Pas foto terbaru (4x6) lembar</li>
-                        <li>Pakain hitam putih sopan rapih</li>
-                        <li>Rambut tidak gondrong</li>
-                        <li>Membawa alat tulis</li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-        <li class="list-group">
-            <div class="card-header border-white box-description">
-                <div class="description-title d-flex">
-                    <img src="{{ asset('images/icons/info-circle-solid.png') }}" class="me-3">
-                    Informasi lain
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="list-content">
-                    <h6>Bagi anda yang berminat, silahkan menirimkan secara langsung ke:</h6>
-                    <span>Bpk Rohman (HRD Indomaret Jakarta 1)</span><br/>
-                    <span>PT. Indomarko Prismatama</span><br/>
-                    <span>Jl. Ancol 1 No. 9-10 Ancol Barat - Pademangan Jakarta Utara 14430 - Indonesia</span><br/>
-                    <br/>
-                    <span>atau langsung klik tombol lamar dibawah</span><br/>
+                    {!! $lowongan->catatan !!}
                 </div>
             </div>
         </li>
     </ul>
 
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-7">
-                <div class="row d-flex justify-items-between">
-                    <div class="col-md-4">
-                        <div class="icons-group d-flex align-items-center mb-2">
-                            <img src="{{ asset('images/icons/day-ago.png') }}" class="me-2"/>
-                            <span>2 hari yang lalu</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="icons-group d-flex align-items-center mb-2">
-                            <i class="la la-calendar-times-o me-2"></i>
-                            <span>ditutup 16 hari lagi</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="icons-group d-flex align-items-center mb-2">
-                            <i class="la la-eye me-2"></i>
-                            <span>dilihat 174 kali</span>
-                        </div>
-                    </div>
-                </div>
+    <div class="row p-3">
+        <div class="col-9 d-flex">
+            <div class="icons-group d-flex align-items-center mx-2">
+                <img src="{{ asset('images/icons/day-ago.png') }}" class="me-1" />
+                <span>{{ $lowongan->created_at->diffForHumans() }}</span>
             </div>
-            <div class="col-md-5">
-                <span style="float:right">
-                    <button type="submit" class="btn btn-primary">Lamar</button>
-                </span>
+            <div class="icons-group d-flex align-items-center mx-2">
+                <i class="la la-calendar-times-o me-1" style="font-size:16px"></i>
+                <span>Berakhir pada {{ Carbon\Carbon::parse($lowongan->tanggal_berakhir)->isoFormat('DD MMMM Y') }}</span>
             </div>
+            <div class="icons-group d-flex align-items-center mx-2">
+                <i class="la la-eye me-1" style="font-size:16px"></i>
+                <span>dilihat {{ $lowongan->counter }} kali</span>
+            </div>
+        </div>
+        <div class="col-3 d-grid gap-2">
+            @if ($lamaran)
+            <button type="button" role="button" class="btn btn-primary text-white" disabled>
+                <i class="fa fa-paper-plane me-1"></i>
+                Kirim Lamaran
+            </button>
+            @else
+            <a href="{{ route('lowongan.kirim-lamaran', $lowongan->slug) }}" role="button" class="btn btn-primary">
+                <i class="fa fa-paper-plane me-1"></i>
+                Kirim Lamaran
+            </a>
+            @endif
         </div>
     </div>
 </div>
-

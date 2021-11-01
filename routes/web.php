@@ -3,8 +3,14 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('lowongan', [App\Http\Controllers\LowonganController::class, 'index'])->name('lowongan');
 Route::get('lowongan/{slug}', [App\Http\Controllers\LowonganController::class, 'show'])->name('lowongan.show');
+Route::post('lowongan/save', [App\Http\Controllers\LowonganController::class, 'save'])->name('lowongan.save');
+Route::get('lowongan/{slug}/kirim-lamaran', [App\Http\Controllers\LowonganController::class, 'send'])->name('lowongan.kirim-lamaran');
+Route::post('lowongan/{slug}/kirim-lamaran', [App\Http\Controllers\LowonganController::class, 'send_submit'])->name('lowongan.kirim-lamaran.submit');
+Route::get('lowongan/{slug}/kirim-lamaran/berhasil', [App\Http\Controllers\LowonganController::class, 'send_success'])->name('lowongan.kirim-lamaran.berhasil');
+
 Route::get('pengumuman', [App\Http\Controllers\PengumumanController::class, 'index'])->name('pengumuman');
 Route::get('pengumuman/{slug}', [App\Http\Controllers\PengumumanController::class, 'show'])->name('pengumuman.show');
 Route::get('daftar-mitra', [App\Http\Controllers\DaftarmitraController::class, 'index'])->name('daftar-mitra');

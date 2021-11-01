@@ -57,10 +57,10 @@ $route = Route::currentRouteName();
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navigation-lainnya">
                     <li><a class="dropdown-item py-2" href="{{ route('akun.profile.personal') }}"><i class="la la-user me-2"></i>Profile</a></li>
                     <li><a class="dropdown-item" href="{{ route('akun.resume') }}"><i class="la la-file-alt me-2"></i>Resume</a></li>
-                    <li><a class="dropdown-item" href="{{ route('akun.pemberitahuan') }}"><i class="la la-bell me-2"></i>Pemberitahuan</a></li>
+                    <!-- <li><a class="dropdown-item" href="{{ route('akun.pemberitahuan') }}"><i class="la la-bell me-2"></i>Pemberitahuan</a></li> -->
                     <li><a class="dropdown-item" href="{{ route('akun.lowongan-tersimpan') }}"><i class="la la-bookmark me-2"></i>Lowongan Tersimpan</a></li>
                     <li><a class="dropdown-item" href="{{ route('akun.lamaran-terkirim') }}"><i class="la la-send me-2"></i>Lamaran Terkirim</a></li>
-                    <li><a class="dropdown-item" href="{{ route('akun.latihan-tes') }}"><i class="la la-puzzle-piece me-2"></i>Latihan Tes</a></li>
+                    <!-- <li><a class="dropdown-item" href="{{ route('akun.latihan-tes') }}"><i class="la la-puzzle-piece me-2"></i>Latihan Tes</a></li> -->
                     <li>
                         <hr class="dropdown-divider">
                     </li>
@@ -110,10 +110,10 @@ $route = Route::currentRouteName();
             @if(Auth::guard('personal')->user())
             <li><a class="dropdown-item py-2" href="{{ route('akun.profile.personal') }}"><i class="la la-user me-2"></i>Profile</a></li>
             <li><a class="dropdown-item" href="{{ route('akun.resume') }}"><i class="la la-file-alt me-2"></i>Resume</a></li>
-            <li><a class="dropdown-item" href="{{ route('akun.pemberitahuan') }}"><i class="la la-bell me-2"></i>Pemberitahuan</a></li>
+            <!-- <li><a class="dropdown-item" href="{{ route('akun.pemberitahuan') }}"><i class="la la-bell me-2"></i>Pemberitahuan</a></li> -->
             <li><a class="dropdown-item" href="{{ route('akun.lowongan-tersimpan') }}"><i class="la la-bookmark me-2"></i>Lowongan Tersimpan</a></li>
             <li><a class="dropdown-item" href="{{ route('akun.lamaran-terkirim') }}"><i class="la la-send me-2"></i>Lamaran Terkirim</a></li>
-            <li><a class="dropdown-item" href="{{ route('akun.latihan-tes') }}"><i class="la la-puzzle-piece me-2"></i>Latihan Tes</a></li>
+            <!-- <li><a class="dropdown-item" href="{{ route('akun.latihan-tes') }}"><i class="la la-puzzle-piece me-2"></i>Latihan Tes</a></li> -->
 
             <li>
                 <hr class="dropdown-divider">
