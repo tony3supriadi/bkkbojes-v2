@@ -65,13 +65,13 @@
                     <div class="col-md-3 field-name px-0">Jenis Kelamin</div>
                     <div class="col-md-9 px-0">
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" value="Laki-laki" name="jenis_kelamin" id="jenis_kelamin_1" {{ $personal->jenis_kelamin == 'Laki-laki' ? 'checked' : '' }} />
+                            <input class="form-check-input" type="radio" value="L" name="jenis_kelamin" id="jenis_kelamin_1" {{ $personal->jenis_kelamin == 'L' ? 'checked' : '' }} />
                             <label class="form-check-label" for="jenis_kelamin_1">
                                 Laki-laki
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin_2" {{ $personal->jenis_kelamin == 'Perempuan' ? 'checked' : '' }} />
+                            <input class="form-check-input" type="radio" value="P" name="jenis_kelamin" id="jenis_kelamin_2" {{ $personal->jenis_kelamin == 'P' ? 'checked' : '' }} />
                             <label class="form-check-label" for="jenis_kelamin_2">
                                 Perempuan
                             </label>
@@ -84,8 +84,8 @@
                 <div class="row border-bottom py-4 mx-0">
                     <div class="col-md-3 field-name px-0 py-2">No. HP / Whatsapp</div>
                     <div class="col-md-9 px-0">
-                        <input type="text" name="no_hp" id="no_hp" value="{{ old('no_hp') ? old('no_hp') : $personal->no_hp }}" placeholder="No HP / Whatsapp" class="form-control @error('no_hp') is-invalid border-danger @enderror" />
-                        @error('no_hp')
+                        <input type="text" name="phone" id="phone" value="{{ old('phone') ? old('phone') : $personal->phone }}" placeholder="No HP / Whatsapp" class="form-control @error('phone') is-invalid border-danger @enderror" />
+                        @error('phone')
                         <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                         @enderror
                     </div>

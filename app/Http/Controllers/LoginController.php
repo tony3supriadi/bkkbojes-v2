@@ -40,8 +40,8 @@ class LoginController extends Controller
 
     protected function username()
     {
-        $username = request()->input('nama_pengguna');
-        return filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'nama_pengguna';
+        $username = request()->input('username');
+        return filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
     }
 
     protected function guard()

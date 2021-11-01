@@ -74,7 +74,7 @@ $wilayah = new Wilayah();
                     </div>
                     <div class="row my-2">
                         <div class="col-4"><span class="text-muted">Np HP/Whatsapp</span></div>
-                        <div class="col-8">{{ $personal->no_hp }}</div>
+                        <div class="col-8">{{ $personal->phone }}</div>
                     </div>
                     <div class="row my-2">
                         <div class="col-4"><span class="text-muted">Email</span></div>
@@ -173,7 +173,7 @@ $wilayah = new Wilayah();
                     <div class="col-md-8">
                         <ul>
                             @foreach($keterampilan as $mahir)
-                            @if ($mahir->prosentase == 100)
+                            @if ($mahir->level == 100)
                             <li>{{ $mahir->skill }}</li>
                             @endif
                             @endforeach
@@ -191,7 +191,7 @@ $wilayah = new Wilayah();
                     <div class="col-md-8">
                         <ul>
                             @foreach($keterampilan as $mahir)
-                            @if ($mahir->prosentase == 75)
+                            @if ($mahir->level == 75)
                             <li>{{ $mahir->skill }}</li>
                             @endif
                             @endforeach
@@ -209,7 +209,7 @@ $wilayah = new Wilayah();
                     <div class="col-md-8">
                         <ul>
                             @foreach($keterampilan as $mahir)
-                            @if ($mahir->prosentase == 60)
+                            @if ($mahir->level == 60)
                             <li>{{ $mahir->skill }}</li>
                             @endif
                             @endforeach

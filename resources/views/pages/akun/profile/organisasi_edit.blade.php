@@ -32,24 +32,24 @@
 
             <div class="col-md-4">
                 <div class="form-group mb-3">
-                    <label for="tahun_mulai">Tahun Mulai</label>
-                    <input type="number" name="tahun_mulai" id="tahun_mulai" value="{{ old('tahun_mulai') ? old('tahun_mulai') : $organisasi->tahun_mulai }}" class="form-control @error('tahun_mulai') is-invalid border-danger @enderror">
-                    @error('tahun_mulai')
+                    <label for="mulai_menjabat">Mulai</label>
+                    <input type="date" name="mulai_menjabat" id="mulai_menjabat" data-date-format="DD MMM YYYY" placeholder="Tanggal mulai" value="{{ old('mulai_menjabat') ? old('mulai_menjabat') : $organisasi->mulai_menjabat }}" class="form-control @error('mulai_menjabat') is-invalid border-danger @enderror">
+                    @error('mulai_menjabat')
                     <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="tahun_berakhir">Tahun Selesai</label>
-                    <input type="number" name="tahun_berakhir" id="tahun_berakhir" value="{{ old('tahun_berakhir') ? old('tahun_berakhir') : $organisasi->tahun_berakhir }}" class="form-control @error('tahun_berakhir') is-invalid border-danger @enderror" @if(old('masih_aktif') || $organisasi->masih_aktif) readonly @endif>
+                    <label for="selesai_menjabat">Selesai</label>
+                    <input type="date" name="selesai_menjabat" data-date-format="DD MMM YYYY" placeholder="Tanggal selesai" id="selesai_menjabat" value="{{ old('selesai_menjabat') ? old('selesai_menjabat') : $organisasi->selesai_menjabat }}" class="form-control @error('selesai_menjabat') is-invalid border-danger @enderror" @if(old('masih_menjabat')) readonly @endif>
 
                     <div class="form-check">
-                        <input class="form-check-input" name="masih_aktif" type="checkbox" value="1" id="masih_aktif" @if(old('masih_aktif') || $organisasi->masih_aktif) checked @endif>
-                        <label class="form-check-label" for="masih_aktif">
-                            Masih Aktif
+                        <input class="form-check-input" name="masih_menjabat" type="checkbox" value="1" id="masih_menjabat" @if(old('masih_menjabat')) checked @endif>
+                        <label class="form-check-label" for="masih_menjabat">
+                            Masih Menjabat
                         </label>
                     </div>
 
-                    @error('tahun_berakhir')
+                    @error('selesai_menjabat')
                     <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                     @enderror
                 </div>
@@ -88,12 +88,12 @@
 @push('scripts')
 <script type="text/javascript">
     $(function() {
-        $('input[name="masih_aktif"]').on('click', function() {
+        $('input[name="masih_menjabat"]').on('click', function() {
             if ($(this).is(':checked')) {
-                $('#tahun_berakhir').val('');
-                $('#tahun_berakhir').attr('readonly', 'readonly');
+                $('#selesai_menjabat').val('');
+                $('#selesai_menjabat').attr('readonly', 'readonly');
             } else {
-                $('#tahun_berakhir').removeAttr('readonly');
+                $('#selesai_menjabat').removeAttr('readonly');
             }
         });
     });

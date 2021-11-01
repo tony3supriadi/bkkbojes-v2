@@ -43,8 +43,8 @@
                 <div class="col-md-10">
                     <ul>
                         @foreach($keterampilan as $mahir)
-                        @if ($mahir->prosentase == 100)
-                        <li>{{ $mahir->skill }}</li>
+                        @if ($mahir->level == 'Mahir')
+                        <li>{{ $mahir->keterampilan }}</li>
                         @endif
                         @endforeach
                     </ul>
@@ -61,8 +61,8 @@
                 <div class="col-md-10">
                     <ul>
                         @foreach($keterampilan as $mahir)
-                        @if ($mahir->prosentase == 75)
-                        <li>{{ $mahir->skill }}</li>
+                        @if ($mahir->level == 'Menengah')
+                        <li>{{ $mahir->keterampilan }}</li>
                         @endif
                         @endforeach
                     </ul>
@@ -79,8 +79,8 @@
                 <div class="col-md-10">
                     <ul>
                         @foreach($keterampilan as $mahir)
-                        @if ($mahir->prosentase == 60)
-                        <li>{{ $mahir->skill }}</li>
+                        @if ($mahir->level == 'Pemula')
+                        <li>{{ $mahir->keterampilan }}</li>
                         @endif
                         @endforeach
                     </ul>
@@ -94,7 +94,7 @@
                 <div class="empty-data">
                     <div class="text-center">
                         <i class="la la-briefcase fa-5x"></i>
-                        <h5 class="m-0">KEMAMPUAN / SKILL BELUM ADA</h5>
+                        <h5 class="m-0">KEMAMPUAN / KETERAMPILAN BELUM ADA</h5>
                         <p class="m-0">Silahkan tambahkan untuk kamampuanmu yah!!</p>
                     </div>
                 </div>

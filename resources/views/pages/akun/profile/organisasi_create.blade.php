@@ -31,24 +31,24 @@
 
             <div class="col-md-4">
                 <div class="form-group mb-3">
-                    <label for="tahun_mulai">Tahun Mulai</label>
-                    <input type="text" name="tahun_mulai" id="tahun_mulai" value="{{ old('tahun_mulai') }}" class="form-control @error('tahun_mulai') is-invalid border-danger @enderror">
-                    @error('tahun_mulai')
+                    <label for="mulai_menjabat">Mulai</label>
+                    <input type="date" name="mulai_menjabat" id="mulai_menjabat" data-date-format="DD MMM YYYY" placeholder="Tanggal mulai" value="{{ old('mulai_menjabat') }}" class="form-control @error('mulai_menjabat') is-invalid border-danger @enderror">
+                    @error('mulai_menjabat')
                     <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="tahun_berakhir">Tahuan Selesai</label>
-                    <input type="text" name="tahun_berakhir" id="tahun_berakhir" value="{{ old('tahun_berakhir') }}" class="form-control @error('tahun_berakhir') is-invalid border-danger @enderror" @if(old('masih_aktif')) readonly @endif>
+                    <label for="selesai_menjabat">Selesai</label>
+                    <input type="date" name="selesai_menjabat" data-date-format="DD MMM YYYY" placeholder="Tanggal selesai" id="selesai_menjabat" value="{{ old('selesai_menjabat') }}" class="form-control @error('selesai_menjabat') is-invalid border-danger @enderror" @if(old('masih_menjabat')) readonly @endif>
 
                     <div class="form-check">
-                        <input class="form-check-input" name="masih_aktif" type="checkbox" value="1" id="masih_aktif" @if(old('masih_aktif')) checked @endif>
-                        <label class="form-check-label" for="masih_aktif">
-                            Masih Aktif
+                        <input class="form-check-input" name="masih_menjabat" type="checkbox" value="1" id="masih_menjabat" @if(old('masih_menjabat')) checked @endif>
+                        <label class="form-check-label" for="masih_menjabat">
+                            Masih Menjabat
                         </label>
                     </div>
 
-                    @error('tahun_berakhir')
+                    @error('selesai_menjabat')
                     <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                     @enderror
                 </div>

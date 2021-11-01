@@ -73,7 +73,7 @@
         $('#btn-add').on('click', function() {
             formSkills.push({
                 skill: "",
-                prosentase: 100
+                level: 'Mahir'
             });
             showSkills();
         });
@@ -85,14 +85,14 @@
                 data.forEach((item, index) => {
                     formSkills.push({
                         id: item.id,
-                        skill: item.skill,
-                        prosentase: item.prosentase
+                        skill: item.keterampilan,
+                        level: item.level
                     })
                 });
             } else {
                 formSkills.push({
                     skill: "",
-                    prosentase: 100
+                    level: 'Mahir'
                 });
             }
             showSkills();
@@ -116,10 +116,10 @@
                     <input type="text" value="${item.skill ? item.skill : ''}" onchange="setVal(${index}, 'skill')" name="keterampilan[${index}][skill]" id="skill-${index}" class="form-control" required />
                 </div>
                 <div class="col-2 px-1">
-                    <select name="keterampilan[${index}][prosentase]" id="prosentase-${index}" onchange="setVal(${index}, 'prosentase')" class="form-control select2-nosearch" required>
-                        <option value="100" ${item.prosentase && item.prosentase == 100 ? 'selected': ''}>Mahir</option>
-                        <option value="75" ${item.prosentase && item.prosentase == 75 ? 'selected': ''}>Menengah</option>
-                        <option value="60" ${item.prosentase && item.prosentase == 60 ? 'selected': ''}>Pemula</option>
+                    <select name="keterampilan[${index}][level]" id="level-${index}" onchange="setVal(${index}, 'level')" class="form-control select2-nosearch" required>
+                        <option value="Mahir" ${item.level && item.level == 'Mahir' ? 'selected': ''}>Mahir</option>
+                        <option value="Menengah" ${item.level && item.level == 'Menengah' ? 'selected': ''}>Menengah</option>
+                        <option value="Pemula" ${item.level && item.level == 'Pemula' ? 'selected': ''}>Pemula</option>
                     </select>
                 </div>
                 <div class="col-1 ps-1 text-end">

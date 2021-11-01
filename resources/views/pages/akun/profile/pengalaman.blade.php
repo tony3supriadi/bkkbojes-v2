@@ -39,22 +39,22 @@ $wilayah = new Wilayah();
             @foreach($pengalaman as $key => $val)
             <div class="row mb-5">
                 <div class="col-md-4">
-                    <p class="text-secondary m-0"><strong>{{ Carbon\Carbon::parse($val->tanggal_mulai)->isoFormat('MMM Y') }} - {{ $val->masih_bekerja ? "Sekarang" : Carbon\Carbon::parse($val->tanggal_selesai)->isoFormat('MMM Y') }}</strong></p>
+                    <p class="text-secondary m-0"><strong>{{ Carbon\Carbon::parse($val->mulai_bekerja)->isoFormat('MMM Y') }} - {{ $val->masih_bekerja ? "Sekarang" : Carbon\Carbon::parse($val->selesai_bekerja)->isoFormat('MMM Y') }}</strong></p>
                     <p class="text-muted m-0">
                         @php
-                        $start = date_create($val->tanggal_mulai);
-                        $end = date_create($val->masih_bekerja ? date('Y-m-d') : $val->tanggal_selesai);
+                        $start = date_create($val->mulai_bekerja);
+                        $end = date_create($val->masih_bekerja ? date('Y-m-d') : $val->selesai_bekerja);
                         $diff = date_diff($end, $start);
                         print($diff->y . " Tahun " . $diff->m . " Bulan")
                         @endphp
                     </p>
                 </div>
                 <div class="col-md-8">
-                    <h5 class="text-secondary mb-3"><strong>{{ $val->bekerja_sebagai }}</strong></h5>
+                    <h5 class="text-secondary mb-3"><strong>{{ $val->posisi_jabatan }}</strong></h5>
 
                     <p class="text-muted m-0"><i class="la la-building me-2"></i> {{ $val->nama_perusahaan }}</p>
                     <p class="text-muted m-0"><i class="la la-map-marker me-2"></i> {{ $wilayah->getName($val->kabupaten) }}, {{ $wilayah->getName($val->provinsi) }}, Indonesia</p>
-                    <p class="text-muted m-0"><i class="la la-industry me-2"></i> {{ $val->bidang_usaha }}</p>
+                    <p class="text-muted m-0"><i class="la la-industry me-2"></i> {{ $val->bidang_industri }}</p>
 
 
                     <!-- <div class="row py-1">

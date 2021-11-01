@@ -34,7 +34,7 @@
             @foreach($organisasi as $key => $val)
             <div class="row">
                 <div class="col-md-3">
-                    <p class="text-muted m-0">{{ $val->tahun_mulai }} - {{ $val->masih_aktif ? 'Sekarang' : $val->tahun_berakhir }}</p>
+                    <p class="text-muted m-0">{{ Carbon\Carbon::parse($val->mulai_menjabat)->isoFormat('Y') }} - {{ $val->masih_menjabat ? 'Sekarang' : Carbon\Carbon::parse($val->selesai_menjabat)->isoFormat('Y') }}</p>
                 </div>
                 <div class="col-md-6">
                     <p class="mb-0">{{ $val->posisi_jabatan }}</p>

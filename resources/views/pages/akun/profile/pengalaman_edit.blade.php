@@ -31,15 +31,15 @@
 
             <div class="col-md-4">
                 <div class="form-group mb-3">
-                    <label for="tanggal_mulai">Mulai</label>
-                    <input type="date" name="tanggal_mulai" id="tanggal_mulai" data-date-format="DD MMM YYYY" placeholder="Tanggal mulai" value="{{ old('tanggal_mulai') ? old('tanggal_mulai') : $pengalaman->tanggal_mulai }}" class="form-control @error('tanggal_mulai') is-invalid border-danger @enderror">
-                    @error('tanggal_mulai')
+                    <label for="mulai_bekerja">Mulai</label>
+                    <input type="date" name="mulai_bekerja" id="mulai_bekerja" data-date-format="DD MMM YYYY" placeholder="Tanggal mulai" value="{{ old('mulai_bekerja') ? old('mulai_bekerja') : $pengalaman->mulai_bekerja }}" class="form-control @error('mulai_bekerja') is-invalid border-danger @enderror">
+                    @error('mulai_bekerja')
                     <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="tanggal_selesai">Selesai</label>
-                    <input type="date" name="tanggal_selesai" data-date-format="DD MMM YYYY" placeholder="{{($pengalaman->tanggal_selesai) ? $pengalaman->tanggal_selesai : '-'}}" id="tanggal_selesai" value="{{ old('tanggal_selesai') ? old('tanggal_selesai') : (($pengalaman->tanggal_selesai) ? $pengalaman->tanggal_selesai : '-') }}" class="form-control @error('tanggal_selesai') is-invalid border-danger @enderror" @if(old('masih_bekerja') || $pengalaman->masih_bekerja) readonly @endif>
+                    <label for="selesai_bekerja">Selesai</label>
+                    <input type="date" name="selesai_bekerja" data-date-format="DD MMM YYYY" placeholder="{{($pengalaman->selesai_bekerja) ? $pengalaman->selesai_bekerja : '-'}}" id="selesai_bekerja" value="{{ old('selesai_bekerja') ? old('selesai_bekerja') : (($pengalaman->selesai_bekerja) ? $pengalaman->selesai_bekerja : '-') }}" class="form-control @error('selesai_bekerja') is-invalid border-danger @enderror" @if(old('masih_bekerja') || $pengalaman->masih_bekerja) readonly @endif>
 
                     <div class="form-check">
                         <input class="form-check-input" name="masih_bekerja" type="checkbox" value="1" id="masih_bekerja" @if(old('masih_bekerja') || $pengalaman->masih_bekerja) checked @endif>
@@ -48,7 +48,7 @@
                         </label>
                     </div>
 
-                    @error('tanggal_selesai')
+                    @error('selesai_bekerja')
                     <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                     @enderror
                 </div>
@@ -56,9 +56,9 @@
 
             <div class="col-md-8">
                 <div class="form-group mb-3">
-                    <label for="bekerja_sebagai">Posisi Jabatan</label>
-                    <input type="text" name="bekerja_sebagai" id="bekerja_sebagai" value="{{ old('bekerja_sebagai') ? old('bekerja_sebagai') : $pengalaman->bekerja_sebagai }}" class="form-control @error('bekerja_sebagai') is-invalid border-danger @enderror">
-                    @error('bekerja_sebagai')
+                    <label for="posisi_jabatan">Posisi Jabatan</label>
+                    <input type="text" name="posisi_jabatan" id="posisi_jabatan" value="{{ old('posisi_jabatan') ? old('posisi_jabatan') : $pengalaman->posisi_jabatan }}" class="form-control @error('posisi_jabatan') is-invalid border-danger @enderror">
+                    @error('posisi_jabatan')
                     <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                     @enderror
                 </div>
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="bidang_usaha">
+                    <label for="bidang_industri">
                         <i class="las la-industry"></i>
                         Industri / Bidang
                     </label>
@@ -83,19 +83,19 @@
                     $industries = ["Agrikultural / Perkebunan / Peternakan Unggas / Perikanan","Akuntansi / Audit / Pelayanan Pajak","Asuransi","Automobil / Mesin Tambahan Automotif / Kendaraan","Bahan Kimia / Pupuk / Pestisida","BioTeknologi / Farmasi / Riset klinik","Call Center / IT","Elektrikal & Elektronik","Hiburan / Media","Hotel / Pariwisata","Hukum / Legal","Ilmu Pengetahuan & Teknologi ","Industri Berat / Mesin / Peralatan","Jual Beli Saham / Sekuritas","Jurnalisme","Kayu / Fiber / Kertas","Keamanan / Penegak hukum","Kelautan / Aquakultur","Kesehatan / Medis ","Komputer / Teknologi Informasi","Konstruksi / Bangunan / Teknik","Konsultan (Bisnis & Manajemen)","Konsultan (IT, Ilmu Pengetahuan, Teknis & Teknikal)","Layanan Umum / Tenaga Penggerak","Lingkungan / Kesehatan / Keamanan","Luar Angkasa / Aviasi / Pesawat Terbang","Makanan & Minuman / Katering / Rumah Makan","Manajemen / Konsulting HR","Manufaktur / Produksi","Minyak / Gas / Petroleum","Olahraga","Organisasi Nirlaba / Pelayanan Sosial / LSM","Pakaian","Pameran / Manajemen acara / PIKP","Pelayanan Arsitek / Desain Interior","Pelayanan Perbaikan & Pemeliharaan","Pemerintahan / Pertahanan","Pendidikan ","Perawatan / Kecantikan / Fitnes","Perbankan / Pelayanan Keuangan","Percetakan / Penerbitan","Periklanan / Marketing / Promosi / Hubungan Masyarakat","Permata / Perhiasan","Perpustakaan / Museum","Pertambangan","Polymer / Plastik / Karet / Ban","Produk Konsumen / Barang konsumen yang bergerak cepat","Properti / Real Estate","Retail / Merchandise","Semikonduktor / Fabrikasi","Seni / Desain / Fashion","Tekstil / Garment","Telekomunikasi","Tembakau","Transportasi / Logistik","Traveling / Pariwisata"];
                     @endphp
 
-                    <!-- <input type="text" name="bidang_usaha" id="bidang_usaha" placeholder="Cth: " value="{{ old('bidang_usaha') }}" class="form-control @error('bidang_usaha') is-invalid border-danger @enderror"> -->
-                    <select name="bidang_usaha" data-placeholder="Pilih industri / bidang usaha" id="bidang_usaha" class="form-control select2-basic @error('bidang_usaha') is-invalid border-danger @enderror">
+                    <!-- <input type="text" name="bidang_industri" id="bidang_industri" placeholder="Cth: " value="{{ old('bidang_industri') }}" class="form-control @error('bidang_industri') is-invalid border-danger @enderror"> -->
+                    <select name="bidang_industri" data-placeholder="Pilih industri / bidang usaha" id="bidang_industri" class="form-control select2-basic @error('bidang_industri') is-invalid border-danger @enderror">
                         <option value=""></option>
                         @foreach($industries as $ind)
-                        <option value="{{ $ind }}" <?= old('bidang_usaha') == $ind ? 'selected' : (($pengalaman->bidang_usaha == $ind) ? 'selected' : '') ?>>{{ $ind }}</option>
+                        <option value="{{ $ind }}" <?= old('bidang_industri') == $ind ? 'selected' : (($pengalaman->bidang_industri == $ind) ? 'selected' : '') ?>>{{ $ind }}</option>
                         @endforeach
 
-                        <option value="Lainnya" <?= (old('bidang_usaha') && !in_array(old('bidang_usaha') ? old('bidang_usaha') : $pengalaman->bidang_usaha, $industries)) ? 'selected' : '' ?>>Lainnya</option>
+                        <option value="Lainnya" <?= (old('bidang_industri') && !in_array(old('bidang_industri') ? old('bidang_industri') : $pengalaman->bidang_industri, $industries)) ? 'selected' : '' ?>>Lainnya</option>
                     </select>
 
-                    <input type="text" name="bidang_usaha" placeholder="Tuliskan bidang usaha lainnya" value="{{ old('bidang_usaha') }}" class="form-control <?= (old('bidang_usaha') && !in_array((old('bidang_usaha') ? old('bidang_usaha') : $pengalaman->bidang_usaha), $industries)) ? '' : 'd-none' ?> mt-2 @error('bidang_usaha') is-invalid border-danger @enderror" <?= (old('bidang_usaha') && !in_array((old('bidang_usaha') ? old('bidang_usaha') : $pengalaman->bidang_usaha), $industries)) ? '' : 'disabled' ?>>
+                    <input type="text" name="bidang_industri" placeholder="Tuliskan bidang usaha lainnya" value="{{ old('bidang_industri') }}" class="form-control <?= (old('bidang_industri') && !in_array((old('bidang_industri') ? old('bidang_industri') : $pengalaman->bidang_industri), $industries)) ? '' : 'd-none' ?> mt-2 @error('bidang_industri') is-invalid border-danger @enderror" <?= (old('bidang_industri') && !in_array((old('bidang_industri') ? old('bidang_industri') : $pengalaman->bidang_industri), $industries)) ? '' : 'disabled' ?>>
 
-                    @error('bidang_usaha')
+                    @error('bidang_industri')
                     <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                     @enderror
                 </div>
@@ -206,32 +206,32 @@
     $(function() {
         $('input[name="masih_bekerja"]').on('click', function() {
             if ($(this).is(':checked')) {
-                $('#tanggal_selesai').val('');
-                $('#tanggal_selesai').attr('placeholder', '-');
-                $('#tanggal_selesai').attr('readonly', 'readonly');
+                $('#selesai_bekerja').val('');
+                $('#selesai_bekerja').attr('placeholder', '-');
+                $('#selesai_bekerja').attr('readonly', 'readonly');
             } else {
-                $('#tanggal_selesai').attr('placeholder', 'Tanggal selesai');
-                $('#tanggal_selesai').removeAttr('readonly');
+                $('#selesai_bekerja').attr('placeholder', 'Tanggal selesai');
+                $('#selesai_bekerja').removeAttr('readonly');
             }
         });
 
 
-        $('select[name="bidang_usaha"]').on('change', function() {
+        $('select[name="bidang_industri"]').on('change', function() {
             bidangUsahaLainnya();
-            $('select[name="bidang_usaha"]').focus();
+            $('select[name="bidang_industri"]').focus();
         });
 
         bidangUsahaLainnya();
     });
 
     function bidangUsahaLainnya() {
-        if ($('select[name="bidang_usaha"]').val() == "Lainnya") {
-            $('input[name="bidang_usaha"]')
+        if ($('select[name="bidang_industri"]').val() == "Lainnya") {
+            $('input[name="bidang_industri"]')
                 .removeAttr("disabled")
                 .removeClass("d-none")
-                .val("<?= old('bidang_usaha') ? old('bidang_usaha') : '' ?>");
+                .val("<?= old('bidang_industri') ? old('bidang_industri') : '' ?>");
         } else {
-            $('input[name="bidang_usaha"]').addClass("d-none").attr("disabled", "disabled");
+            $('input[name="bidang_industri"]').addClass("d-none").attr("disabled", "disabled");
         }
     }
 </script>

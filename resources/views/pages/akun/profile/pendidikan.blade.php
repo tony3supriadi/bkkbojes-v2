@@ -39,7 +39,10 @@ $wilayah = new Wilayah();
             @foreach($pendidikan as $key => $val)
             <div class="row mb-5">
                 <div class="col-md-4">
-                    <p class="text-secondary m-0"><strong>{{ $val->bulan_mulai }} {{ $val->tahun_mulai }} - {{ $val->masih_sekolah ? 'Sekarang' : $val->bulan_selesai . ' ' .$val->tahun_selesai }}</strong></p>
+                    <p class="text-secondary m-0">
+                        <strong>
+                            {{ Carbon\Carbon::parse($val->mulai_sekolah)->isoFormat('MMM Y') }} - {{ $val->masih_sekolah ? 'Sekarang' : Carbon\Carbon::parse($val->selesai_sekolah)->isoFormat('MMM Y') }}</strong>
+                    </p>
                 </div>
                 <div class="col-md-8">
                     <h5 class="text-secondary mb-3"><strong>{{ $val->nama_sekolah }}</strong></h5>
@@ -47,7 +50,7 @@ $wilayah = new Wilayah();
                     <div class="mb-2">
                         <p class="text-muted m-0"><i class="la la-map-marker me-2"></i>{{ $wilayah->getName($val->kabupaten) }}, {{ $wilayah->getName($val->provinsi) }}, Indonesia</p>
                         <p class="text-muted m-0"><i class="la la-graduation-cap me-2"></i> {{ $val->jenjang_pendidikan }}</p>
-                        <p class="text-muted m-0"><i class="las la-swatchbook"></i> {{ $val->jurusan }}</p>
+                        <p class="text-muted m-0"><i class="las la-swatchbook"></i> {{ $val->program_studi }}</p>
                         <p class="text-muted m-0"><i class="las la-clipboard-list"></i> {{ $val->nilai_akhir }}</p>
                     </div>
                 </div>

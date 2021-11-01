@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Wilayah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('kabupaten/{provid}', function ($provid) {
+    $wilayah = new Wilayah();
+    return $wilayah->kabupaten($provid);
+});
+
+Route::get('kecamatan/{kabid}', function ($kabid) {
+    $wilayah = new Wilayah();
+    return $wilayah->kecamatan($kabid);
+});
+
+Route::get('desa/{desid}', function ($desid) {
+    $wilayah = new Wilayah();
+    return $wilayah->desa($desid);
 });

@@ -27,7 +27,7 @@ $personal = new Personal();
                 ? 'bg-success' : ($procentase > 50 
                     ? 'bg-warning' : ($procentase > 25 
                         ? 'bg-primary' : 'bg-danger')) 
-                    }}" role="progressbar" style="width: {{ $procentase }}%" aria-valuenow="{{ $procentase }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    }}" role="progressbar" style="width: <?= $procentase ?>%" aria-valuenow="{{ $procentase }}" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <p class="description">
             @if ($procentase > 75)

@@ -70,10 +70,10 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="no_hp">No HP / WA</label>
-                            <input type="number" name="no_hp" id="no_hp" value="{{ old('no_hp') }}" class="form-control @error('no_hp') is-invalid border-danger @enderror" autocomplete="off">
+                            <label for="phone">No HP / WA</label>
+                            <input type="number" name="phone" id="phone" value="{{ old('phone') }}" class="form-control @error('phone') is-invalid border-danger @enderror" autocomplete="off">
 
-                            @error('no_hp')
+                            @error('phone')
                             <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                             @enderror
                         </div>
@@ -81,10 +81,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="nama_pengguna">Username</label>
-                                    <input type="text" name="nama_pengguna" id="nama_pengguna" value="{{ old('nama_pengguna') }}" class="form-control @error('nama_pengguna') is-invalid border-danger @enderror" autocomplete="off">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" id="username" value="{{ old('username') }}" class="form-control @error('username') is-invalid border-danger @enderror" autocomplete="off">
 
-                                    @error('nama_pengguna')
+                                    @error('username')
                                     <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                                     @enderror
                                 </div>
@@ -164,11 +164,12 @@
 @endsection
 
 @push('styles')
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/select2/css/select2.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/select2/css/select2-bootstrap.min.css') }}">
 @endpush
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="{{ asset('admin/vendors/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('js/inits/select2.js') }}"></script>
 <script src="{{ asset('/js/pages/register.js') }}"></script>
 @endpush

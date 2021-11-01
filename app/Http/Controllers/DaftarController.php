@@ -39,9 +39,9 @@ class DaftarController extends Controller
         return Validator::make($data, [
             'nama_depan' => 'required|max:64',
             'nama_belakang' => 'required|max:64',
-            'email' => 'required|email|unique:fdf1_personal|max:128',
-            'no_hp' => 'required|unique:fdf1_personal|max:16',
-            'nama_pengguna' => 'required|unique:fdf1_personal|max:64',
+            'email' => 'required|email|unique:personal|max:128',
+            'phone' => 'required|unique:personal|max:16',
+            'username' => 'required|unique:personal|max:64',
             'jenis_akun' => 'required',
             'password' => 'required|confirmed|min:6',
             'agree' => 'required'
@@ -56,8 +56,8 @@ class DaftarController extends Controller
             'nama_depan' => $data['nama_depan'],
             'nama_belakang' => $data['nama_belakang'],
             'email' => $data['email'],
-            'no_hp' => $data['no_hp'],
-            'nama_pengguna' => $data['nama_pengguna'],
+            'phone' => $data['phone'],
+            'username' => $data['username'],
             'jenis_akun' => $data['jenis_akun'],
             'password' => Hash::make($data['password'])
         ]);

@@ -50,11 +50,11 @@ $wilayah = new App\Models\Wilayah;
             </div>
             <div class="row border-bottom py-4 mx-0">
                 <div class="col-md-3 field-name px-0">Jenis Kelamin</div>
-                <div class="col-md-9 px-0">{{ $personal->jenis_kelamin ? $personal->jenis_kelamin : '-' }}</div>
+                <div class="col-md-9 px-0">{{ $personal->jenis_kelamin ? ($personal->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan') : '-' }}</div>
             </div>
             <div class="row border-bottom py-4 mx-0">
                 <div class="col-md-3 field-name px-0">No. HP / Whatsapp</div>
-                <div class="col-md-9 px-0">{{ $personal->no_hp }}</div>
+                <div class="col-md-9 px-0">{{ $personal->phone }}</div>
             </div>
             <div class="row border-bottom py-4 mx-0">
                 <div class="col-md-3 field-name px-0">Email</div>

@@ -26,9 +26,9 @@
                     <p class="text-secondary font-size-sm text-center text-md-start">Silahkan masukan email dan kata sandi</p>
 
                     <div class="form-group mb-3">
-                        <label for="nama_pengguna">Username atau E-Mail</label>
-                        <input type="text" name="nama_pengguna" id="nama_pengguna" class="form-control @error('nama_pengguna') is-invalid @enderror" autocomplete="off" autofocus />
-                        @error('nama_pengguna')
+                        <label for="username">Username atau E-Mail</label>
+                        <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror" autocomplete="off" autofocus />
+                        @error('username')
                         <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                         @enderror
                     </div>

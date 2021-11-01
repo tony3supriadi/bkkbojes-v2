@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -39,55 +38,55 @@ Route::group([
     "as" => "akun.",
     "middleware" => ["auth:personal", "verified"]
 ], function () {
-    Route::get('/', [AkunController::class, 'redirectTo']);
+    Route::get('/', [App\Http\Controllers\Akun\AkunController::class, 'redirectTo']);
 
     Route::group([
         "prefix" => "/profile-saya",
         "as" => "profile."
     ], function () {
-        Route::get('/', [ProfileController::class, 'redirectTo'])->name('personal');
+        Route::get('/', [App\Http\Controllers\Akun\ProfileController::class, 'redirectTo'])->name('personal');
 
-        Route::get('/personal', [ProfileController::class, 'personal'])->name('personal');
-        Route::get('/personal/{id}/edit', [ProfileController::class, 'personal_edit'])->name('personal.edit');
-        Route::put('/personal/{id}', [ProfileController::class, 'personal_update'])->name('personal.update');
+        Route::get('/personal', [App\Http\Controllers\Akun\ProfileController::class, 'personal'])->name('personal');
+        Route::get('/personal/{id}/edit', [App\Http\Controllers\Akun\ProfileController::class, 'personal_edit'])->name('personal.edit');
+        Route::put('/personal/{id}', [App\Http\Controllers\Akun\ProfileController::class, 'personal_update'])->name('personal.update');
 
-        Route::get('/pengalaman', [ProfileController::class, 'pengalaman'])->name('pengalaman');
-        Route::get('/pengalaman/tambah', [ProfileController::class, 'pengalaman_create'])->name('pengalaman.create');
-        Route::post('/pengalaman', [ProfileController::class, 'pengalaman_store'])->name('pengalaman.store');
-        Route::get('/pengalaman/{id}/edit', [ProfileController::class, 'pengalaman_edit'])->name('pengalaman.edit');
-        Route::put('/pengalaman/{id}', [ProfileController::class, 'pengalaman_update'])->name('pengalaman.update');
-        Route::delete('/pengalaman/{id}', [ProfileController::class, 'pengalaman_destroy'])->name('pengalaman.destroy');
+        Route::get('/pengalaman', [App\Http\Controllers\Akun\ProfileController::class, 'pengalaman'])->name('pengalaman');
+        Route::get('/pengalaman/tambah', [App\Http\Controllers\Akun\ProfileController::class, 'pengalaman_create'])->name('pengalaman.create');
+        Route::post('/pengalaman', [App\Http\Controllers\Akun\ProfileController::class, 'pengalaman_store'])->name('pengalaman.store');
+        Route::get('/pengalaman/{id}/edit', [App\Http\Controllers\Akun\ProfileController::class, 'pengalaman_edit'])->name('pengalaman.edit');
+        Route::put('/pengalaman/{id}', [App\Http\Controllers\Akun\ProfileController::class, 'pengalaman_update'])->name('pengalaman.update');
+        Route::delete('/pengalaman/{id}', [App\Http\Controllers\Akun\ProfileController::class, 'pengalaman_destroy'])->name('pengalaman.destroy');
 
-        Route::get('/pendidikan', [ProfileController::class, 'pendidikan'])->name('pendidikan');
-        Route::get('/pendidikan/create', [ProfileController::class, 'pendidikan_create'])->name('pendidikan.create');
-        Route::post('/pendidikan', [ProfileController::class, 'pendidikan_store'])->name('pendidikan.store');
-        Route::get('/pendidikan/{id}/edit', [ProfileController::class, 'pendidikan_edit'])->name('pendidikan.edit');
-        Route::put('/pendidikan/{id}', [ProfileController::class, 'pendidikan_update'])->name('pendidikan.update');
-        Route::delete('/pendidikan/{id}', [ProfileController::class, 'pendidikan_destroy'])->name('pendidikan.destroy');
+        Route::get('/pendidikan', [App\Http\Controllers\Akun\ProfileController::class, 'pendidikan'])->name('pendidikan');
+        Route::get('/pendidikan/create', [App\Http\Controllers\Akun\ProfileController::class, 'pendidikan_create'])->name('pendidikan.create');
+        Route::post('/pendidikan', [App\Http\Controllers\Akun\ProfileController::class, 'pendidikan_store'])->name('pendidikan.store');
+        Route::get('/pendidikan/{id}/edit', [App\Http\Controllers\Akun\ProfileController::class, 'pendidikan_edit'])->name('pendidikan.edit');
+        Route::put('/pendidikan/{id}', [App\Http\Controllers\Akun\ProfileController::class, 'pendidikan_update'])->name('pendidikan.update');
+        Route::delete('/pendidikan/{id}', [App\Http\Controllers\Akun\ProfileController::class, 'pendidikan_destroy'])->name('pendidikan.destroy');
 
-        Route::get('/keterampilan', [ProfileController::class, 'keterampilan'])->name('keterampilan');
-        Route::get('/keterampilan/edit', [ProfileController::class, 'keterampilan_edit'])->name('keterampilan.edit');
-        Route::put('/keterampilan', [ProfileController::class, 'keterampilan_update'])->name('keterampilan.update');
-        Route::delete('/keterampilan/{id}', [ProfileController::class, 'keterampilan_destroy'])->name('keterampilan.destroy');
+        Route::get('/keterampilan', [App\Http\Controllers\Akun\ProfileController::class, 'keterampilan'])->name('keterampilan');
+        Route::get('/keterampilan/edit', [App\Http\Controllers\Akun\ProfileController::class, 'keterampilan_edit'])->name('keterampilan.edit');
+        Route::put('/keterampilan', [App\Http\Controllers\Akun\ProfileController::class, 'keterampilan_update'])->name('keterampilan.update');
+        Route::delete('/keterampilan/{id}', [App\Http\Controllers\Akun\ProfileController::class, 'keterampilan_destroy'])->name('keterampilan.destroy');
 
-        Route::get('/organisasi', [ProfileController::class, 'organisasi'])->name('organisasi');
-        Route::get('/organisasi/tambah', [ProfileController::class, 'organisasi_create'])->name('organisasi.create');
-        Route::post('/organisasi', [ProfileController::class, 'organisasi_store'])->name('organisasi.store');
-        Route::get('/organisasi/{id}/edit', [ProfileController::class, 'organisasi_edit'])->name('organisasi.edit');
-        Route::put('/organisasi/{id}', [ProfileController::class, 'organisasi_update'])->name('organisasi.update');
-        Route::delete('/organisasi/{id}', [ProfileController::class, 'organisasi_destroy'])->name('organisasi.destroy');
+        Route::get('/organisasi', [App\Http\Controllers\Akun\ProfileController::class, 'organisasi'])->name('organisasi');
+        Route::get('/organisasi/tambah', [App\Http\Controllers\Akun\ProfileController::class, 'organisasi_create'])->name('organisasi.create');
+        Route::post('/organisasi', [App\Http\Controllers\Akun\ProfileController::class, 'organisasi_store'])->name('organisasi.store');
+        Route::get('/organisasi/{id}/edit', [App\Http\Controllers\Akun\ProfileController::class, 'organisasi_edit'])->name('organisasi.edit');
+        Route::put('/organisasi/{id}', [App\Http\Controllers\Akun\ProfileController::class, 'organisasi_update'])->name('organisasi.update');
+        Route::delete('/organisasi/{id}', [App\Http\Controllers\Akun\ProfileController::class, 'organisasi_destroy'])->name('organisasi.destroy');
     });
 
-    Route::get('/resume', [AkunController::class, 'resume'])->name('resume');
-    Route::get('/resume/download', [AkunController::class, 'resume_download'])->name('resume-download');
-    Route::get('/resume/view/stream', [AkunController::class, 'resume_stream'])->name('resume-stream');
+    Route::get('/resume', [App\Http\Controllers\Akun\AkunController::class, 'resume'])->name('resume');
+    Route::get('/resume/download', [App\Http\Controllers\Akun\AkunController::class, 'resume_download'])->name('resume-download');
+    Route::get('/resume/view/stream', [App\Http\Controllers\Akun\AkunController::class, 'resume_stream'])->name('resume-stream');
 
-    Route::get('/pemberitahuan', [AkunController::class, 'pemberitahuan'])->name('pemberitahuan');
-    Route::get('/pemberitahuan/{id}', [AkunController::class, 'pemberitahuan_detail'])->name('pemberitahuan-detail');
+    Route::get('/pemberitahuan', [App\Http\Controllers\Akun\AkunController::class, 'pemberitahuan'])->name('pemberitahuan');
+    Route::get('/pemberitahuan/{id}', [App\Http\Controllers\Akun\AkunController::class, 'pemberitahuan_detail'])->name('pemberitahuan-detail');
 
-    Route::get('/lowongan-tersimpan', [AkunController::class, 'lowongan_tersimpan'])->name('lowongan-tersimpan');
-    Route::get('/lamaran-terkirim', [AkunController::class, 'lamaran_terkirim'])->name('lamaran-terkirim');
-    Route::get('/latihan-tes', [AkunController::class, 'latihan_tes'])->name('latihan-tes');
+    Route::get('/lowongan-tersimpan', [App\Http\Controllers\Akun\AkunController::class, 'lowongan_tersimpan'])->name('lowongan-tersimpan');
+    Route::get('/lamaran-terkirim', [App\Http\Controllers\Akun\AkunController::class, 'lamaran_terkirim'])->name('lamaran-terkirim');
+    Route::get('/latihan-tes', [App\Http\Controllers\Akun\AkunController::class, 'latihan_tes'])->name('latihan-tes');
 });
 
 

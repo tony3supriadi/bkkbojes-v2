@@ -30,97 +30,27 @@
             <input type="hidden" name="personal_id" value="{{ Auth::guard('personal')->user()->id }}">
 
             <div class="col-md-4">
-                <div class="form-group mb-3 row">
-                    <label for="tanggal_mulai" class="col-12">Mulai</label>
-                    <div class="col-6 pe-1">
-                        <select name="bulan_mulai" id="bulan_mulai" data-placeholder="Bulan" class="form-control select2-nosearch @error('bulan_mulai') is_invalid border-danger @enderror">
-                            <option value=""></option>
-                            @php
-                            $months = [
-                            [ "value" => "Jan", "text" => "Januari" ],
-                            [ "value" => "Feb", "text" => "Februari" ],
-                            [ "value" => "Mar", "text" => "Maret" ],
-                            [ "value" => "Apr", "text" => "April" ],
-                            [ "value" => "Mei", "text" => "Mei" ],
-                            [ "value" => "Jun", "text" => "Juni" ],
-                            [ "value" => "Jul", "text" => "Juli" ],
-                            [ "value" => "Agt", "text" => "Agustus" ],
-                            [ "value" => "Sep", "text" => "September" ],
-                            [ "value" => "Okt", "text" => "Oktober" ],
-                            [ "value" => "Nov", "text" => "November" ],
-                            [ "value" => "Des", "text" => "Desember" ],
-                            ];
-                            @endphp
-
-                            @foreach($months as $month)
-                            <option value="{{ $month['value'] }}">{{ $month['text'] }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="col-6 ps-1">
-                        <select name="tahun_mulai" id="tahun_mulai" data-placeholder="Tahun" class="form-control select2-nosearch  @error('tahun_mulai') is_invalid border-danger @enderror">
-                            <option value=""></option>
-                            @for($year = date('Y'); $year >= 2002; $year--)
-                            <option value="{{ $year }}">{{ $year }}</option>
-                            @endfor
-                        </select>
-                    </div>
-
-                    @if($errors->has('bulan_mulai') || $errors->has('tahun_mulai'))
-                    <div class="text-danger" style="font-size:.875em">Bulan dan tahun mulai harus diisi</div>
-                    @endif
+                <div class="form-group mb-3">
+                    <label for="mulai_sekolah">Mulai</label>
+                    <input type="date" name="mulai_sekolah" id="mulai_sekolah" data-date-format="DD MMM YYYY" placeholder="Tanggal mulai" value="{{ old('mulai_sekolah') }}" class="form-control @error('mulai_sekolah') is-invalid border-danger @enderror">
+                    @error('mulai_sekolah')
+                    <div class="invalid-feedback">{{ ucfirst($message) }}</div>
+                    @enderror
                 </div>
+                <div class="form-group">
+                    <label for="selesai_sekolah">Selesai</label>
+                    <input type="date" name="selesai_sekolah" data-date-format="DD MMM YYYY" placeholder="Tanggal selesai" id="selesai_sekolah" value="{{ old('selesai_sekolah') }}" class="form-control @error('selesai_sekolah') is-invalid border-danger @enderror" @if(old('masih_sekolah')) readonly @endif>
 
-                <div class="form-group mb-3 row">
-                    <label for="tanggal_selesai" class="col-12">Selesai</label>
-                    <div class="col-6 pe-1">
-                        <select name="bulan_selesai" id="bulan_selesai" data-placeholder="Bulan" class="form-control select2-nosearch  @error('bulan_selesai') is_invalid border-danger @enderror" @if(old('masih_sekolah')) disabled @endif>
-                            <option value=""></option>
-                            @php
-                            $months = [
-                            [ "value" => "Jan", "text" => "Januari" ],
-                            [ "value" => "Feb", "text" => "Februari" ],
-                            [ "value" => "Mar", "text" => "Maret" ],
-                            [ "value" => "Apr", "text" => "April" ],
-                            [ "value" => "Mei", "text" => "Mei" ],
-                            [ "value" => "Jun", "text" => "Juni" ],
-                            [ "value" => "Jul", "text" => "Juli" ],
-                            [ "value" => "Agt", "text" => "Agustus" ],
-                            [ "value" => "Sep", "text" => "September" ],
-                            [ "value" => "Okt", "text" => "Oktober" ],
-                            [ "value" => "Nov", "text" => "November" ],
-                            [ "value" => "Des", "text" => "Desember" ],
-                            ];
-                            @endphp
-
-                            @foreach($months as $month)
-                            <option value="{{ $month['value'] }}">{{ $month['text'] }}</option>
-                            @endforeach
-                        </select>
+                    <div class="form-check">
+                        <input class="form-check-input" name="masih_sekolah" type="checkbox" value="1" id="masih_sekolah" @if(old('masih_sekolah')) checked @endif>
+                        <label class="form-check-label" for="masih_sekolah">
+                            Masih Sekolah
+                        </label>
                     </div>
 
-                    <div class="col-6 ps-1">
-                        <select name="tahun_selesai" id="tahun_selesai" data-placeholder="Tahun" class="form-control select2-nosearch  @error('tahun_selesai') is_invalid border-danger @enderror" @if(old('masih_sekolah')) disabled @endif>
-                            <option value=""></option>
-                            @for($year = date('Y'); $year >= 2002; $year--)
-                            <option value="{{ $year }}">{{ $year }}</option>
-                            @endfor
-                        </select>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" name="masih_sekolah" type="checkbox" value="1" id="masih_sekolah" @if(old('masih_sekolah')) checked @endif>
-                            <label class="form-check-label" for="masih_sekolah">
-                                Masih Sekolah
-                            </label>
-                        </div>
-                    </div>
-
-                    @if($errors->has('bulan_selesai') || $errors->has('tahun_selesai'))
-                    <div class="text-danger" style="font-size:.875em">Bulan dan tahun selesai harus diisi</div>
-                    @endif
+                    @error('selesai_sekolah')
+                    <div class="invalid-feedback">{{ ucfirst($message) }}</div>
+                    @enderror
                 </div>
             </div>
 
@@ -134,7 +64,15 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="nama_sekolah"><i class="la la-map-marker me-1"></i>Lokasi</label>
+                    <label for="alamat">Alamat</label>
+                    <input type="text" name="alamat" id="alamat" value="{{ old('alamat') }}" class="form-control @error('alamat') is-invalid border-danger @enderror">
+                    @error('alamat')
+                    <div class="invalid-feedback">{{ ucfirst($message) }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="lokasi"><i class="la la-map-marker me-1"></i>Lokasi</label>
                     <div class="mb-2">
                         <select name="provinsi" data-placeholder="Pilih provinsi" id="provinsi" class="form-control select2-basic @error('provinsi') is-invalid border-danger @enderror">
                             <option value=""></option>
@@ -185,9 +123,9 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="jurusan">Jurusan</label>
-                    <input type="text" name="jurusan" id="jurusan" value="{{old('jurusan')}}" class="form-control @error('jurusan') is-invalid border-danger @enderror">
-                    @error('jurusan')
+                    <label for="program_studi">Program Studi</label>
+                    <input type="text" name="program_studi" id="program_studi" value="{{old('program_studi')}}" class="form-control @error('program_studi') is-invalid border-danger @enderror">
+                    @error('program_studi')
                     <div class="invalid-feedback">{{ ucfirst($message) }}</div>
                     @enderror
                 </div>
@@ -225,11 +163,12 @@
     $(function() {
         $('input[name="masih_sekolah"]').on('click', function() {
             if ($(this).is(':checked')) {
-                $('#bulan_selesai').attr('disabled', 'disabled');
-                $('#tahun_selesai').attr('disabled', 'disabled');
+                $('#selesai_sekolah').val('');
+                $('#selesai_sekolah').attr('placeholder', '-');
+                $('#selesai_sekolah').attr('readonly', 'readonly');
             } else {
-                $('#bulan_selesai').removeAttr('disabled');
-                $('#tahun_selesai').removeAttr('disabled');
+                $('#selesai_sekolah').attr('placeholder', 'Tanggal selesai');
+                $('#selesai_sekolah').removeAttr('readonly');
             }
         });
 

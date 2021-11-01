@@ -120,7 +120,7 @@ $wilayah = new Wilayah();
         </tr>
         <tr>
             <td valign="top"><span class="text-muted">Np HP/Whatsapp</span></td>
-            <td valign="top">{{ $personal->no_hp }}</td>
+            <td valign="top">{{ $personal->phone }}</td>
         </tr>
         <tr>
             <td valign="top"><span class="text-muted">Email</span></td>
@@ -210,7 +210,7 @@ $wilayah = new Wilayah();
             <td valign="top" align="left" class="pb-3">
                 <ul class="p-0">
                     @foreach($keterampilan as $mahir)
-                    @if ($mahir->prosentase == 100)
+                    @if ($mahir->level == 100)
                     <li>{{ $mahir->skill }}</li>
                     @endif
                     @endforeach
@@ -229,7 +229,7 @@ $wilayah = new Wilayah();
             <td valign="top" align="left" class="pb-3">
                 <ul class="p-0">
                     @foreach($keterampilan as $menengah)
-                    @if ($menengah->prosentase == 75)
+                    @if ($menengah->level == 75)
                     <li>{{ $menengah->skill }}</li>
                     @endif
                     @endforeach
@@ -248,7 +248,7 @@ $wilayah = new Wilayah();
             <td valign="top" align="left" class="pb-3">
                 <ul class="p-0">
                     @foreach($keterampilan as $pemula)
-                    @if ($pemula->prosentase == 60)
+                    @if ($pemula->level == 60)
                     <li>{{ $pemula->skill }}</li>
                     @endif
                     @endforeach
