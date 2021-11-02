@@ -25,7 +25,7 @@
 </div>
 
 <div class="card">
-    <form action="{{ route('admin.mitra.update', encrypt($mitra->id)) }}" method="post">
+    <form action="{{ route('admin.mitra.update', encrypt($mitra->id)) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
 
