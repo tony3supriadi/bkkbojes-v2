@@ -13,4 +13,39 @@
 @endsection
 
 @section('account-content')
+<div class="card card-body p-0">
+    <div class="account-content p-0">
+        <div class="page-title p-3 d-flex justify-content-between">
+            <h4 class="d-inline-block mb-0">
+                <i class="la la-bookmark text-primary"></i>
+                <span>Lowongan tersimpan</span>
+
+                <span class="badge bg-info text-white ms-2" style="font-size:16px">{{ count($daftar_lowongan) }}</span>
+            </h4>
+        </div>
+        <div class="page-content bg-light p-3 slimscroll">
+            @if (count($daftar_lowongan))
+            @foreach($daftar_lowongan as $lowongan)
+            @include('pages.lowongan.partials.lowongan-box', ['lowongan' => $lowongan])
+            @endforeach
+            @else
+            <div class="card card-body border-0 shadow-sm text-center p-5">
+                <span class="la la-file-alt fa-5x text-muted mb-3"></span>
+                <h5 class="text-muted">Tidak ada lowongan yang tersimpan.</h5>
+            </div>
+            @endif
+        </div>
+    </div>
+</div>
 @endsection
+
+@push('scripts')
+<script src="{{ asset('vendors/jQuery-slimScroll/jquery.slimscroll.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.slimscroll').slimScroll({
+            height: '620px',
+        });
+    })
+</script>
+@endpush

@@ -6,7 +6,7 @@ use App\Models\Programstudi;
     <form action="" method="get">
         <div class="box py-2">
             <div class="input-group mb-3">
-                <input type="text" name="q" class="form-control" style="border-right:0" placeholder="Ketik kata kunci, nama perusahaan, posisi, dll...">
+                <input type="text" name="q" class="form-control" value="{{ request()->get('q') }}" style="border-right:0" placeholder="Ketik kata kunci, nama perusahaan, posisi, dll...">
                 <span class="input-group-text input-group-query" style="border-left: 0;"><i class="fa fa-search"></i></span>
             </div>
 
@@ -85,8 +85,7 @@ use App\Models\Programstudi;
         $('select').select2({
             theme: 'bootstrap',
             dropdownAutoWidth: true,
-            width: '100%',
-            minimumResultsForSearch: -1
+            width: '100%'
         });
 
         $('input[name="q"]').on('focusin', function() {

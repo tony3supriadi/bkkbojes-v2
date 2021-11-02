@@ -75,25 +75,25 @@
             <tr>
                 <td width="22%">Desa</td>
                 <td width="5px">:</td>
-                <td>{{ $wilayah->getName($pengguna->desa) }}</td>
+                <td>{{ $pengguna->desa ? $wilayah->getName($pengguna->desa) : '-' }}</td>
             </tr>
 
             <tr>
                 <td width="22%">Kecamatan</td>
                 <td width="5px">:</td>
-                <td>{{ $wilayah->getName($pengguna->kecamatan) }}</td>
+                <td>{{ $pengguna->kecamatan ? $wilayah->getName($pengguna->kecamatan) : '-' }}</td>
             </tr>
 
             <tr>
                 <td width="22%">Kabupaten / Kota</td>
                 <td width="5px">:</td>
-                <td>{{ $wilayah->getName($pengguna->kabupaten) }}</td>
+                <td>{{ $pengguna->kabupaten ? $wilayah->getName($pengguna->kabupaten) : '-' }}</td>
             </tr>
 
             <tr>
                 <td width="22%">Provinsi</td>
                 <td width="5px">:</td>
-                <td>{{ $wilayah->getName($pengguna->provinsi) }}</td>
+                <td>{{ $pengguna->provinsi ? $wilayah->getName($pengguna->provinsi) : '-' }}</td>
             </tr>
 
             <tr>

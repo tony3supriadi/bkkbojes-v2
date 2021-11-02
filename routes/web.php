@@ -88,7 +88,7 @@ Route::group([
     Route::get('/resume/view/stream', [App\Http\Controllers\Akun\AkunController::class, 'resume_stream'])->name('resume-stream');
 
     Route::get('/pemberitahuan', [App\Http\Controllers\Akun\AkunController::class, 'pemberitahuan'])->name('pemberitahuan');
-    Route::get('/pemberitahuan/{id}', [App\Http\Controllers\Akun\AkunController::class, 'pemberitahuan_detail'])->name('pemberitahuan-detail');
+    Route::get('/pemberitahuan/{slug}', [App\Http\Controllers\Akun\AkunController::class, 'pemberitahuan_detail'])->name('pemberitahuan-detail');
 
     Route::get('/lowongan-tersimpan', [App\Http\Controllers\Akun\AkunController::class, 'lowongan_tersimpan'])->name('lowongan-tersimpan');
     Route::get('/lamaran-terkirim', [App\Http\Controllers\Akun\AkunController::class, 'lamaran_terkirim'])->name('lamaran-terkirim');

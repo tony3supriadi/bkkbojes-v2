@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Akun;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lowongan;
+use App\Models\Pengumuman;
 use App\Models\Personal;
 use App\Models\Personalketerampilan;
 use App\Models\Personalorganisasi;
 use App\Models\Personalpendidikan;
 use App\Models\Personalpengalaman;
+use App\Models\Wilayah;
 use Illuminate\Support\Facades\Auth;
 
 use PDF;
@@ -85,22 +88,44 @@ class AkunController extends Controller
 
     public function pemberitahuan()
     {
-        return view('pages.akun.pemberitahuan.index');
+        $pengumuman = Pengumuman::where('publish', '=', true)
+            ->orderBy('created_at', 'DESC')->get();
+        return view('pages.akun.pemberitahuan.index', compact('pengumuman'));
     }
 
-    public function pemberitahuan_detail()
+    public function pemberitahuan_detail($slug)
     {
-        return view('pages.akun.pemberitahuan.detail');
+        $pengumuman_detail = Pengumuman::select('pengumuman.*', 'mitra.logo as mitra_logo', 'mitra.nama as mitra_nama')
+            ->where('pengumuman.slug', '=', $slug)
+            ->leftJoin('mitra', 'mitra.id', '=', 'mitra_id')
+            ->first();
+
+        $pengumuman_detail->counter = $pengumuman_detail->counter + 1;
+        $pengumuman_detail->save();
+        return view('pages.akun.pemberitahuan.detail', compact('pengumuman_detail'));
     }
 
     public function lowongan_tersimpan()
     {
-        return view('pages.akun.lowongan_tersimpan.index');
+        $wilayah = new Wilayah();
+        $daftar_lowongan = Lowongan::select('lowongan.*', 'mitra.nama as mitra_nama', 'mitra.provinsi', 'mitra.kabupaten')
+            ->leftJoin('mitra', 'mitra.id', '=', 'mitra_id')
+            ->join('personal_lowongan_tersimpan', 'personal_lowongan_tersimpan.lowongan_id', '=', 'lowongan.id')
+            ->where('personal_lowongan_tersimpan.personal_id', '=', Auth::guard('personal')->user()->id)
+            ->orderBy('personal_lowongan_tersimpan.created_at', 'DESC')
+            ->get();
+        return view('pages.akun.lowongan_tersimpan.index', compact('daftar_lowongan', 'wilayah'));
     }
 
     public function lamaran_terkirim()
     {
-        return view('pages.akun.lamaran_terkirim.index');
+        $daftar_lowongan = Lowongan::select('lowongan.slug', 'lowongan.tanggal_berakhir', 'mitra.nama as mitra_nama', 'personal_lowongan_terkirim.created_at')
+            ->leftJoin('mitra', 'mitra.id', '=', 'mitra_id')
+            ->join('personal_lowongan_terkirim', 'personal_lowongan_terkirim.lowongan_id', '=', 'lowongan.id')
+            ->where('personal_lowongan_terkirim.personal_id', '=', Auth::guard('personal')->user()->id)
+            ->orderBy('personal_lowongan_terkirim.created_at', 'DESC')
+            ->get();
+        return view('pages.akun.lamaran_terkirim.index', compact('daftar_lowongan'));
     }
 
     public function latihan_tes()

@@ -16,6 +16,7 @@ class CreatePersonalLowonganTersimpanTable extends Migration
         Schema::create('personal_lowongan_tersimpan', function (Blueprint $table) {
             $table->bigInteger('personal_id');
             $table->bigInteger('lowongan_id');
+            $table->timestamps();
         });
     }
 

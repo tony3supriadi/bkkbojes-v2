@@ -55,12 +55,12 @@ $personal = new Personal();
                 <span>Resume</span>
             </a>
         </li>
-        <!-- <li class="list-group-item {{ strpos($route, 'pemberitahuan') ? 'active' : '' }}">
+        <li class="list-group-item {{ strpos($route, 'pemberitahuan') ? 'active' : '' }}">
             <a href="{{ route('akun.pemberitahuan') }}" class="list-group-link">
                 <i class="la la-bell"></i>
                 <span>Pemberitahuan</span>
             </a>
-        </li> -->
+        </li>
         <li class="list-group-item {{ strpos($route, 'lowongan-tersimpan') ? 'active' : '' }}">
             <a href="{{ route('akun.lowongan-tersimpan') }}" class="list-group-link">
                 <i class="la la-bookmark"></i>

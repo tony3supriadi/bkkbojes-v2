@@ -16,6 +16,7 @@ class CreatePersonalLowonganTerkirimTable extends Migration
         Schema::create('personal_lowongan_terkirim', function (Blueprint $table) {
             $table->bigInteger('personal_id');
             $table->bigInteger('lowongan_id');
+            $table->timestamps();
         });
     }
 

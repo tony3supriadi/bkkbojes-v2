@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Lowongan;
 use App\Models\Personal;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -30,6 +31,7 @@ class DashboardController extends Controller
             foreach ($lowongan as $item) {
                 $results[$index] = $item;
                 $results[$index]["encryptid"] = encrypt($item->id);
+                $results[$index]["tanggal_berakhir"] = Carbon::parse($item->tanggal_berakhir)->isoFormat('DD MMM Y');
                 $index++;
             }
             return response()->json($results);

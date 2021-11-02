@@ -110,7 +110,7 @@
                     width: '15%'
                 },
                 {
-                    data: 'bidder',
+                    data: 'applicant',
                     title: 'Pelamar',
                     width: '8%',
                     className: 'text-right'

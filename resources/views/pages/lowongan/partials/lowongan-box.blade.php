@@ -65,9 +65,24 @@
                             <span>Berakhir pada {{ Carbon\Carbon::parse($lowongan->tanggal_berakhir)->isoFormat('DD MMMM Y') }}</span>
                         </div>
                     </div>
-                    <div class="icons-desc-group">
-                        <i class="la la-eye me-1" style="font-size:16px"></i>
-                        <span>dilihat {{ $lowongan->counter }} kali</span>
+                    <div class="d-flex">
+                        <div class="icons-desc-group mx-1">
+                            <i class="la la-eye me-1" style="font-size:16px"></i>
+                            <span>dilihat {{ $lowongan->counter }} kali</span>
+                        </div>
+                        @if (date('Y-m-d') > $lowongan->tanggal_berakhir)
+                        <div class="icons-desc-group mx-1">
+                            <span class="badge bg-danger text-white">
+                                Tutup
+                            </span>
+                        </div>
+                        @else
+                        <div class="icons-desc-group mx-1">
+                            <span class="badge bg-success text-white">
+                                Buka
+                            </span>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

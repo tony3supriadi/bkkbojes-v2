@@ -17,7 +17,13 @@ class LowonganController extends Controller
         $wilayah = new Wilayah();
         $data = Lowongan::select('lowongan.*', 'mitra.nama as mitra_nama', 'mitra.provinsi', 'mitra.kabupaten')
             ->leftJoin('mitra', 'mitra.id', '=', 'mitra_id')
-            ->orderBy('lowongan.created_at', 'DESC')
+            ->where('mitra.provinsi', request()->get('lokasi') != 'semua' ? '=' : '!=', request()->get('lokasi') != 'semua' ? request()->get('lokasi') : null)
+            ->where('lowongan.tipe_pekerjaan', request()->get('type') != 'semua' ? '=' : '!=', request()->get('type') != 'semua' ? request()->get('type') : null)
+            ->where('lowongan.tipe_pekerjaan', request()->get('studi') != 'semua' ? 'like' : '!=', request()->get('studi') != 'semua' ? '%' . request()->get('studi') . '%' : null)
+            // ->orWhere('judul', 'like', '%' . request()->get('q') . '%')
+            // ->orWhere('mitra.nama', 'like', '%' . request()->get('q') . '%')
+            // ->orWhere('mitra.nama', 'like', '%' . request()->get('q') . '%')
+            ->orderBy(request()->get('sort') == 'terfavorit' ? 'lowongan.counter' : 'lowongan.created_at', request()->get('sort') == 'terlama' ? 'ASC' : 'DESC')
             ->paginate(15);
 
         return view('pages.lowongan.index', compact('data', 'wilayah'));
@@ -59,6 +65,9 @@ class LowonganController extends Controller
     public function send_submit(Request $request)
     {
         $lowongan = Lowongan::find($request->lowongan_id);
+        $lowongan->applicant = $lowongan->applicant + 1;
+        $lowongan->save();
+
         Kirimlamaran::insert([
             'personal_id' => $request->personal_id,
             'lowongan_id' => $request->lowongan_id,

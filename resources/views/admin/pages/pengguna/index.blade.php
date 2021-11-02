@@ -64,16 +64,19 @@
                 data: 'nama_depan',
                 title: 'Nama Pengguna',
                 render: (data, type, row, meta) => {
-                    return `${row.nama_depan} ${row.nama_belakang}`
+                    return row.nama_depan ? `${row.nama_depan} ${row.nama_belakang}` : '-'
                 }
             }, {
                 data: 'jenis_kelamin',
-                title: 'JK'
+                title: 'JK',
+                render: (data, type, row, meta) => {
+                    return data ? data : '-'
+                }
             }, {
                 data: 'tempat_lahir',
                 title: 'Tempat, Tanggal Lahir',
                 render: (data, type, row, meta) => {
-                    return `${data}, ${row.tanggal_lahir}`
+                    return data ? `${data}, ${row.tanggal_lahir}` : '-'
                 }
 
             }, {
