@@ -75,9 +75,9 @@
                     data: 'mitra_nama',
                     title: 'Mitra / Perusahaan',
                     render: (data, type, row, meta) => {
-                        return `
+                        return data ? `
                         <p class="m-0">${data} <span class="text-muted">(${row.kabupaten_nama}, ${row.provinsi_nama})</span></p>
-                    `;
+                    ` : '-';
                     },
                 }, {
                     data: 'tanggal_berakhir',
