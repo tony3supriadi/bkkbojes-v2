@@ -51,8 +51,8 @@ class LowonganController extends Controller
             foreach ($lowongan as $item) {
                 $results[$index] = $item;
                 $results[$index]["encryptid"] = encrypt($item->id);
-                $results[$index]["kabupaten_nama"] = str_replace("Kab. ", "", $wilayah->getName($item->kabupaten));
-                $results[$index]["provinsi_nama"] = $wilayah->getName($item->provinsi);
+                $results[$index]["kabupaten_nama"] = $item->kabupaten ? str_replace("Kab. ", "", $wilayah->getName($item->kabupaten)) : '';
+                $results[$index]["provinsi_nama"] = $item->provinsi ? $wilayah->getName($item->provinsi) : '';
                 $results[$index]["tanggal_berakhir"] = Carbon::parse($item->tanggal_berakhir)->isoFormat('DD MMM Y');
                 $index++;
             }
