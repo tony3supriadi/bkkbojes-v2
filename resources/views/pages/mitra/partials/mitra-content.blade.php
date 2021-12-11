@@ -7,7 +7,7 @@ $wilayah = new Wilayah();
     <div class="box-content">
         <div class="row ">
             <div class="col-3 col-md-1 px-0 box-content-logo">
-                <img src="{{ Storage::url('public/uploads/mitra/'.$mitra->logo) }}" class="border rounded me-3" width="100%" />
+                <img src="{{ asset('uploads/mitra/'.$mitra->logo) }}" class="border rounded me-3" width="100%" />
             </div>
             <div class="col-6 col-md-9 box-content-title">
                 <h4 class="fw-bold mb-0">{{ $mitra->nama }}</h4>

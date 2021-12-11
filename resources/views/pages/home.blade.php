@@ -140,7 +140,7 @@
             @foreach($daftarMitra as $mitra)
             <div class="col-md-3 col-6">
                 <a href="{{ route('daftar-mitra.show', $mitra->slug) }}" class="text-decoration-none d-flex justify-content-center">
-                    <img src="{{ Storage::url('public/uploads/mitra/'.$mitra->logo) }}" height="80px" alt="{{ $mitra->logo }}" class="my-1">
+                    <img src="{{ asset('uploads/mitra/'.$mitra->logo) }}" height="80px" alt="{{ $mitra->logo }}" class="my-1">
                 </a>
             </div>
             @endforeach
@@ -180,7 +180,7 @@
             <div class="col-md-4">
                 <div class="testimoni-item">
                     <div class="testimoni-item-image">
-                        <img src="{{ Storage::url('public/uploads/personal/'.$testimonial->photo) }}" height="80px" alt="{{ $testimonial->photo }}" class="my-1">
+                        <img src="{{ asset('uploads/personal/'.$testimonial->photo) }}" height="80px" alt="{{ $testimonial->photo }}" class="my-1">
                     </div>
                     <div class="testimoni-item-content">
                         <h3 class="title">{{ $testimonial->nama_depan }} {{ $testimonial->nama_belakang }}</h3>
@@ -196,7 +196,7 @@
             <div class="col-md-12">
                 <div class="testimoni-item">
                     <div class="testimoni-item-image">
-                        <img src="{{ Storage::url('public/uploads/personal/'.$testimonial->photo) }}" height="80px" alt="{{ $testimonial->photo }}" class="my-1">
+                        <img src="{{ asset('uploads/personal/'.$testimonial->photo) }}" height="80px" alt="{{ $testimonial->photo }}" class="my-1">
                     </div>
                     <div class="testimoni-item-content">
                         <h3 class="title">{{ $testimonial->nama_depan }} {{ $testimonial->nama_belakang }}</h3>

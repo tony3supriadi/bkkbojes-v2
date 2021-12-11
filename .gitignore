@@ -15,3 +15,5 @@ yarn-error.log
 /.vscode
 bkkbojes.zip
 server.php
+
+/public/uploads

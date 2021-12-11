@@ -8,7 +8,7 @@
         <div class="row mb-3">
             <div class="col-2 p-0 me-3 com-md-2">
                 <div class="sidebar-logo">
-                    <img width="50px" height="50px" src="{{ Storage::url('public/uploads/mitra/'.$mitra->logo) }}" alt="{{ $mitra->logo }}" class="border rounded">
+                    <img width="50px" height="50px" src="{{ asset('uploads/mitra/'.$mitra->logo) }}" alt="{{ $mitra->logo }}" class="border rounded">
                 </div>
             </div>
             <div class="col-8 p-0 col-md-9">

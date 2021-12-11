@@ -3,7 +3,7 @@
         <div class="row">
             @if($pengumuman_detail->mitra_id)
             <div class="col-3 me-4 col-md-1 box-content-logo">
-                <img src="{{ Storage::url('public/uploads/mitra/'.$pengumuman_detail->mitra_logo) }}" width="80px" height="80px" class="border rounded" />
+                <img src="{{ asset('uploads/mitra/'.$pengumuman_detail->mitra_logo) }}" width="80px" height="80px" class="border rounded" />
             </div>
             @endif
             <div class="col-8 col-md-8 box-content-title">

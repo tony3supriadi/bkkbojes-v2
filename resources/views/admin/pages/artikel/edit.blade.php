@@ -59,7 +59,7 @@
                 <label for="image">Image</label>
                 <input type="file" name="image" id="image" value="{{ old('image') }}" class="form-control p-1 @error('image') is-invalid @enderror" />
                 @if($artikel->image)
-                <img src="{{ Storage::url('public/uploads/artikel/'.$artikel->image) }}" height="100px" alt="{{ $artikel->image }}" class="my-1">
+                <img src="{{ asset('uploads/artikel/'.$artikel->image) }}" height="100px" alt="{{ $artikel->image }}" class="my-1">
                 @endif
                 @error('image')
                 <span class="invalid-feedback" role="alert">

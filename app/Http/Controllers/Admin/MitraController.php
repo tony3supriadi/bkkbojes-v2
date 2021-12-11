@@ -105,14 +105,13 @@ class MitraController extends Controller
         ]);
 
         $slug_string = str_replace([" ", "."], ["-", ""], strtolower($request->nama)) . '-' . time();
-        $storage_path = Storage::putFile(
-            'public/uploads/mitra',
-            $request->file('logo'),
-        );
+
+        $fileName = $slug_string . "." . $request->logo->extension();
+        $request->logo->move(public_path('uploads/mitra'), $fileName);
 
         $mitra = Mitra::create([
             'nama' => $request->nama,
-            'logo' => basename($storage_path),
+            'logo' => basename($fileName),
             'slug' => $slug_string,
             'provinsi' => $request->provinsi,
             'kabupaten' => $request->kabupaten,
@@ -189,16 +188,14 @@ class MitraController extends Controller
         $mitra = Mitra::find(decrypt($id));
 
         $slug_string = str_replace([" ", "."], ["-", ""], strtolower($request->nama)) . '-' . time();
-        $storage_path = $mitra->logo;
+        $fileName = $mitra->logo;
         if ($request->logo) {
-            $storage_path = Storage::putFile(
-                'public/uploads/mitra',
-                $request->file('logo'),
-            );
+            $fileName = $slug_string . "." . $request->logo->extension();
+            $request->logo->move(public_path('uploads/mitra'), $fileName);
         }
 
         $mitra->nama = $request->nama;
-        $mitra->logo = basename($storage_path);
+        $mitra->logo = basename($fileName);
         $mitra->slug = $slug_string;
         $mitra->provinsi = $request->provinsi;
         $mitra->kabupaten = $request->kabupaten;

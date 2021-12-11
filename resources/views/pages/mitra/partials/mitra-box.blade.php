@@ -39,7 +39,7 @@ $asing_mitra = Mitra::where('publish', '=', 1)->where('badan_usaha', '=', 'Asing
                     <div class="box-sidebar pb-0 mb-2 border-0">
                         <div class="row">
                             <div class="col-2 me-5 col-md-1 sidebar-logo">
-                                <img src="{{ Storage::url('public/uploads/mitra/'.$mitra->logo) }}" class="me-2 border rounded" width="60px" height="60px" />
+                                <img src="{{ asset('uploads/mitra/'.$mitra->logo) }}" class="me-2 border rounded" width="60px" height="60px" />
                             </div>
                             <div class="col-8 col-md-8">
                                 {{ $mitra->nama }}
@@ -75,7 +75,7 @@ $asing_mitra = Mitra::where('publish', '=', 1)->where('badan_usaha', '=', 'Asing
                 <div class="box-sidebar">
                     <div class="row">
                         <div class="col-2 me-5 col-md-1 sidebar-logo">
-                            <img src="{{ Storage::url('public/uploads/mitra/'.$mitra->logo) }}" class="me-3" width="60px" height="60px" />
+                            <img src="{{ asset('uploads/mitra/'.$mitra->logo) }}" class="me-3" width="60px" height="60px" />
                         </div>
                         <div class="col-8 col-md-8">
                             {{ $mitra->nama }}
@@ -110,7 +110,7 @@ $asing_mitra = Mitra::where('publish', '=', 1)->where('badan_usaha', '=', 'Asing
                 <div class="box-sidebar">
                     <div class="row">
                         <div class="col-2 me-5 col-md-1 sidebar-logo">
-                            <img src="{{ Storage::url('public/uploads/mitra/'.$mitra->logo) }}" class="me-3" width="60px" height="60px" />
+                            <img src="{{ asset('uploads/mitra/'.$mitra->logo) }}" class="me-3" width="60px" height="60px" />
                         </div>
                         <div class="col-8 col-md-8">
                             {{ $mitra->nama }}
@@ -145,7 +145,7 @@ $asing_mitra = Mitra::where('publish', '=', 1)->where('badan_usaha', '=', 'Asing
                 <div class="box-sidebar">
                     <div class="row">
                         <div class="col-2 me-5 col-md-1 sidebar-logo">
-                            <img src="{{ Storage::url('public/uploads/mitra/'.$mitra->logo) }}" class="me-3" width="60px" height="60px" />
+                            <img src="{{ asset('uploads/mitra/'.$mitra->logo) }}" class="me-3" width="60px" height="60px" />
                         </div>
                         <div class="col-8 col-md-8">
                             {{ $mitra->nama }}

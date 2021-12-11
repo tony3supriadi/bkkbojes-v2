@@ -19,7 +19,7 @@ $daftarTestimonial = Testimonial::select('testimonial.*', 'personal.photo', 'per
             <div class="col-4">
                 <div class="avatar-image avatar-md">
                     @if($testimoni->photo)
-                    <img src="{{ Storage::url('public/uploads/personal/'.$testimoni->photo) }}" alt="avatar" />
+                    <img src="{{ asset('uploads/personal/'.$testimoni->photo) }}" alt="avatar" />
                     @else
                     <div class="user-photo bg-primary text-white mb-2 rounded-circle d-flex align-items-center justify-content-center fw-semibold fs-1" style="width:70px;height:70px">
                         {{ strtoupper(substr($testimoni->nama_depan, 0, 1)) }}

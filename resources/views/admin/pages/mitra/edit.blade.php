@@ -55,7 +55,7 @@
             <div class="form-group">
                 <label for="logo">Logo</label>
                 <input type="file" name="logo" id="logo" class="form-control p-1 @error('logo') is-invalid @enderror">
-                <img src="{{ Storage::url('public/uploads/mitra/'.$mitra->logo) }}" height="80px" alt="{{ $mitra->logo }}" class="my-1">
+                <img src="{{ asset('uploads/mitra/'.$mitra->logo) }}" height="80px" alt="{{ $mitra->logo }}" class="my-1">
                 @error('logo')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

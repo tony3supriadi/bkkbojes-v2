@@ -44,7 +44,7 @@
                     <div class="col-3 col-md-2">
                         <div class="avatar-image avatar-md">
                             @if ($testimoni->personal_photo)
-                            <img src="{{ Storage::url('public/uploads/personal/'.$testimoni->personal_photo) }}" alt="{{ $testimoni->personal_nama }}" />
+                            <img src="{{ asset('uploads/personal/'.$testimoni->personal_photo) }}" alt="{{ $testimoni->personal_nama }}" />
                             @else
                             <div class="user-photo bg-primary text-white mb-2 rounded-circle d-flex align-items-center justify-content-center fw-semibold fs-1" style="width:70px;height:70px">
                                 {{ strtoupper(substr($testimoni->personal_nama_depan, 0, 1)) }}

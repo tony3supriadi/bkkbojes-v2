@@ -55,7 +55,7 @@ if (request()->get('sort') == 'visit') {
 
                         @if ($item->mitra_id)
                         <div class="col-2 me-5 col-md-1 sidebar-logo">
-                            <img src="{{ Storage::url('public/uploads/mitra/'.$item->mitra_logo) }}" class="me-3" width="60px" height="60px" />
+                            <img src="{{ asset('uploads/mitra/'.$item->mitra_logo) }}" class="me-3" width="60px" height="60px" />
                         </div>
                         @endif
                     </div>

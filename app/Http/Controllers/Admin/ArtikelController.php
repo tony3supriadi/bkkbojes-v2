@@ -71,19 +71,18 @@ class ArtikelController extends Controller
         );
 
         $slug = str_replace([" ", ".", ","], ["-", "", ""], strtolower($request->judul)) . '-' . time();
-        $storage_path = "";
+
+        $fileName = "";
         if ($request->image) {
-            $storage_path = Storage::putFile(
-                'public/uploads/artikel',
-                $request->file('image'),
-            );
+            $fileName = $slug . "." . $request->image->extension();
+            $request->image->move(public_path('uploads/artikel'), $fileName);
         }
 
         $artikel = Artikel::create([
             'judul' => $request->judul,
             'slug' => $slug,
             'konten' => $request->konten,
-            'image' => basename($storage_path),
+            'image' => basename($fileName),
             'meta_tag' => $request->meta_tag,
             'meta_deskripsi' => $request->meta_deskripsi,
             'publish' => $request->publish
@@ -120,6 +119,14 @@ class ArtikelController extends Controller
         );
         $data = $request->all();
         $data['slug'] = str_replace([" ", ".", ","], ["-", "", ""], strtolower($request->judul)) . '-' . time();
+
+        $fileName = "";
+        if ($request->image) {
+            $fileName = $data['slug'] . "." . $request->image->extension();
+            $request->image->move(public_path('uploads/artikel'), $fileName);
+
+            $data['image'] = $fileName;
+        }
 
         if (!$request->publish) {
             $data['publish'] = false;
