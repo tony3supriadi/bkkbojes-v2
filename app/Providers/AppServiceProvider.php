@@ -13,7 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if (config('app.env') === 'production') {
+            $this->app->bind('path.public', function () {
+                return base_path() . '../../public_html';
+            });
+        }
     }
 
     /**
