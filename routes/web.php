@@ -243,6 +243,6 @@ Route::group([
         Route::get("/pengaturan/{id}/ubah", [App\Http\Controllers\Admin\PengaturanController::class, 'edit'])->name('pengaturan.edit');
         Route::put("/pengaturan/{id}", [App\Http\Controllers\Admin\PengaturanController::class, 'update'])->name('pengaturan.update');
 
-        Route::post("/logout", [App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
+        Route::post("/logout", [App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('logout');
     });
 });
